@@ -161,34 +161,34 @@ section{position:relative}
 /* Bento */
 .incl-head{max-width:22ch;margin-bottom:56px}
 .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.cell{border-radius:var(--r-panel);overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
+.cell{border-radius:var(--r-panel);overflow:hidden;background:var(--surface);display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0}
 .cell .body{padding:28px 28px 30px}
 .cell h3{font-size:1.3rem;line-height:1.2}
 .cell p{margin-top:8px;color:var(--muted);max-width:40ch}
-.cell .ico{font-size:30px;color:var(--accent);margin-bottom:auto}
-.cell .ph-wrap{height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:30px}
-.cell .ph-wrap .body{padding:0}
-.cell .pic{flex:1;min-height:220px;background:var(--surface-2)}
+.cell .ico{display:block;font-size:26px;color:var(--accent);margin-bottom:14px}
+.cell .pic{min-height:220px;background:var(--surface-2)}
 .cell .pic img{width:100%;height:100%;object-fit:cover}
 .c-match{grid-column:span 3;background:var(--sheen);color:var(--text)}
 .c-match h3{font-size:clamp(1.6rem,2.4vw,2.1rem)}
-.criteria{list-style:none;margin:0;padding:22px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
+.criteria{list-style:none;margin:22px 0 0;padding:22px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
 .criteria li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}
 .criteria i{font-size:18px;color:var(--accent);flex:none;margin-top:1px}
 @media (max-width:640px){.criteria{grid-template-columns:1fr}}
 .c-transfer{grid-column:span 3}
 .c-stay,.c-coord,.c-after{grid-column:span 2}
-.c-coord{background:#E3E8F1;color:var(--text)}
-.c-match,.c-coord{min-height:340px}
+.c-coord{background:var(--accent);color:var(--accent-ink)}
+.c-coord p{color:color-mix(in srgb,var(--accent-ink) 82%,transparent)}
+.c-coord .ico{color:var(--accent-ink)}
 @media (max-width:960px){
   .c-match,.c-transfer{grid-column:span 6}
   .c-stay,.c-coord,.c-after{grid-column:span 3}
   .c-after{grid-column:span 6}
+  .c-after .pic img{aspect-ratio:2/1;height:auto}
 }
 @media (max-width:640px){
   .bento{grid-template-columns:1fr}
   .bento .cell{grid-column:auto}
-  .c-match,.c-coord{min-height:0}
+  .c-after .pic img{aspect-ratio:auto;height:100%}
 }
 
 /* Treatments */
@@ -361,8 +361,9 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
       <h2 class="h2 incl-head reveal" data-i18n="incl.title">Everything around the treatment, handled.</h2>
       <div class="bento">
         <article class="cell c-match reveal">
-          <div class="ph-wrap">
-            <div class="body"><h3 data-i18n="incl.match.t">Clinic matching</h3><p data-i18n="incl.match.d">Licensed clinics chosen for your case, with plans and prices in writing.</p></div>
+          <div class="pic"><img loading="lazy" src="img/clinic-matching.webp" width="1000" height="620" alt="A coordinator in a navy sweater reviewing a printed treatment plan, with a dental X-ray on a tablet" data-i18n-alt="alt.match"></div>
+          <div class="body">
+            <h3 data-i18n="incl.match.t">Clinic matching</h3><p data-i18n="incl.match.d">Licensed clinics chosen for your case, with plans and prices in writing.</p>
             <ul class="criteria">
               <li><i class="ph-light ph-check" aria-hidden="true"></i><span data-i18n="crit.1">Licensed dentists experienced in implants</span></li>
               <li><i class="ph-light ph-check" aria-hidden="true"></i><span data-i18n="crit.2">3D diagnostics (CBCT) on site</span></li>
@@ -372,18 +373,16 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
           </div>
         </article>
         <article class="cell c-transfer reveal">
-          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1730800328198-f9efbf9db53f?w=1000&h=520&fit=crop&q=75&auto=format" width="1000" height="520" alt="A chauffeur in a suit opening the door of a black van" data-i18n-alt="alt.car"></div>
+          <div class="pic"><img loading="lazy" src="img/airport-transfer.webp" width="1000" height="520" alt="A driver in a dark coat wheeling a traveller's suitcase to a dark car at a small airport" data-i18n-alt="alt.car"></div>
           <div class="body"><h3 data-i18n="incl.transfer.t">Airport transfers</h3><p data-i18n="incl.transfer.d">On request, a driver meets you at the airport and takes you to your appointments.</p></div>
         </article>
         <article class="cell c-stay reveal">
-          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1605346434674-a440ca4dc4c0?w=720&h=480&fit=crop&q=75&auto=format" width="720" height="480" alt="A bright hotel room with a neatly made bed and bedside lamps" data-i18n-alt="alt.room"></div>
+          <div class="pic"><img loading="lazy" src="img/hotel-room.webp" width="720" height="480" alt="A calm hotel room with linen bedding and a window overlooking the old-town rooftops of Gdańsk" data-i18n-alt="alt.room"></div>
           <div class="body"><h3 data-i18n="incl.stay.t">Hotel recommendations</h3><p data-i18n="incl.stay.d">Quiet hotels close to your clinic, which you book directly.</p></div>
         </article>
         <article class="cell c-coord reveal">
-          <div class="ph-wrap">
-            <i class="ph-light ph-chat-circle-text ico" aria-hidden="true"></i>
-            <div class="body"><h3 data-i18n="incl.coord.t">One personal contact</h3><p data-i18n="incl.coord.d">The same coordinator from your first message to your final check.</p></div>
-          </div>
+          <div class="pic"><img loading="lazy" src="img/personal-coordinator.webp" width="720" height="480" alt="A coordinator on the phone at a window desk, with a notebook and a cup of tea" data-i18n-alt="alt.coord"></div>
+          <div class="body"><i class="ph-light ph-chat-circle-text ico" aria-hidden="true"></i><h3 data-i18n="incl.coord.t">One personal contact</h3><p data-i18n="incl.coord.d">The same coordinator from your first message to your final check.</p></div>
         </article>
         <article class="cell c-after reveal">
           <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1780053828146-cf06aceb2a5c?w=720&h=480&fit=crop&q=75&auto=format" width="720" height="480" alt="Calm grey sea with a long pier in the distance" data-i18n-alt="alt.sea"></div>
@@ -428,7 +427,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
   <section class="sec story" id="story">
     <div class="wrap story-grid">
       <div class="story-img reveal">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1706520421809-a15828694743?w=900&h=1100&fit=crop&q=75&auto=format" width="900" height="1100" alt="A white nautilus shell on a pale background" data-i18n-alt="alt.shell">
+        <img loading="lazy" src="img/mother-of-pearl.webp" width="900" height="1100" alt="Close-up of polished mother-of-pearl with soft ribbons of pink, lavender and mint" data-i18n-alt="alt.shell">
       </div>
       <div class="story-text reveal">
         <p class="eyebrow" data-i18n="story.eyebrow">Why Nacre</p>
@@ -590,7 +589,7 @@ const T = {
   "story.p1":{en:"Nacre is the luminous layer a shell builds, layer by layer, to protect what is inside. It is strong, smooth and quietly beautiful.",sv:"Nacre är det skimrande lager som ett snäckskal bygger upp, lager för lager, för att skydda det som finns inuti. Det är starkt, slätt och stillsamt vackert.",no:"Nacre er det skimrende laget et skjell bygger opp, lag for lag, for å beskytte det som er inni. Det er sterkt, glatt og stillferdig vakkert.",da:"Nacre er det skinnende lag, som en muslingeskal opbygger, lag for lag, for at beskytte det, der er indeni. Det er stærkt, glat og stille smukt.",fi:"Nacre eli helmiäinen on hohtava kerros, jonka simpukankuori rakentaa kerros kerrokselta suojatakseen sitä, mitä sen sisällä on. Se on vahva, sileä ja hillityn kaunis."},
   "story.p2":{en:"It is also one of the oldest known dental implant materials. Around 600 AD, the Maya replaced missing teeth with pieces of shell, and the bone grew around them.",sv:"Det är också ett av de äldsta kända materialen för tandimplantat. Runt år 600 ersatte mayafolket saknade tänder med bitar av snäckskal, och benet växte fast runt dem.",no:"Det er også et av de eldste kjente materialene for tannimplantater. Rundt år 600 erstattet mayaene manglende tenner med biter av skjell, og beinet vokste fast rundt dem.",da:"Det er også et af de ældste kendte materialer til tandimplantater. Omkring år 600 erstattede mayaerne manglende tænder med stykker af muslingeskal, og knoglen voksede fast omkring dem.",fi:"Se on myös yksi vanhimmista tunnetuista hammasimplanttimateriaaleista. Noin vuonna 600 mayat korvasivat puuttuvia hampaita simpukankuoren paloilla, ja luu kasvoi niiden ympärille."},
   "story.p3":{en:"That is the kind of care we stand for: patient, careful work that protects you.",sv:"Det är den omsorg vi står för: tålmodigt, noggrant arbete som skyddar dig.",no:"Det er den omsorgen vi står for: tålmodig og grundig arbeid som beskytter deg.",da:"Det er den omsorg, vi står for: tålmodigt og omhyggeligt arbejde, der beskytter dig.",fi:"Sellaista huolenpitoa me edustamme: kärsivällistä ja huolellista työtä, joka suojaa sinua."},
-  "alt.shell":{en:"A white nautilus shell on a pale background",sv:"Ett vitt nautilusskal mot en ljus bakgrund",no:"Et hvitt nautilusskjell mot en lys bakgrunn",da:"En hvid nautilusskal mod en lys baggrund",fi:"Valkoinen nautiluksen kuori vaalealla taustalla"},
+  "alt.shell":{en:"Close-up of polished mother-of-pearl with soft ribbons of pink, lavender and mint",sv:"Närbild av polerad pärlemor med mjuka band i rosa, lavendel och mint",no:"Nærbilde av polert perlemor med myke bånd i rosa, lavendel og mint",da:"Nærbillede af poleret perlemor med bløde bånd i rosa, lavendel og mint",fi:"Lähikuva kiillotetusta helmiäisestä, jossa on pehmeitä vaaleanpunaisia, laventelinvärisiä ja mintunvihreitä raitoja"},
   "faq.title":{en:"Common questions",sv:"Vanliga frågor",no:"Vanlige spørsmål",da:"Ofte stillede spørgsmål",fi:"Usein kysyttyä"},
   "q1":{en:"Are you a dental clinic?",sv:"Är ni en tandklinik?",no:"Er dere en tannklinikk?",da:"Er I en tandklinik?",fi:"Oletteko hammasklinikka?"},
   "a1":{en:"No. Nacre is an independent coordination service. The licensed clinic you choose is responsible for diagnosis and treatment.",sv:"Nej. Nacre är en oberoende koordinationstjänst. Den legitimerade klinik du väljer ansvarar för diagnos och behandling.",no:"Nei. Nacre er en uavhengig koordineringstjeneste. Den autoriserte klinikken du velger, har ansvaret for diagnose og behandling.",da:"Nej. Nacre er en uafhængig koordineringstjeneste. Den autoriserede klinik, du vælger, er ansvarlig for diagnose og behandling.",fi:"Emme. Nacre on riippumaton koordinointipalvelu. Valitsemasi klinikka, jolla on asianmukaiset luvat, vastaa diagnoosista ja hoidosta."},
@@ -635,8 +634,10 @@ const T = {
   "foot.disc":{en:"Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.",sv:"Nacre är en tjänst för patientkoordination och utför ingen medicinsk behandling eller tandvård. All behandling planeras och utförs av oberoende legitimerade kliniker, som ansvarar för den kliniska vården.",no:"Nacre er en tjeneste for pasientkoordinering og tilbyr ikke medisinsk behandling eller tannbehandling. All behandling planlegges og utføres av uavhengige autoriserte klinikker, som har ansvaret for den kliniske behandlingen.",da:"Nacre er en tjeneste til patientkoordinering og udfører ikke medicinsk behandling eller tandbehandling. Al behandling planlægges og udføres af uafhængige autoriserede klinikker, som er ansvarlige for den kliniske behandling.",fi:"Nacre on potilaskoordinointipalvelu eikä tarjoa lääketieteellistä hoitoa tai hammashoitoa. Kaikki hoidot suunnittelevat ja toteuttavat itsenäiset klinikat, joilla on asianmukaiset luvat ja jotka vastaavat kliinisestä hoidosta."},
   "alt.hero":{en:"Historic facades of Gdańsk reflected in the Motława river at dusk",sv:"Historiska fasader i Gdańsk speglas i floden Motława i skymningen",no:"Historiske fasader i Gdańsk speiler seg i elven Motława i skumringen",da:"Historiske facader i Gdańsk spejler sig i floden Motława i skumringen",fi:"Gdańskin historialliset julkisivut heijastuvat Motława-jokeen iltahämärässä"},
   "alt.consult":{en:"A dentist talking calmly with a patient in a bright, modern clinic",sv:"En tandläkare samtalar lugnt med en patient på en ljus, modern klinik",no:"En tannlege snakker rolig med en pasient på en lys, moderne klinikk",da:"En tandlæge taler roligt med en patient på en lys, moderne klinik",fi:"Hammaslääkäri keskustelee rauhallisesti potilaan kanssa valoisalla, modernilla klinikalla"},
-  "alt.car":{en:"A chauffeur in a suit opening the door of a black van",sv:"En chaufför i kostym öppnar dörren till en svart minibuss",no:"En sjåfør i dress åpner døren til en svart minibuss",da:"En chauffør i jakkesæt åbner døren til en sort minibus",fi:"Pukuun pukeutunut kuljettaja avaa mustan tila-auton oven"},
-  "alt.room":{en:"A bright hotel room with a neatly made bed and bedside lamps",sv:"Ett ljust hotellrum med en prydligt bäddad säng och sänglampor",no:"Et lyst hotellrom med en pent oppredd seng og nattlamper",da:"Et lyst hotelværelse med en pænt redt seng og natlamper",fi:"Valoisa hotellihuone, jossa on siististi pedattu sänky ja yövalot"},
+  "alt.car":{en:"A driver in a dark coat wheeling a traveller's suitcase to a dark car at a small airport",sv:"En chaufför i mörk rock drar en resenärs resväska mot en mörk bil på en liten flygplats",no:"En sjåfør i mørk frakk triller en reisendes koffert mot en mørk bil på en liten flyplass",da:"En chauffør i mørk frakke trækker en rejsendes kuffert hen til en mørk bil i en lille lufthavn",fi:"Kuljettaja tummassa takissa vetää matkustajan matkalaukkua kohti tummaa autoa pienellä lentokentällä"},
+  "alt.room":{en:"A calm hotel room with linen bedding and a window overlooking the old-town rooftops of Gdańsk",sv:"Ett lugnt hotellrum med linnesängkläder och ett fönster mot Gdańsks gamla stads tak",no:"Et rolig hotellrom med sengetøy i lin og et vindu med utsikt over takene i Gdańsks gamleby",da:"Et roligt hotelværelse med sengetøj i hør og et vindue med udsigt over tagene i Gdańsks gamle bydel",fi:"Rauhallinen hotellihuone pellavavuodevaatteineen ja ikkuna Gdańskin vanhankaupungin kattojen ylle"},
+  "alt.match":{en:"A coordinator in a navy sweater reviewing a printed treatment plan, with a dental X-ray on a tablet",sv:"En koordinator i marinblå tröja går igenom en utskriven behandlingsplan, med en tandröntgenbild på en surfplatta",no:"En koordinator i marineblå genser går gjennom en utskrevet behandlingsplan, med et tannrøntgenbilde på et nettbrett",da:"En koordinator i marineblå sweater gennemgår en udskrevet behandlingsplan med et tandrøntgenbillede på en tablet",fi:"Tummansiniseen neuleeseen pukeutunut koordinaattori käy läpi tulostettua hoitosuunnitelmaa, tabletilla hammasröntgenkuva"},
+  "alt.coord":{en:"A coordinator on the phone at a window desk, with a notebook and a cup of tea",sv:"En koordinator talar i telefon vid ett skrivbord vid fönstret, med ett anteckningsblock och en kopp te",no:"En koordinator snakker i telefonen ved en pult ved vinduet, med en notatbok og en kopp te",da:"En koordinator taler i telefon ved et skrivebord ved vinduet med en notesbog og en kop te",fi:"Koordinaattori puhuu puhelimessa ikkunan ääressä olevan pöydän luona, vieressään muistikirja ja kuppi teetä"},
   "alt.sea":{en:"Calm grey sea with a long pier in the distance",sv:"Stilla grått hav med en lång pir i fjärran",no:"Rolig grått hav med en lang brygge i det fjerne",da:"Roligt gråt hav med en lang mole i det fjerne",fi:"Tyyni harmaa meri ja pitkä laituri kaukana"},
   "alt.city":{en:"The Motława riverside in Gdańsk with the medieval crane and colourful houses",sv:"Strandpromenaden vid Motława i Gdańsk med den medeltida kranen och färgglada hus",no:"Elvebredden ved Motława i Gdańsk med den middelalderske kranen og fargerike hus",da:"Flodbredden ved Motława i Gdańsk med den middelalderlige kran og farverige huse",fi:"Motława-joen ranta Gdańskissa, keskiaikainen nosturi ja värikkäät talot"}
 };
