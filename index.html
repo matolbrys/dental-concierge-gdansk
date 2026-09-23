@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nacre | Private Dental Concierge in Gdańsk</title>
+<meta name="description" content="Nacre is an independent dental concierge. We match you with a licensed clinic in Gdańsk and take care of travel, stay and aftercare.">
+<meta property="og:title" content="Nacre | Private Dental Concierge in Gdańsk">
+<meta property="og:description" content="We match you with a licensed clinic in Gdańsk and take care of travel, stay and aftercare.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1200&h=630&fit=crop&q=75&auto=format">
+<meta name="theme-color" content="#F1F3F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1012" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1100&h=1300&fit=crop&q=75&auto=format">
+<style>
+/*
+  Design read: premium consumer service landing for affluent Nordic patients,
+  calm and trust-first, native CSS (no framework), sans display type.
+  Dials: DESIGN_VARIANCE 6 / MOTION_INTENSITY 4 / VISUAL_DENSITY 3.
+  Shape system: interactive controls are full pill, panels and images 20px, inputs 12px.
+  One accent (deep petrol) used everywhere. Theme follows the system (light / dark).
+  Z-index scale: 10 sticky nav, 20 skip link.
+*/
+:root{
+  --bg:#F1F3F2;
+  --surface:#E6EAE8;
+  --surface-2:#DBE1DE;
+  --text:#101517;
+  --muted:#46505A;
+  --line:rgba(16,21,23,.12);
+  --accent:#1E5752;
+  --accent-hover:#174541;
+  --accent-ink:#F4F6F5;
+  --accent-soft:#D3E3DF;
+  --danger:#9B2C2C;
+  --shadow:0 18px 40px -24px rgba(22,50,47,.35);
+  --r-panel:20px;
+  --r-input:12px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --max:1240px;
+  --gutter:clamp(16px,4vw,40px);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0C1012;
+    --surface:#141A1D;
+    --surface-2:#1B2327;
+    --text:#E8ECEA;
+    --muted:#A5B0B3;
+    --line:rgba(232,236,234,.12);
+    --accent:#8DC3B9;
+    --accent-hover:#A6D3CA;
+    --accent-ink:#0C1012;
+    --accent-soft:#1B2E2C;
+    --danger:#F0A3A3;
+    --shadow:0 18px 40px -24px rgba(0,0,0,.6);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Satoshi",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:-9999px;top:8px;z-index:20;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:999px}
+.skip:focus{left:16px}
+h1,h2,h3{font-weight:500;letter-spacing:-.025em;margin:0;text-wrap:balance}
+p{margin:0}
+.muted{color:var(--muted)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;border:1px solid transparent;border-radius:999px;padding:14px 24px;font-weight:500;font-size:16px;text-decoration:none;cursor:pointer;transition:background-color .3s var(--ease),transform .2s var(--ease),border-color .3s var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--text)}
+.btn i{font-size:18px}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s var(--ease)}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav-inner{height:72px;display:flex;align-items:center;gap:32px}
+.logo{font-weight:700;letter-spacing:.32em;font-size:17px;text-decoration:none;padding-left:.32em;margin-left:-.32em}
+.nav-links{display:flex;gap:28px;margin-left:auto;list-style:none;padding:0;margin-top:0;margin-bottom:0}
+.nav-links a{text-decoration:none;font-size:15px;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-actions{display:flex;align-items:center;gap:14px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:transparent;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--muted);cursor:pointer;transition:background-color .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+.nav .btn{padding:10px 18px;font-size:15px}
+@media (max-width:960px){.nav-links{display:none}.nav-actions{margin-left:auto}}
+@media (max-width:560px){.nav .btn{display:none}.nav-inner{gap:12px}}
+
+/* Hero */
+.hero{padding-top:clamp(24px,5vw,72px);padding-bottom:clamp(56px,8vw,112px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,6vw,88px);align-items:center;min-height:calc(100dvh - 72px - 120px)}
+.eyebrow{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+.hero h1{font-size:clamp(2.5rem,4.6vw,4.1rem);line-height:1.05;letter-spacing:-.035em;max-width:18ch}
+.hero-sub{margin-top:26px;font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--muted);max-width:44ch}
+.hero-ctas{margin-top:38px;display:flex;flex-wrap:wrap;gap:12px}
+.hero-media{position:relative;border-radius:var(--r-panel);overflow:hidden;aspect-ratio:4/4.7;background:var(--surface-2);box-shadow:var(--shadow)}
+.hero-media img{width:100%;height:100%;object-fit:cover}
+@media (prefers-reduced-motion:no-preference){
+  .hero-media img{animation:heroIn 1.6s var(--ease) both}
+  .hero-copy > *{animation:fadeUp .9s var(--ease) both}
+  .hero-copy > *:nth-child(2){animation-delay:.08s}
+  .hero-copy > *:nth-child(3){animation-delay:.16s}
+  .hero-copy > *:nth-child(4){animation-delay:.24s}
+}
+@keyframes heroIn{from{transform:scale(1.06);opacity:.4}to{transform:scale(1);opacity:1}}
+@keyframes fadeUp{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;min-height:0}
+  .hero-media{aspect-ratio:4/3.4;order:2}
+}
+
+/* Reveal on scroll */
+@media (prefers-reduced-motion:no-preference){
+  .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .js .reveal.in{opacity:1;transform:none}
+}
+
+section{position:relative}
+.sec{padding:clamp(80px,11vw,152px) 0}
+.h2{font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.08}
+
+/* Statement */
+.statement{border-top:1px solid var(--line)}
+.statement p.big{font-size:clamp(1.6rem,3vw,2.55rem);line-height:1.25;letter-spacing:-.02em;max-width:30ch;font-weight:500}
+.statement p.big strong{font-weight:700;color:var(--accent)}
+.statement .note{margin-top:28px;display:flex;gap:12px;align-items:flex-start;color:var(--muted);max-width:60ch}
+.statement .note i{font-size:22px;color:var(--accent);flex:none;margin-top:2px}
+
+/* How it works: sticky side */
+.how-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,112px);align-items:start}
+.how-side{position:sticky;top:112px}
+.how-side .img{margin-top:40px;border-radius:var(--r-panel);overflow:hidden;aspect-ratio:4/3;background:var(--surface-2)}
+.how-side .img img{width:100%;height:100%;object-fit:cover}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{padding:40px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:72px 1fr;gap:8px 24px}
+.steps li:first-child{border-top:0;padding-top:8px}
+.steps .n{font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:10px}
+.steps h3{font-size:clamp(1.7rem,2.6vw,2.3rem);line-height:1.1}
+.steps p{grid-column:2;color:var(--muted);max-width:44ch}
+@media (max-width:860px){
+  .how-grid{grid-template-columns:1fr}
+  .how-side{position:static}
+  .steps li{grid-template-columns:48px 1fr}
+}
+
+/* Bento */
+.incl-head{max-width:22ch;margin-bottom:56px}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cell{border-radius:var(--r-panel);overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
+.cell .body{padding:28px 28px 30px}
+.cell h3{font-size:1.3rem;line-height:1.2}
+.cell p{margin-top:8px;color:var(--muted);max-width:40ch}
+.cell .ico{font-size:30px;color:var(--accent);margin-bottom:auto}
+.cell .ph-wrap{height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:30px}
+.cell .ph-wrap .body{padding:0}
+.cell .pic{flex:1;min-height:220px;background:var(--surface-2)}
+.cell .pic img{width:100%;height:100%;object-fit:cover}
+.c-match{grid-column:span 3;background:var(--accent);color:var(--accent-ink)}
+.c-match p{color:color-mix(in srgb,var(--accent-ink) 82%,transparent)}
+.c-match .ico{color:var(--accent-ink)}
+.c-match h3{font-size:clamp(1.6rem,2.4vw,2.1rem)}
+.c-transfer{grid-column:span 3}
+.c-stay,.c-coord,.c-after{grid-column:span 2}
+.c-coord{background:var(--accent-soft)}
+.c-match,.c-coord{min-height:340px}
+@media (max-width:960px){
+  .c-match,.c-transfer{grid-column:span 6}
+  .c-stay,.c-coord,.c-after{grid-column:span 3}
+  .c-after{grid-column:span 6}
+}
+@media (max-width:640px){
+  .bento{grid-template-columns:1fr}
+  .bento .cell{grid-column:auto}
+  .c-match,.c-coord{min-height:0}
+}
+
+/* Treatments */
+.treat{border-top:1px solid var(--line)}
+.treat-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:end}
+.pills{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.pills li{border:1px solid var(--line);border-radius:999px;padding:12px 20px;font-size:16px;background:var(--bg)}
+.treat .note{margin-top:28px;color:var(--muted);font-size:15px}
+@media (max-width:860px){.treat-grid{grid-template-columns:1fr}}
+
+/* Gdansk full bleed */
+.city{padding:0 var(--gutter)}
+.city-inner{position:relative;max-width:calc(var(--max) + 160px);margin:0 auto;border-radius:var(--r-panel);overflow:hidden;min-height:min(78vh,720px);display:flex;align-items:flex-end;background:var(--surface-2)}
+.city-inner > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.city-card{position:relative;margin:clamp(16px,3vw,40px);background:var(--bg);border-radius:var(--r-panel);padding:clamp(24px,3.4vw,44px);max-width:600px;box-shadow:var(--shadow)}
+.city-card .h2{font-size:clamp(1.8rem,3vw,2.6rem)}
+.city-card p{margin-top:16px;color:var(--muted)}
+@media (max-width:640px){
+  .city-inner{min-height:0;flex-direction:column;align-items:stretch}
+  .city-inner > img{position:static;aspect-ratio:4/3.2;height:auto}
+  .city-card{margin:0;border-radius:0;box-shadow:none;background:var(--surface)}
+}
+
+/* FAQ */
+.faq-list{max-width:860px;margin-top:48px}
+.faq-list details{border-top:1px solid var(--line)}
+.faq-list details:last-child{border-bottom:1px solid var(--line)}
+.faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 0;font-size:clamp(1.1rem,1.6vw,1.3rem);font-weight:500}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary i{font-size:22px;color:var(--accent);flex:none;transition:transform .35s var(--ease)}
+.faq-list details[open] summary i{transform:rotate(45deg)}
+.faq-list .a{padding:0 48px 28px 0;color:var(--muted);max-width:68ch}
+
+/* Form */
+.req{background:var(--surface)}
+.req-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,6vw,96px);align-items:start}
+.req-copy .h2{max-width:14ch}
+.req-copy .lead{margin-top:22px;color:var(--muted);max-width:40ch}
+.req-copy .privacy{margin-top:36px;display:flex;gap:12px;color:var(--muted);font-size:15px;max-width:42ch}
+.req-copy .privacy i{font-size:20px;color:var(--accent);flex:none;margin-top:2px}
+.form{background:var(--bg);border-radius:var(--r-panel);padding:clamp(24px,3.4vw,44px);box-shadow:var(--shadow)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.field label,.field .lbl{font-size:14px;font-weight:500;color:var(--text)}
+.field input,.field select,.field textarea{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-input);padding:13px 14px;font-size:16px;transition:border-color .2s,box-shadow .2s;appearance:none;-webkit-appearance:none}
+.field select{background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:40px}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.field .err{font-size:14px;color:var(--danger);min-height:0}
+.field.invalid input,.field.invalid select{border-color:var(--danger)}
+.check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:14px;color:var(--muted);margin:4px 0 24px}
+.check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--accent)}
+.check .err{grid-column:2;font-size:14px;color:var(--danger)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form .btn{width:100%;justify-content:center}
+.form .btn[disabled]{opacity:.7;cursor:progress}
+.form-error{margin-top:14px;color:var(--danger);font-size:15px}
+.success{display:none;text-align:left}
+.success i{font-size:40px;color:var(--accent)}
+.success h3{margin-top:18px;font-size:1.6rem}
+.success p{margin-top:10px;color:var(--muted)}
+.form.done form{display:none}
+.form.done .success{display:block}
+@media (max-width:860px){.req-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.row{grid-template-columns:1fr;gap:0}}
+
+/* Footer */
+footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.foot{display:grid;grid-template-columns:1fr 1.6fr;gap:40px}
+.foot .logo{color:var(--text);font-size:15px}
+.foot .tag{margin-top:10px}
+.foot .disc{max-width:70ch}
+.foot .copy{margin-top:20px}
+@media (max-width:760px){.foot{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top" aria-label="Nacre">NACRE</a>
+    <ul class="nav-links">
+      <li><a href="#how" data-i18n="nav.how">How it works</a></li>
+      <li><a href="#included" data-i18n="nav.included">What's included</a></li>
+      <li><a href="#gdansk" data-i18n="nav.gdansk">Why Gdańsk</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">Questions</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="sv" aria-pressed="false">SV</button>
+        <button type="button" data-lang="no" aria-pressed="false">NO</button>
+        <button type="button" data-lang="da" aria-pressed="false">DA</button>
+      </div>
+      <a class="btn btn-primary" href="#request" data-i18n="cta">Request a plan</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Dental concierge in Gdańsk</p>
+        <h1 data-i18n="hero.title">Dental care in Gdańsk, arranged for you.</h1>
+        <p class="hero-sub" data-i18n="hero.sub">We match you with a trusted clinic and take care of travel, stay and aftercare, from first question to follow-up.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#request"><span data-i18n="cta">Request a plan</span><i class="ph-light ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn-ghost" href="#how" data-i18n="nav.how">How it works</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1100&h=1300&fit=crop&q=75&auto=format"
+             srcset="https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=640&h=760&fit=crop&q=75&auto=format 640w, https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1100&h=1300&fit=crop&q=75&auto=format 1100w, https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1600&h=1890&fit=crop&q=75&auto=format 1600w"
+             sizes="(max-width:860px) 100vw, 46vw" width="1100" height="1300" fetchpriority="high"
+             alt="Historic facades of Gdańsk reflected in the Motława river at dusk" data-i18n-alt="alt.hero">
+      </div>
+    </div>
+  </section>
+
+  <!-- Statement -->
+  <section class="sec statement">
+    <div class="wrap">
+      <p class="big reveal"><strong data-i18n="st.strong">Nacre is not a clinic.</strong> <span data-i18n="st.text">We are your independent coordinator: we find the right licensed clinic, handle every practical detail and stay with you throughout.</span></p>
+      <p class="note reveal"><i class="ph-light ph-seal-check" aria-hidden="true"></i><span data-i18n="st.note">All treatment is planned and performed by the clinic's own licensed dentists.</span></p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="sec" id="how" style="padding-top:0">
+    <div class="wrap how-grid">
+      <div class="how-side reveal">
+        <h2 class="h2" data-i18n="how.title">From first message to final check.</h2>
+        <div class="img">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?w=1000&h=750&fit=crop&q=75&auto=format" width="1000" height="750"
+               alt="A dentist talking calmly with a patient in a bright, modern clinic" data-i18n-alt="alt.consult">
+        </div>
+      </div>
+      <ol class="steps">
+        <li class="reveal"><span class="n">01</span><h3 data-i18n="how.s1.t">Share</h3><p data-i18n="how.s1.d">Tell us what you are considering. We reply personally with questions and next steps.</p></li>
+        <li class="reveal"><span class="n">02</span><h3 data-i18n="how.s2.t">Compare</h3><p data-i18n="how.s2.d">You receive a written treatment plan and price from the clinic before you book anything.</p></li>
+        <li class="reveal"><span class="n">03</span><h3 data-i18n="how.s3.t">Travel</h3><p data-i18n="how.s3.d">We book your transfers and stay, and accompany you to appointments in Gdańsk.</p></li>
+        <li class="reveal"><span class="n">04</span><h3 data-i18n="how.s4.t">Follow up</h3><p data-i18n="how.s4.d">Back home, we stay in touch and coordinate any follow-up with your clinic.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Included -->
+  <section class="sec" id="included" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="h2 incl-head reveal" data-i18n="incl.title">Everything around the treatment, handled.</h2>
+      <div class="bento">
+        <article class="cell c-match reveal">
+          <div class="ph-wrap">
+            <i class="ph-light ph-seal-check ico" aria-hidden="true"></i>
+            <div class="body"><h3 data-i18n="incl.match.t">Clinic matching</h3><p data-i18n="incl.match.d">Licensed clinics chosen for your case, with plans and prices in writing.</p></div>
+          </div>
+        </article>
+        <article class="cell c-transfer reveal">
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1780296269675-169390638617?w=1000&h=520&fit=crop&q=75&auto=format" width="1000" height="520" alt="A black executive car waiting at the kerb" data-i18n-alt="alt.car"></div>
+          <div class="body"><h3 data-i18n="incl.transfer.t">Private transfers</h3><p data-i18n="incl.transfer.d">A driver meets you on arrival and takes you to every appointment.</p></div>
+        </article>
+        <article class="cell c-stay reveal">
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1549638441-b787d2e11f14?w=720&h=480&fit=crop&q=75&auto=format" width="720" height="480" alt="A quiet, light hotel room with a made bed by the window" data-i18n-alt="alt.room"></div>
+          <div class="body"><h3 data-i18n="incl.stay.t">Accommodation</h3><p data-i18n="incl.stay.d">Quiet hotels and apartments close to your clinic.</p></div>
+        </article>
+        <article class="cell c-coord reveal">
+          <div class="ph-wrap">
+            <i class="ph-light ph-chat-circle-text ico" aria-hidden="true"></i>
+            <div class="body"><h3 data-i18n="incl.coord.t">One personal contact</h3><p data-i18n="incl.coord.d">The same coordinator from your first message to your final check.</p></div>
+          </div>
+        </article>
+        <article class="cell c-after reveal">
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1780053828146-cf06aceb2a5c?w=720&h=480&fit=crop&q=75&auto=format" width="720" height="480" alt="Calm grey sea with a long pier in the distance" data-i18n-alt="alt.sea"></div>
+          <div class="body"><h3 data-i18n="incl.after.t">Aftercare at home</h3><p data-i18n="incl.after.d">Follow-up after you return, arranged together with your clinic.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Treatments -->
+  <section class="sec treat">
+    <div class="wrap treat-grid">
+      <h2 class="h2 reveal" data-i18n="treat.title">Treatments we coordinate</h2>
+      <div class="reveal">
+        <ul class="pills">
+          <li data-i18n="t.implants">Dental implants</li>
+          <li data-i18n="t.fullarch">Full-arch restorations</li>
+          <li data-i18n="t.crowns">Crowns and bridges</li>
+          <li data-i18n="t.veneers">Porcelain veneers</li>
+          <li data-i18n="t.smile">Smile design</li>
+          <li data-i18n="t.whitening">Teeth whitening</li>
+        </ul>
+        <p class="note" data-i18n="treat.note">The clinic confirms which treatment suits you after an examination.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Gdansk -->
+  <section class="city" id="gdansk">
+    <div class="city-inner reveal">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1617639049011-6279d46cdb21?w=2000&h=1200&fit=crop&q=75&auto=format"
+           srcset="https://images.unsplash.com/photo-1617639049011-6279d46cdb21?w=900&h=720&fit=crop&q=75&auto=format 900w, https://images.unsplash.com/photo-1617639049011-6279d46cdb21?w=2000&h=1200&fit=crop&q=75&auto=format 2000w"
+           sizes="100vw" width="2000" height="1200" alt="The Motława riverside in Gdańsk with the medieval crane and colourful houses" data-i18n-alt="alt.city">
+      <div class="city-card">
+        <h2 class="h2" data-i18n="city.title">A calm city by the sea, close to home.</h2>
+        <p data-i18n="city.d">Direct flights from the Nordic capitals and ferries from Sweden. Between appointments: the old town, the seaside at Sopot and good food.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <h2 class="h2 reveal" data-i18n="faq.title">Common questions</h2>
+      <div class="faq-list reveal">
+        <details><summary><span data-i18n="q1">Are you a dental clinic?</span><i class="ph-light ph-plus" aria-hidden="true"></i></summary><p class="a" data-i18n="a1">No. Nacre is an independent coordination service. The licensed clinic you choose is responsible for diagnosis and treatment.</p></details>
+        <details><summary><span data-i18n="q2">How are clinics selected?</span><i class="ph-light ph-plus" aria-hidden="true"></i></summary><p class="a" data-i18n="a2">We work with licensed clinics in Gdańsk with experienced specialists, English-speaking staff and clear written treatment plans.</p></details>
+        <details><summary><span data-i18n="q3">What does it cost?</span><i class="ph-light ph-plus" aria-hidden="true"></i></summary><p class="a" data-i18n="a3">Before you commit, you receive a written quote with the clinic's treatment costs and our concierge fee shown separately.</p></details>
+        <details><summary><span data-i18n="q4">How many trips will I need?</span><i class="ph-light ph-plus" aria-hidden="true"></i></summary><p class="a" data-i18n="a4">It depends on the treatment. Implants usually need two visits a few months apart, while crowns or veneers can often be done in one stay. The clinic confirms this in your plan.</p></details>
+        <details><summary><span data-i18n="q5">What if I need help after I return home?</span><i class="ph-light ph-plus" aria-hidden="true"></i></summary><p class="a" data-i18n="a5">Contact your coordinator. We pass your questions to the clinic, arrange a video consultation if needed and help plan any follow-up visit.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Request -->
+  <section class="sec req" id="request">
+    <div class="wrap req-grid">
+      <div class="req-copy reveal">
+        <p class="eyebrow" data-i18n="form.eyebrow">No obligation</p>
+        <h2 class="h2" data-i18n="form.title">Tell us what you are considering.</h2>
+        <p class="lead" data-i18n="form.sub">We read every request ourselves and reply personally with the next steps.</p>
+        <p class="privacy"><i class="ph-light ph-lock-simple" aria-hidden="true"></i><span data-i18n="form.privacy">Please do not send medical records yet. We will ask for them securely if needed.</span></p>
+      </div>
+
+      <div class="form reveal" id="formBox">
+        <form id="reqForm" novalidate>
+          <input type="hidden" name="language" id="fLang" value="en">
+          <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+          <div class="row">
+            <div class="field"><label for="fName" data-i18n="f.name">Full name</label><input id="fName" name="name" autocomplete="name" required><span class="err" aria-live="polite"></span></div>
+            <div class="field"><label for="fEmail" data-i18n="f.email">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required><span class="err" aria-live="polite"></span></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="fPhone" data-i18n="f.phone">Phone (optional)</label><input id="fPhone" name="phone" type="tel" autocomplete="tel"><span class="err"></span></div>
+            <div class="field"><label for="fCountry" data-i18n="f.country">Country</label>
+              <select id="fCountry" name="country" required>
+                <option value="" data-i18n="f.select">Select</option>
+                <option value="Sweden" data-i18n="c.se">Sweden</option>
+                <option value="Norway" data-i18n="c.no">Norway</option>
+                <option value="Denmark" data-i18n="c.dk">Denmark</option>
+                <option value="Finland" data-i18n="c.fi">Finland</option>
+                <option value="Other" data-i18n="c.other">Other</option>
+              </select><span class="err" aria-live="polite"></span></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="fInterest" data-i18n="f.interest">Main interest</label>
+              <select id="fInterest" name="interest" required>
+                <option value="" data-i18n="f.select">Select</option>
+                <option value="Implants" data-i18n="t.implants">Dental implants</option>
+                <option value="Full-arch" data-i18n="t.fullarch">Full-arch restorations</option>
+                <option value="Crowns and bridges" data-i18n="t.crowns">Crowns and bridges</option>
+                <option value="Veneers" data-i18n="t.veneers">Porcelain veneers</option>
+                <option value="Smile design" data-i18n="t.smile">Smile design</option>
+                <option value="Whitening" data-i18n="t.whitening">Teeth whitening</option>
+                <option value="Not sure" data-i18n="t.unsure">Not sure yet</option>
+              </select><span class="err" aria-live="polite"></span></div>
+            <div class="field"><label for="fTiming" data-i18n="f.timing">When would you like to travel?</label>
+              <select id="fTiming" name="timing">
+                <option value="" data-i18n="f.select">Select</option>
+                <option value="Within 3 months" data-i18n="w.soon">Within 3 months</option>
+                <option value="3-6 months" data-i18n="w.mid">In 3 to 6 months</option>
+                <option value="Later" data-i18n="w.later">Later, just exploring</option>
+              </select><span class="err"></span></div>
+          </div>
+          <div class="field"><label for="fMsg" data-i18n="f.msg">Anything we should know? (optional)</label><textarea id="fMsg" name="message"></textarea></div>
+          <label class="check"><input type="checkbox" id="fConsent" name="consent" value="yes" required><span data-i18n="f.consent">I agree that Nacre may use my details to answer this request and share them with a partner clinic only with my permission.</span><span class="err" aria-live="polite"></span></label>
+          <button class="btn btn-primary" type="submit" id="fSubmit"><span data-i18n="cta">Request a plan</span></button>
+          <p class="form-error" id="fError" role="alert" hidden data-i18n="f.err">Something went wrong. Please try again in a moment.</p>
+        </form>
+        <div class="success" role="status">
+          <i class="ph-light ph-check-circle" aria-hidden="true"></i>
+          <h3 data-i18n="f.ok.t">Thank you. Your request has been sent.</h3>
+          <p data-i18n="f.ok.d">We will reply to the email address you gave us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="logo">NACRE</div>
+      <p class="tag" data-i18n="foot.tag">Private dental concierge</p>
+    </div>
+    <div>
+      <p class="disc" data-i18n="foot.disc">Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.</p>
+      <p class="copy">&copy; <span id="year">2026</span> Nacre</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Paste your Formspree endpoint here, e.g. "https://formspree.io/f/abcdwxyz" */
+const FORM_ENDPOINT = "";
+
+const T = {
+  "skip":{en:"Skip to content",sv:"Hoppa till innehållet",no:"Hopp til innholdet",da:"Spring til indholdet"},
+  "nav.how":{en:"How it works",sv:"Så fungerar det",no:"Slik fungerer det",da:"Sådan fungerer det"},
+  "nav.included":{en:"What's included",sv:"Det här ingår",no:"Dette er inkludert",da:"Det er inkluderet"},
+  "nav.gdansk":{en:"Why Gdańsk",sv:"Varför Gdańsk",no:"Hvorfor Gdańsk",da:"Hvorfor Gdańsk"},
+  "nav.faq":{en:"Questions",sv:"Frågor",no:"Spørsmål",da:"Spørgsmål"},
+  "cta":{en:"Request a plan",sv:"Begär en plan",no:"Be om en plan",da:"Bed om en plan"},
+  "hero.eyebrow":{en:"Dental concierge in Gdańsk",sv:"Tandvårdsconcierge i Gdańsk",no:"Concierge for tannbehandling i Gdańsk",da:"Concierge for tandbehandling i Gdańsk"},
+  "hero.title":{en:"Dental care in Gdańsk, arranged for you.",sv:"Tandvård i Gdańsk, ordnad för dig.",no:"Tannbehandling i Gdańsk, ordnet for deg.",da:"Tandbehandling i Gdańsk, arrangeret for dig."},
+  "hero.sub":{en:"We match you with a trusted clinic and take care of travel, stay and aftercare, from first question to follow-up.",sv:"Vi matchar dig med en betrodd klinik och tar hand om resa, boende och eftervård, från första fråga till uppföljning.",no:"Vi finner en klinikk du kan stole på, og tar oss av reise, opphold og etterkontroll, fra første spørsmål til oppfølging.",da:"Vi finder en klinik, du kan stole på, og tager os af rejse, ophold og efterbehandling, fra første spørgsmål til opfølgning."},
+  "st.strong":{en:"Nacre is not a clinic.",sv:"Nacre är ingen klinik.",no:"Nacre er ikke en klinikk.",da:"Nacre er ikke en klinik."},
+  "st.text":{en:"We are your independent coordinator: we find the right licensed clinic, handle every practical detail and stay with you throughout.",sv:"Vi är din oberoende koordinator: vi hittar rätt legitimerad klinik, sköter alla praktiska detaljer och finns med dig hela vägen.",no:"Vi er din uavhengige koordinator: vi finner riktig autorisert klinikk, ordner alt det praktiske og er med deg hele veien.",da:"Vi er din uafhængige koordinator: vi finder den rette autoriserede klinik, klarer alt det praktiske og er med dig hele vejen."},
+  "st.note":{en:"All treatment is planned and performed by the clinic's own licensed dentists.",sv:"All behandling planeras och utförs av klinikens egna legitimerade tandläkare.",no:"All behandling planlegges og utføres av klinikkens egne autoriserte tannleger.",da:"Al behandling planlægges og udføres af klinikkens egne autoriserede tandlæger."},
+  "how.title":{en:"From first message to final check.",sv:"Från första meddelandet till sista kontrollen.",no:"Fra første melding til siste kontroll.",da:"Fra første besked til sidste kontrol."},
+  "how.s1.t":{en:"Share",sv:"Berätta",no:"Fortell",da:"Fortæl"},
+  "how.s1.d":{en:"Tell us what you are considering. We reply personally with questions and next steps.",sv:"Berätta vad du funderar på. Vi svarar personligen med frågor och nästa steg.",no:"Fortell hva du vurderer. Vi svarer personlig med spørsmål og neste steg.",da:"Fortæl, hvad du overvejer. Vi svarer personligt med spørgsmål og næste skridt."},
+  "how.s2.t":{en:"Compare",sv:"Jämför",no:"Sammenlign",da:"Sammenlign"},
+  "how.s2.d":{en:"You receive a written treatment plan and price from the clinic before you book anything.",sv:"Du får en skriftlig behandlingsplan och ett pris från kliniken innan du bokar något.",no:"Du får en skriftlig behandlingsplan og pris fra klinikken før du bestiller noe.",da:"Du får en skriftlig behandlingsplan og pris fra klinikken, før du booker noget."},
+  "how.s3.t":{en:"Travel",sv:"Res",no:"Reis",da:"Rejs"},
+  "how.s3.d":{en:"We book your transfers and stay, and accompany you to appointments in Gdańsk.",sv:"Vi bokar transfer och boende och följer med dig till besöken i Gdańsk.",no:"Vi bestiller transport og overnatting og følger deg til avtalene i Gdańsk.",da:"Vi booker transport og ophold og følger dig til aftalerne i Gdańsk."},
+  "how.s4.t":{en:"Follow up",sv:"Följ upp",no:"Følg opp",da:"Følg op"},
+  "how.s4.d":{en:"Back home, we stay in touch and coordinate any follow-up with your clinic.",sv:"Hemma igen håller vi kontakten och samordnar eventuell uppföljning med kliniken.",no:"Når du er hjemme igjen, holder vi kontakten og koordinerer eventuell oppfølging med klinikken.",da:"Når du er hjemme igen, holder vi kontakten og koordinerer eventuel opfølgning med klinikken."},
+  "incl.title":{en:"Everything around the treatment, handled.",sv:"Allt runt omkring behandlingen, ordnat.",no:"Alt rundt behandlingen, ordnet.",da:"Alt omkring behandlingen, klaret."},
+  "incl.match.t":{en:"Clinic matching",sv:"Rätt klinik",no:"Riktig klinikk",da:"Den rette klinik"},
+  "incl.match.d":{en:"Licensed clinics chosen for your case, with plans and prices in writing.",sv:"Legitimerade kliniker utvalda för ditt fall, med planer och priser skriftligt.",no:"Autoriserte klinikker valgt ut for ditt tilfelle, med planer og priser skriftlig.",da:"Autoriserede klinikker udvalgt til dit behov, med planer og priser på skrift."},
+  "incl.transfer.t":{en:"Private transfers",sv:"Privat transfer",no:"Privat transport",da:"Privat transport"},
+  "incl.transfer.d":{en:"A driver meets you on arrival and takes you to every appointment.",sv:"En chaufför möter dig vid ankomst och kör dig till varje besök.",no:"En sjåfør møter deg ved ankomst og kjører deg til hver avtale.",da:"En chauffør møder dig ved ankomst og kører dig til hver aftale."},
+  "incl.stay.t":{en:"Accommodation",sv:"Boende",no:"Overnatting",da:"Ophold"},
+  "incl.stay.d":{en:"Quiet hotels and apartments close to your clinic.",sv:"Lugna hotell och lägenheter nära kliniken.",no:"Rolige hoteller og leiligheter nær klinikken.",da:"Rolige hoteller og lejligheder tæt på klinikken."},
+  "incl.coord.t":{en:"One personal contact",sv:"En personlig kontakt",no:"Én personlig kontakt",da:"Én personlig kontakt"},
+  "incl.coord.d":{en:"The same coordinator from your first message to your final check.",sv:"Samma koordinator från ditt första meddelande till din sista kontroll.",no:"Samme koordinator fra første melding til siste kontroll.",da:"Den samme koordinator fra din første besked til din sidste kontrol."},
+  "incl.after.t":{en:"Aftercare at home",sv:"Eftervård hemma",no:"Oppfølging hjemme",da:"Opfølgning hjemme"},
+  "incl.after.d":{en:"Follow-up after you return, arranged together with your clinic.",sv:"Uppföljning när du kommit hem, ordnad tillsammans med kliniken.",no:"Oppfølging når du er hjemme igjen, ordnet sammen med klinikken.",da:"Opfølgning, når du er hjemme igen, arrangeret sammen med klinikken."},
+  "treat.title":{en:"Treatments we coordinate",sv:"Behandlingar vi samordnar",no:"Behandlinger vi koordinerer",da:"Behandlinger, vi koordinerer"},
+  "t.implants":{en:"Dental implants",sv:"Tandimplantat",no:"Tannimplantater",da:"Tandimplantater"},
+  "t.fullarch":{en:"Full-arch restorations",sv:"Helkäksbehandling",no:"Helkjevebehandling",da:"Helkæbebehandling"},
+  "t.crowns":{en:"Crowns and bridges",sv:"Kronor och broar",no:"Kroner og broer",da:"Kroner og broer"},
+  "t.veneers":{en:"Porcelain veneers",sv:"Porslinsfasader",no:"Porselensfasetter",da:"Porcelænsfacader"},
+  "t.smile":{en:"Smile design",sv:"Smile design",no:"Smile design",da:"Smile design"},
+  "t.whitening":{en:"Teeth whitening",sv:"Tandblekning",no:"Tannbleking",da:"Tandblegning"},
+  "t.unsure":{en:"Not sure yet",sv:"Vet inte ännu",no:"Vet ikke ennå",da:"Ved ikke endnu"},
+  "treat.note":{en:"The clinic confirms which treatment suits you after an examination.",sv:"Kliniken bekräftar vilken behandling som passar dig efter en undersökning.",no:"Klinikken bekrefter hvilken behandling som passer deg etter en undersøkelse.",da:"Klinikken bekræfter, hvilken behandling der passer til dig, efter en undersøgelse."},
+  "city.title":{en:"A calm city by the sea, close to home.",sv:"En lugn stad vid havet, nära hemma.",no:"En rolig by ved havet, nær hjemme.",da:"En rolig by ved havet, tæt på hjemme."},
+  "city.d":{en:"Direct flights from the Nordic capitals and ferries from Sweden. Between appointments: the old town, the seaside at Sopot and good food.",sv:"Direktflyg från de nordiska huvudstäderna och färjor från Sverige. Mellan besöken: gamla stan, havet i Sopot och god mat.",no:"Direktefly fra de nordiske hovedstedene og ferjer fra Sverige. Mellom avtalene: gamlebyen, sjøen i Sopot og god mat.",da:"Direkte fly fra de nordiske hovedstæder og færger fra Sverige. Mellem aftalerne: den gamle bydel, havet ved Sopot og god mad."},
+  "faq.title":{en:"Common questions",sv:"Vanliga frågor",no:"Vanlige spørsmål",da:"Ofte stillede spørgsmål"},
+  "q1":{en:"Are you a dental clinic?",sv:"Är ni en tandklinik?",no:"Er dere en tannklinikk?",da:"Er I en tandklinik?"},
+  "a1":{en:"No. Nacre is an independent coordination service. The licensed clinic you choose is responsible for diagnosis and treatment.",sv:"Nej. Nacre är en oberoende koordinationstjänst. Den legitimerade klinik du väljer ansvarar för diagnos och behandling.",no:"Nei. Nacre er en uavhengig koordineringstjeneste. Den autoriserte klinikken du velger, har ansvaret for diagnose og behandling.",da:"Nej. Nacre er en uafhængig koordineringstjeneste. Den autoriserede klinik, du vælger, er ansvarlig for diagnose og behandling."},
+  "q2":{en:"How are clinics selected?",sv:"Hur väljs klinikerna ut?",no:"Hvordan velges klinikkene?",da:"Hvordan udvælges klinikkerne?"},
+  "a2":{en:"We work with licensed clinics in Gdańsk with experienced specialists, English-speaking staff and clear written treatment plans.",sv:"Vi samarbetar med legitimerade kliniker i Gdańsk med erfarna specialister, engelsktalande personal och tydliga skriftliga behandlingsplaner.",no:"Vi samarbeider med autoriserte klinikker i Gdańsk med erfarne spesialister, engelsktalende personale og tydelige skriftlige behandlingsplaner.",da:"Vi samarbejder med autoriserede klinikker i Gdańsk med erfarne specialister, engelsktalende personale og klare skriftlige behandlingsplaner."},
+  "q3":{en:"What does it cost?",sv:"Vad kostar det?",no:"Hva koster det?",da:"Hvad koster det?"},
+  "a3":{en:"Before you commit, you receive a written quote with the clinic's treatment costs and our concierge fee shown separately.",sv:"Innan du bestämmer dig får du en skriftlig offert där klinikens behandlingskostnad och vår concierge-avgift visas separat.",no:"Før du bestemmer deg, får du et skriftlig tilbud der klinikkens behandlingskostnad og vårt concierge-honorar vises hver for seg.",da:"Før du beslutter dig, får du et skriftligt tilbud, hvor klinikkens behandlingspris og vores concierge-honorar står hver for sig."},
+  "q4":{en:"How many trips will I need?",sv:"Hur många resor behöver jag göra?",no:"Hvor mange reiser trenger jeg?",da:"Hvor mange rejser skal jeg regne med?"},
+  "a4":{en:"It depends on the treatment. Implants usually need two visits a few months apart, while crowns or veneers can often be done in one stay. The clinic confirms this in your plan.",sv:"Det beror på behandlingen. Implantat kräver oftast två besök med några månaders mellanrum, medan kronor eller fasader ofta klaras av under en vistelse. Kliniken bekräftar detta i din plan.",no:"Det avhenger av behandlingen. Implantater krever som regel to besøk med noen måneders mellomrom, mens kroner eller fasetter ofte kan gjøres på ett opphold. Klinikken bekrefter dette i planen din.",da:"Det afhænger af behandlingen. Implantater kræver som regel to besøg med nogle måneders mellemrum, mens kroner eller facader ofte kan klares på ét ophold. Klinikken bekræfter dette i din plan."},
+  "q5":{en:"What if I need help after I return home?",sv:"Vad händer om jag behöver hjälp när jag kommit hem?",no:"Hva om jeg trenger hjelp etter at jeg har kommet hjem?",da:"Hvad sker der, hvis jeg har brug for hjælp, når jeg er kommet hjem?"},
+  "a5":{en:"Contact your coordinator. We pass your questions to the clinic, arrange a video consultation if needed and help plan any follow-up visit.",sv:"Kontakta din koordinator. Vi för vidare dina frågor till kliniken, ordnar ett videosamtal vid behov och hjälper till att planera eventuella återbesök.",no:"Kontakt koordinatoren din. Vi sender spørsmålene dine videre til klinikken, ordner en videokonsultasjon ved behov og hjelper med å planlegge eventuelle kontrollbesøk.",da:"Kontakt din koordinator. Vi giver dine spørgsmål videre til klinikken, arrangerer en videokonsultation efter behov og hjælper med at planlægge eventuelle kontrolbesøg."},
+  "form.eyebrow":{en:"No obligation",sv:"Helt utan förpliktelser",no:"Helt uforpliktende",da:"Helt uforpligtende"},
+  "form.title":{en:"Tell us what you are considering.",sv:"Berätta vad du funderar på.",no:"Fortell oss hva du vurderer.",da:"Fortæl os, hvad du overvejer."},
+  "form.sub":{en:"We read every request ourselves and reply personally with the next steps.",sv:"Vi läser varje förfrågan själva och svarar personligen med nästa steg.",no:"Vi leser hver henvendelse selv og svarer personlig med neste steg.",da:"Vi læser selv hver henvendelse og svarer personligt med de næste skridt."},
+  "form.privacy":{en:"Please do not send medical records yet. We will ask for them securely if needed.",sv:"Skicka inga journaler ännu. Vi ber om dem på ett säkert sätt om det behövs.",no:"Ikke send journaler ennå. Vi ber om dem på en sikker måte ved behov.",da:"Send ikke journaler endnu. Vi beder om dem på en sikker måde, hvis det er nødvendigt."},
+  "f.name":{en:"Full name",sv:"Namn",no:"Navn",da:"Navn"},
+  "f.email":{en:"Email",sv:"E-post",no:"E-post",da:"E-mail"},
+  "f.phone":{en:"Phone (optional)",sv:"Telefon (valfritt)",no:"Telefon (valgfritt)",da:"Telefon (valgfrit)"},
+  "f.country":{en:"Country",sv:"Land",no:"Land",da:"Land"},
+  "f.select":{en:"Select",sv:"Välj",no:"Velg",da:"Vælg"},
+  "c.se":{en:"Sweden",sv:"Sverige",no:"Sverige",da:"Sverige"},
+  "c.no":{en:"Norway",sv:"Norge",no:"Norge",da:"Norge"},
+  "c.dk":{en:"Denmark",sv:"Danmark",no:"Danmark",da:"Danmark"},
+  "c.fi":{en:"Finland",sv:"Finland",no:"Finland",da:"Finland"},
+  "c.other":{en:"Other",sv:"Annat",no:"Annet",da:"Andet"},
+  "f.interest":{en:"Main interest",sv:"Huvudsakligt intresse",no:"Hovedinteresse",da:"Primær interesse"},
+  "f.timing":{en:"When would you like to travel?",sv:"När vill du resa?",no:"Når vil du reise?",da:"Hvornår vil du rejse?"},
+  "w.soon":{en:"Within 3 months",sv:"Inom 3 månader",no:"Innen 3 måneder",da:"Inden for 3 måneder"},
+  "w.mid":{en:"In 3 to 6 months",sv:"Om 3 till 6 månader",no:"Om 3 til 6 måneder",da:"Om 3 til 6 måneder"},
+  "w.later":{en:"Later, just exploring",sv:"Senare, jag undersöker bara",no:"Senere, jeg undersøker bare",da:"Senere, jeg undersøger bare"},
+  "f.msg":{en:"Anything we should know? (optional)",sv:"Något vi bör veta? (valfritt)",no:"Noe vi bør vite? (valgfritt)",da:"Noget, vi bør vide? (valgfrit)"},
+  "f.consent":{en:"I agree that Nacre may use my details to answer this request and share them with a partner clinic only with my permission.",sv:"Jag godkänner att Nacre använder mina uppgifter för att besvara förfrågan och endast delar dem med en partnerklinik med mitt tillstånd.",no:"Jeg godtar at Nacre bruker opplysningene mine til å svare på henvendelsen og bare deler dem med en partnerklinikk med min tillatelse.",da:"Jeg accepterer, at Nacre bruger mine oplysninger til at besvare henvendelsen og kun deler dem med en partnerklinik med min tilladelse."},
+  "f.sending":{en:"Sending...",sv:"Skickar...",no:"Sender...",da:"Sender..."},
+  "f.ok.t":{en:"Thank you. Your request has been sent.",sv:"Tack. Din förfrågan har skickats.",no:"Takk. Henvendelsen din er sendt.",da:"Tak. Din henvendelse er sendt."},
+  "f.ok.d":{en:"We will reply to the email address you gave us.",sv:"Vi svarar till den e-postadress du angav.",no:"Vi svarer til e-postadressen du oppga.",da:"Vi svarer til den e-mailadresse, du har oplyst."},
+  "f.err":{en:"Something went wrong. Please try again in a moment.",sv:"Något gick fel. Försök igen om en stund.",no:"Noe gikk galt. Prøv igjen om litt.",da:"Noget gik galt. Prøv igen om lidt."},
+  "v.required":{en:"Please fill in this field.",sv:"Fyll i det här fältet.",no:"Fyll ut dette feltet.",da:"Udfyld dette felt."},
+  "v.email":{en:"Please enter a valid email address.",sv:"Ange en giltig e-postadress.",no:"Skriv inn en gyldig e-postadresse.",da:"Indtast en gyldig e-mailadresse."},
+  "v.consent":{en:"Please accept to continue.",sv:"Godkänn för att fortsätta.",no:"Godta for å fortsette.",da:"Accepter for at fortsætte."},
+  "foot.tag":{en:"Private dental concierge",sv:"Privat tandvårdsconcierge",no:"Privat concierge for tannbehandling",da:"Privat concierge for tandbehandling"},
+  "foot.disc":{en:"Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.",sv:"Nacre är en tjänst för patientkoordination och utför ingen medicinsk behandling eller tandvård. All behandling planeras och utförs av oberoende legitimerade kliniker, som ansvarar för den kliniska vården.",no:"Nacre er en tjeneste for pasientkoordinering og tilbyr ikke medisinsk behandling eller tannbehandling. All behandling planlegges og utføres av uavhengige autoriserte klinikker, som har ansvaret for den kliniske behandlingen.",da:"Nacre er en tjeneste til patientkoordinering og udfører ikke medicinsk behandling eller tandbehandling. Al behandling planlægges og udføres af uafhængige autoriserede klinikker, som er ansvarlige for den kliniske behandling."},
+  "alt.hero":{en:"Historic facades of Gdańsk reflected in the Motława river at dusk",sv:"Historiska fasader i Gdańsk speglas i floden Motława i skymningen",no:"Historiske fasader i Gdańsk speiler seg i elven Motława i skumringen",da:"Historiske facader i Gdańsk spejler sig i floden Motława i skumringen"},
+  "alt.consult":{en:"A dentist talking calmly with a patient in a bright, modern clinic",sv:"En tandläkare samtalar lugnt med en patient på en ljus, modern klinik",no:"En tannlege snakker rolig med en pasient på en lys, moderne klinikk",da:"En tandlæge taler roligt med en patient på en lys, moderne klinik"},
+  "alt.car":{en:"A black executive car waiting at the kerb",sv:"En svart bil med chaufför väntar vid trottoaren",no:"En svart bil med sjåfør venter ved fortauet",da:"En sort bil med chauffør venter ved kantstenen"},
+  "alt.room":{en:"A quiet, light hotel room with a made bed by the window",sv:"Ett lugnt, ljust hotellrum med en bäddad säng vid fönstret",no:"Et rolig, lyst hotellrom med oppredd seng ved vinduet",da:"Et roligt, lyst hotelværelse med redt seng ved vinduet"},
+  "alt.sea":{en:"Calm grey sea with a long pier in the distance",sv:"Stilla grått hav med en lång pir i fjärran",no:"Rolig grått hav med en lang brygge i det fjerne",da:"Roligt gråt hav med en lang mole i det fjerne"},
+  "alt.city":{en:"The Motława riverside in Gdańsk with the medieval crane and colourful houses",sv:"Strandpromenaden vid Motława i Gdańsk med den medeltida kranen och färgglada hus",no:"Elvebredden ved Motława i Gdańsk med den middelalderske kranen og fargerike hus",da:"Flodbredden ved Motława i Gdańsk med den middelalderlige kran og farverige huse"}
+};
+
+const LANGS = ["en","sv","no","da"];
+let lang = "en";
+
+function t(key){ const e = T[key]; return e ? (e[lang] || e.en) : ""; }
+
+function applyLang(next){
+  lang = LANGS.includes(next) ? next : "en";
+  document.documentElement.lang = lang === "no" ? "nb" : lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const v = t(el.dataset.i18n); if (v) el.textContent = v; });
+  document.querySelectorAll("[data-i18n-alt]").forEach(el => { const v = t(el.dataset.i18nAlt); if (v) el.alt = v; });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  const fl = document.getElementById("fLang"); if (fl) fl.value = lang;
+  document.querySelectorAll(".field.invalid, .check.invalid").forEach(clearError);
+  try { localStorage.setItem("nacre-lang", lang); } catch (e) {}
+}
+
+function initialLang(){
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q && LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem("nacre-lang"); if (s && LANGS.includes(s)) return s; } catch (e) {}
+  const nav = (navigator.languages || [navigator.language || "en"]).map(l => l.toLowerCase());
+  for (const l of nav){
+    if (l.startsWith("sv")) return "sv";
+    if (l.startsWith("nb") || l.startsWith("nn") || l.startsWith("no")) return "no";
+    if (l.startsWith("da")) return "da";
+    if (l.startsWith("en")) return "en";
+  }
+  return "en";
+}
+
+document.documentElement.classList.add("js");
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+applyLang(initialLang());
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* Nav border once the page moves (IntersectionObserver, no scroll listener) */
+const nav = document.getElementById("nav");
+const sentinel = document.createElement("div");
+sentinel.style.cssText = "position:absolute;top:0;height:1px;width:1px";
+document.body.prepend(sentinel);
+new IntersectionObserver(([e]) => nav.classList.toggle("scrolled", !e.isIntersecting)).observe(sentinel);
+
+/* Reveal on scroll */
+const reveals = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window){
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+} else { reveals.forEach(el => el.classList.add("in")); }
+
+/* Form */
+const form = document.getElementById("reqForm");
+const box = document.getElementById("formBox");
+const submit = document.getElementById("fSubmit");
+const formErr = document.getElementById("fError");
+
+function setError(input, key){
+  const wrap = input.closest(".field, .check");
+  wrap.classList.add("invalid");
+  wrap.querySelector(".err").textContent = t(key);
+  input.setAttribute("aria-invalid", "true");
+}
+function clearError(wrap){
+  wrap.classList.remove("invalid");
+  const er = wrap.querySelector(".err"); if (er) er.textContent = "";
+  wrap.querySelectorAll("[aria-invalid]").forEach(i => i.removeAttribute("aria-invalid"));
+}
+function validate(){
+  let first = null;
+  form.querySelectorAll(".field, .check").forEach(clearError);
+  form.querySelectorAll("[required]").forEach(input => {
+    let bad = null;
+    if (input.type === "checkbox"){ if (!input.checked) bad = "v.consent"; }
+    else if (!input.value.trim()) bad = "v.required";
+    else if (input.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim())) bad = "v.email";
+    if (bad){ setError(input, bad); if (!first) first = input; }
+  });
+  if (first) first.focus();
+  return !first;
+}
+form.addEventListener("input", e => { const w = e.target.closest(".field.invalid, .check.invalid"); if (w) clearError(w); });
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  formErr.hidden = true;
+  if (!validate()) return;
+  const label = submit.querySelector("span");
+  submit.disabled = true; label.textContent = t("f.sending");
+  try {
+    if (!FORM_ENDPOINT) throw new Error("Form endpoint not configured yet (FORM_ENDPOINT is empty).");
+    const res = await fetch(FORM_ENDPOINT, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    box.classList.add("done");
+    box.querySelector(".success").focus?.();
+  } catch (err) {
+    console.warn(err);
+    formErr.textContent = t("f.err");
+    formErr.hidden = false;
+  } finally {
+    submit.disabled = false; label.textContent = t("cta");
+  }
+});
+</script>
+</body>
+</html>
