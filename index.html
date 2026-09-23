@@ -9,8 +9,8 @@
 <meta property="og:description" content="We match you with a licensed clinic in Gdańsk and take care of travel, stay and aftercare.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1200&h=630&fit=crop&q=75&auto=format">
-<meta name="theme-color" content="#F1F3F2" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0C1012" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1015" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
@@ -22,22 +22,23 @@
   calm and trust-first, native CSS (no framework), sans display type.
   Dials: DESIGN_VARIANCE 6 / MOTION_INTENSITY 4 / VISUAL_DENSITY 3.
   Shape system: interactive controls are full pill, panels and images 20px, inputs 12px.
-  One accent (deep petrol) used everywhere. Theme follows the system (light / dark).
+  Palette: mother-of-pearl neutrals, one accent (deep abalone blue) used everywhere,
+  plus one iridescent nacre sheen reserved for the signature tile. Theme follows the system (light / dark).
   Z-index scale: 10 sticky nav, 20 skip link.
 */
 :root{
-  --bg:#F1F3F2;
-  --surface:#E6EAE8;
-  --surface-2:#DBE1DE;
-  --text:#101517;
-  --muted:#46505A;
-  --line:rgba(16,21,23,.12);
-  --accent:#1E5752;
-  --accent-hover:#174541;
-  --accent-ink:#F4F6F5;
-  --accent-soft:#D3E3DF;
+  --bg:#F4F5F7;
+  --surface:#EAECF0;
+  --surface-2:#DFE3E8;
+  --text:#14161B;
+  --muted:#4B515D;
+  --line:rgba(20,22,27,.12);
+  --accent:#2E4A62;
+  --accent-hover:#243B4F;
+  --accent-ink:#F6F7F9;
+  --sheen:linear-gradient(135deg,#F2E4EC 0%,#E3E8F5 36%,#DCEEE8 68%,#EEF0F4 100%);
   --danger:#9B2C2C;
-  --shadow:0 18px 40px -24px rgba(22,50,47,.35);
+  --shadow:0 18px 40px -24px rgba(30,45,70,.32);
   --r-panel:20px;
   --r-input:12px;
   --ease:cubic-bezier(.16,1,.3,1);
@@ -46,16 +47,16 @@
 }
 @media (prefers-color-scheme:dark){
   :root{
-    --bg:#0C1012;
-    --surface:#141A1D;
-    --surface-2:#1B2327;
-    --text:#E8ECEA;
-    --muted:#A5B0B3;
-    --line:rgba(232,236,234,.12);
-    --accent:#8DC3B9;
-    --accent-hover:#A6D3CA;
-    --accent-ink:#0C1012;
-    --accent-soft:#1B2E2C;
+    --bg:#0E1015;
+    --surface:#161920;
+    --surface-2:#1D212A;
+    --text:#E9EBEF;
+    --muted:#A7AEBA;
+    --line:rgba(233,235,239,.12);
+    --accent:#A9C2DA;
+    --accent-hover:#C0D3E6;
+    --accent-ink:#0E1015;
+    --sheen:linear-gradient(135deg,#2B2331 0%,#1F2637 36%,#1B2C2A 68%,#1C1F28 100%);
     --danger:#F0A3A3;
     --shadow:0 18px 40px -24px rgba(0,0,0,.6);
   }
@@ -168,13 +169,13 @@ section{position:relative}
 .cell .ph-wrap .body{padding:0}
 .cell .pic{flex:1;min-height:220px;background:var(--surface-2)}
 .cell .pic img{width:100%;height:100%;object-fit:cover}
-.c-match{grid-column:span 3;background:var(--accent);color:var(--accent-ink)}
-.c-match p{color:color-mix(in srgb,var(--accent-ink) 82%,transparent)}
-.c-match .ico{color:var(--accent-ink)}
+.c-match{grid-column:span 3;background:var(--sheen);color:var(--text)}
 .c-match h3{font-size:clamp(1.6rem,2.4vw,2.1rem)}
 .c-transfer{grid-column:span 3}
 .c-stay,.c-coord,.c-after{grid-column:span 2}
-.c-coord{background:var(--accent-soft)}
+.c-coord{background:var(--accent);color:var(--accent-ink)}
+.c-coord p{color:color-mix(in srgb,var(--accent-ink) 82%,transparent)}
+.c-coord .ico{color:var(--accent-ink)}
 .c-match,.c-coord{min-height:340px}
 @media (max-width:960px){
   .c-match,.c-transfer{grid-column:span 6}
@@ -351,7 +352,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
           </div>
         </article>
         <article class="cell c-transfer reveal">
-          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1780296269675-169390638617?w=1000&h=520&fit=crop&q=75&auto=format" width="1000" height="520" alt="A black executive car waiting at the kerb" data-i18n-alt="alt.car"></div>
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1770290405640-5daf7593c92a?w=1000&h=520&fit=crop&q=75&auto=format" width="1000" height="520" alt="The quiet rear seat of a private car" data-i18n-alt="alt.car"></div>
           <div class="body"><h3 data-i18n="incl.transfer.t">Private transfers</h3><p data-i18n="incl.transfer.d">A driver meets you on arrival and takes you to every appointment.</p></div>
         </article>
         <article class="cell c-stay reveal">
@@ -586,7 +587,7 @@ const T = {
   "foot.disc":{en:"Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.",sv:"Nacre är en tjänst för patientkoordination och utför ingen medicinsk behandling eller tandvård. All behandling planeras och utförs av oberoende legitimerade kliniker, som ansvarar för den kliniska vården.",no:"Nacre er en tjeneste for pasientkoordinering og tilbyr ikke medisinsk behandling eller tannbehandling. All behandling planlegges og utføres av uavhengige autoriserte klinikker, som har ansvaret for den kliniske behandlingen.",da:"Nacre er en tjeneste til patientkoordinering og udfører ikke medicinsk behandling eller tandbehandling. Al behandling planlægges og udføres af uafhængige autoriserede klinikker, som er ansvarlige for den kliniske behandling."},
   "alt.hero":{en:"Historic facades of Gdańsk reflected in the Motława river at dusk",sv:"Historiska fasader i Gdańsk speglas i floden Motława i skymningen",no:"Historiske fasader i Gdańsk speiler seg i elven Motława i skumringen",da:"Historiske facader i Gdańsk spejler sig i floden Motława i skumringen"},
   "alt.consult":{en:"A dentist talking calmly with a patient in a bright, modern clinic",sv:"En tandläkare samtalar lugnt med en patient på en ljus, modern klinik",no:"En tannlege snakker rolig med en pasient på en lys, moderne klinikk",da:"En tandlæge taler roligt med en patient på en lys, moderne klinik"},
-  "alt.car":{en:"A black executive car waiting at the kerb",sv:"En svart bil med chaufför väntar vid trottoaren",no:"En svart bil med sjåfør venter ved fortauet",da:"En sort bil med chauffør venter ved kantstenen"},
+  "alt.car":{en:"The quiet rear seat of a private car",sv:"Det lugna baksätet i en privat bil",no:"Det rolige baksetet i en privat bil",da:"Det rolige bagsæde i en privat bil"},
   "alt.room":{en:"A quiet, light hotel room with a made bed by the window",sv:"Ett lugnt, ljust hotellrum med en bäddad säng vid fönstret",no:"Et rolig, lyst hotellrom med oppredd seng ved vinduet",da:"Et roligt, lyst hotelværelse med redt seng ved vinduet"},
   "alt.sea":{en:"Calm grey sea with a long pier in the distance",sv:"Stilla grått hav med en lång pir i fjärran",no:"Rolig grått hav med en lang brygge i det fjerne",da:"Roligt gråt hav med en lang mole i det fjerne"},
   "alt.city":{en:"The Motława riverside in Gdańsk with the medieval crane and colourful houses",sv:"Strandpromenaden vid Motława i Gdańsk med den medeltida kranen och färgglada hus",no:"Elvebredden ved Motława i Gdańsk med den middelalderske kranen og fargerike hus",da:"Flodbredden ved Motława i Gdańsk med den middelalderlige kran og farverige huse"}
