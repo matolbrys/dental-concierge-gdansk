@@ -91,14 +91,14 @@ p{margin:0}
 .nav-inner{height:72px;display:flex;align-items:center;gap:32px}
 .logo{font-weight:700;letter-spacing:.32em;font-size:17px;text-decoration:none;padding-left:.32em;margin-left:-.32em}
 .nav-links{display:flex;gap:28px;margin-left:auto;list-style:none;padding:0;margin-top:0;margin-bottom:0}
-.nav-links a{text-decoration:none;font-size:15px;color:var(--muted);transition:color .2s}
+.nav-links a{text-decoration:none;font-size:15px;color:var(--muted);transition:color .2s;white-space:nowrap}
 .nav-links a:hover{color:var(--text)}
 .nav-actions{display:flex;align-items:center;gap:14px}
 .lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px}
 .lang button{border:0;background:transparent;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--muted);cursor:pointer;transition:background-color .2s,color .2s}
 .lang button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
 .nav .btn{padding:10px 18px;font-size:15px}
-@media (max-width:960px){.nav-links{display:none}.nav-actions{margin-left:auto}}
+@media (max-width:1180px){.nav-links{display:none}.nav-actions{margin-left:auto}}
 @media (max-width:560px){.nav .btn{display:none}.nav-inner{gap:12px}}
 
 /* Hero */
@@ -172,11 +172,13 @@ section{position:relative}
 .cell .pic img{width:100%;height:100%;object-fit:cover}
 .c-match{grid-column:span 3;background:var(--sheen);color:var(--text)}
 .c-match h3{font-size:clamp(1.6rem,2.4vw,2.1rem)}
+.criteria{list-style:none;margin:0;padding:22px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
+.criteria li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}
+.criteria i{font-size:18px;color:var(--accent);flex:none;margin-top:1px}
+@media (max-width:640px){.criteria{grid-template-columns:1fr}}
 .c-transfer{grid-column:span 3}
 .c-stay,.c-coord,.c-after{grid-column:span 2}
-.c-coord{background:var(--accent);color:var(--accent-ink)}
-.c-coord p{color:color-mix(in srgb,var(--accent-ink) 82%,transparent)}
-.c-coord .ico{color:var(--accent-ink)}
+.c-coord{background:#E3E8F1;color:var(--text)}
 .c-match,.c-coord{min-height:340px}
 @media (max-width:960px){
   .c-match,.c-transfer{grid-column:span 6}
@@ -321,6 +323,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
         <button type="button" data-lang="sv" aria-pressed="false">SV</button>
         <button type="button" data-lang="no" aria-pressed="false">NO</button>
         <button type="button" data-lang="da" aria-pressed="false">DA</button>
+        <button type="button" data-lang="fi" aria-pressed="false">FI</button>
       </div>
       <a class="btn btn-primary" href="#request" data-i18n="cta">Request a plan</a>
     </div>
@@ -383,8 +386,13 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
       <div class="bento">
         <article class="cell c-match reveal">
           <div class="ph-wrap">
-            <i class="ph-light ph-seal-check ico" aria-hidden="true"></i>
             <div class="body"><h3 data-i18n="incl.match.t">Clinic matching</h3><p data-i18n="incl.match.d">Licensed clinics chosen for your case, with plans and prices in writing.</p></div>
+            <ul class="criteria">
+              <li><i class="ph-light ph-check" aria-hidden="true"></i><span data-i18n="crit.1">Licensed dentists experienced in implants</span></li>
+              <li><i class="ph-light ph-check" aria-hidden="true"></i><span data-i18n="crit.2">3D diagnostics (CBCT) on site</span></li>
+              <li><i class="ph-light ph-check" aria-hidden="true"></i><span data-i18n="crit.3">Written treatment plan and price</span></li>
+              <li><i class="ph-light ph-check" aria-hidden="true"></i><span data-i18n="crit.4">English-speaking team</span></li>
+            </ul>
           </div>
         </article>
         <article class="cell c-transfer reveal">
@@ -444,7 +452,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
   <section class="sec story" id="story">
     <div class="wrap story-grid">
       <div class="story-img reveal">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1759680239559-b15010f8a7a8?w=900&h=1100&fit=crop&q=75&auto=format" width="900" height="1100" alt="Close-up of an abalone shell with iridescent mother-of-pearl" data-i18n-alt="alt.shell">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1706520421809-a15828694743?w=900&h=1100&fit=crop&q=75&auto=format" width="900" height="1100" alt="A white nautilus shell on a pale background" data-i18n-alt="alt.shell">
       </div>
       <div class="story-text reveal">
         <p class="eyebrow" data-i18n="story.eyebrow">Why Nacre</p>
@@ -566,110 +574,114 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
 const FORM_ENDPOINT = "";
 
 const T = {
-  "skip":{en:"Skip to content",sv:"Hoppa till innehållet",no:"Hopp til innholdet",da:"Spring til indholdet"},
-  "nav.how":{en:"How it works",sv:"Så fungerar det",no:"Slik fungerer det",da:"Sådan fungerer det"},
-  "nav.included":{en:"What's included",sv:"Det här ingår",no:"Dette er inkludert",da:"Det er inkluderet"},
-  "nav.gdansk":{en:"Why Gdańsk",sv:"Varför Gdańsk",no:"Hvorfor Gdańsk",da:"Hvorfor Gdańsk"},
-  "nav.faq":{en:"Questions",sv:"Frågor",no:"Spørsmål",da:"Spørgsmål"},
-  "nav.blog":{en:"Articles",sv:"Artiklar",no:"Artikler",da:"Artikler"},
-  "cta":{en:"Request a plan",sv:"Begär en plan",no:"Be om en plan",da:"Bed om en plan"},
-  "hero.eyebrow":{en:"Dental concierge in Gdańsk",sv:"Tandvårdsconcierge i Gdańsk",no:"Concierge for tannbehandling i Gdańsk",da:"Concierge for tandbehandling i Gdańsk"},
-  "hero.title":{en:"Dental care in Gdańsk, arranged for you.",sv:"Tandvård i Gdańsk, ordnad för dig.",no:"Tannbehandling i Gdańsk, ordnet for deg.",da:"Tandbehandling i Gdańsk, arrangeret for dig."},
-  "hero.sub":{en:"We match you with a trusted clinic and coordinate your treatment, from first question to follow-up at home.",sv:"Vi matchar dig med en betrodd klinik och samordnar din behandling, från första fråga till uppföljning hemma.",no:"Vi finner en klinikk du kan stole på, og koordinerer behandlingen din, fra første spørsmål til oppfølging hjemme.",da:"Vi finder en klinik, du kan stole på, og koordinerer din behandling, fra første spørgsmål til opfølgning hjemme."},
-  "st.strong":{en:"Nacre is not a clinic.",sv:"Nacre är ingen klinik.",no:"Nacre er ikke en klinikk.",da:"Nacre er ikke en klinik."},
-  "st.text":{en:"We are your independent coordinator: we find the right licensed clinic, organise your treatment and stay with you throughout.",sv:"Vi är din oberoende koordinator: vi hittar rätt legitimerad klinik, planerar din behandling och finns med dig hela vägen.",no:"Vi er din uavhengige koordinator: vi finner riktig autorisert klinikk, organiserer behandlingen din og er med deg hele veien.",da:"Vi er din uafhængige koordinator: vi finder den rette autoriserede klinik, organiserer din behandling og er med dig hele vejen."},
-  "st.note":{en:"All treatment is planned and performed by the clinic's own licensed dentists.",sv:"All behandling planeras och utförs av klinikens egna legitimerade tandläkare.",no:"All behandling planlegges og utføres av klinikkens egne autoriserte tannleger.",da:"Al behandling planlægges og udføres af klinikkens egne autoriserede tandlæger."},
-  "how.title":{en:"From first message to final check.",sv:"Från första meddelandet till sista kontrollen.",no:"Fra første melding til siste kontroll.",da:"Fra første besked til sidste kontrol."},
-  "how.s1.t":{en:"Share",sv:"Berätta",no:"Fortell",da:"Fortæl"},
-  "how.s1.d":{en:"Tell us what you are considering. We reply personally with questions and next steps.",sv:"Berätta vad du funderar på. Vi svarar personligen med frågor och nästa steg.",no:"Fortell hva du vurderer. Vi svarer personlig med spørsmål og neste steg.",da:"Fortæl, hvad du overvejer. Vi svarer personligt med spørgsmål og næste skridt."},
-  "how.s2.t":{en:"Compare",sv:"Jämför",no:"Sammenlign",da:"Sammenlign"},
-  "how.s2.d":{en:"You receive a written treatment plan and price from the clinic before you book anything.",sv:"Du får en skriftlig behandlingsplan och ett pris från kliniken innan du bokar något.",no:"Du får en skriftlig behandlingsplan og pris fra klinikken før du bestiller noe.",da:"Du får en skriftlig behandlingsplan og pris fra klinikken, før du booker noget."},
-  "how.s3.t":{en:"Travel",sv:"Res",no:"Reis",da:"Rejs"},
-  "how.s3.d":{en:"We schedule your appointments, can arrange airport transfers and recommend hotels close to the clinic.",sv:"Vi bokar dina besök, kan ordna transfer från flygplatsen och tipsar om hotell nära kliniken.",no:"Vi setter opp avtalene dine, kan ordne transport fra flyplassen og anbefaler hoteller nær klinikken.",da:"Vi planlægger dine aftaler, kan arrangere transport fra lufthavnen og anbefaler hoteller tæt på klinikken."},
-  "how.s4.t":{en:"Follow up",sv:"Följ upp",no:"Følg opp",da:"Følg op"},
-  "how.s4.d":{en:"Back home, we stay in touch and coordinate any follow-up with your clinic.",sv:"Hemma igen håller vi kontakten och samordnar eventuell uppföljning med kliniken.",no:"Når du er hjemme igjen, holder vi kontakten og koordinerer eventuell oppfølging med klinikken.",da:"Når du er hjemme igen, holder vi kontakten og koordinerer eventuel opfølgning med klinikken."},
-  "incl.title":{en:"Everything around the treatment, handled.",sv:"Allt runt omkring behandlingen, ordnat.",no:"Alt rundt behandlingen, ordnet.",da:"Alt omkring behandlingen, klaret."},
-  "incl.match.t":{en:"Clinic matching",sv:"Rätt klinik",no:"Riktig klinikk",da:"Den rette klinik"},
-  "incl.match.d":{en:"Licensed clinics chosen for your case, with plans and prices in writing.",sv:"Legitimerade kliniker utvalda för ditt fall, med planer och priser skriftligt.",no:"Autoriserte klinikker valgt ut for ditt tilfelle, med planer og priser skriftlig.",da:"Autoriserede klinikker udvalgt til dit behov, med planer og priser på skrift."},
-  "incl.transfer.t":{en:"Airport transfers",sv:"Flygplatstransfer",no:"Flyplasstransport",da:"Lufthavnstransport"},
-  "incl.transfer.d":{en:"On request, a driver meets you at the airport and takes you to your appointments.",sv:"På begäran möter en chaufför dig på flygplatsen och kör dig till dina besök.",no:"Ved ønske møter en sjåfør deg på flyplassen og kjører deg til avtalene dine.",da:"Efter ønske møder en chauffør dig i lufthavnen og kører dig til dine aftaler."},
-  "incl.stay.t":{en:"Hotel recommendations",sv:"Hotelltips",no:"Hotellanbefalinger",da:"Hotelanbefalinger"},
-  "incl.stay.d":{en:"Quiet hotels close to your clinic, which you book directly.",sv:"Lugna hotell nära kliniken, som du bokar direkt.",no:"Rolige hoteller nær klinikken, som du bestiller selv.",da:"Rolige hoteller tæt på klinikken, som du selv booker."},
-  "incl.coord.t":{en:"One personal contact",sv:"En personlig kontakt",no:"Én personlig kontakt",da:"Én personlig kontakt"},
-  "incl.coord.d":{en:"The same coordinator from your first message to your final check.",sv:"Samma koordinator från ditt första meddelande till din sista kontroll.",no:"Samme koordinator fra første melding til siste kontroll.",da:"Den samme koordinator fra din første besked til din sidste kontrol."},
-  "incl.after.t":{en:"Aftercare at home",sv:"Eftervård hemma",no:"Oppfølging hjemme",da:"Opfølgning hjemme"},
-  "incl.after.d":{en:"Follow-up after you return, arranged together with your clinic.",sv:"Uppföljning när du kommit hem, ordnad tillsammans med kliniken.",no:"Oppfølging når du er hjemme igjen, ordnet sammen med klinikken.",da:"Opfølgning, når du er hjemme igen, arrangeret sammen med klinikken."},
-  "treat.title":{en:"Treatments we coordinate",sv:"Behandlingar vi samordnar",no:"Behandlinger vi koordinerer",da:"Behandlinger, vi koordinerer"},
-  "t.implants":{en:"Dental implants",sv:"Tandimplantat",no:"Tannimplantater",da:"Tandimplantater"},
-  "t.fullarch":{en:"Full-arch restorations",sv:"Helkäksbehandling",no:"Helkjevebehandling",da:"Helkæbebehandling"},
-  "t.crowns":{en:"Crowns and bridges",sv:"Kronor och broar",no:"Kroner og broer",da:"Kroner og broer"},
-  "t.veneers":{en:"Porcelain veneers",sv:"Porslinsfasader",no:"Porselensfasetter",da:"Porcelænsfacader"},
-  "t.smile":{en:"Smile design",sv:"Smile design",no:"Smile design",da:"Smile design"},
-  "t.whitening":{en:"Teeth whitening",sv:"Tandblekning",no:"Tannbleking",da:"Tandblegning"},
-  "t.unsure":{en:"Not sure yet",sv:"Vet inte ännu",no:"Vet ikke ennå",da:"Ved ikke endnu"},
-  "treat.note":{en:"The clinic confirms which treatment suits you after an examination.",sv:"Kliniken bekräftar vilken behandling som passar dig efter en undersökning.",no:"Klinikken bekrefter hvilken behandling som passer deg etter en undersøkelse.",da:"Klinikken bekræfter, hvilken behandling der passer til dig, efter en undersøgelse."},
-  "city.title":{en:"A calm city by the sea, close to home.",sv:"En lugn stad vid havet, nära hemma.",no:"En rolig by ved havet, nær hjemme.",da:"En rolig by ved havet, tæt på hjemme."},
-  "city.d":{en:"Direct flights from Oslo, Stockholm, Copenhagen, Helsinki and other Nordic cities, plus ferries from Sweden. Between appointments: the old town, the seaside at Sopot and good food.",sv:"Direktflyg från Oslo, Stockholm, Köpenhamn, Helsingfors och fler nordiska städer, samt färjor från Sverige. Mellan besöken: gamla stan, havet i Sopot och god mat.",no:"Direktefly fra Oslo, Stockholm, København, Helsingfors og flere nordiske byer, i tillegg til ferjer fra Sverige. Mellom avtalene: gamlebyen, sjøen i Sopot og god mat.",da:"Direkte fly fra Oslo, Stockholm, København, Helsinki og flere nordiske byer samt færger fra Sverige. Mellem aftalerne: den gamle bydel, havet ved Sopot og god mad."},
-  "story.eyebrow":{en:"Why Nacre",sv:"Varför Nacre",no:"Hvorfor Nacre",da:"Hvorfor Nacre"},
-  "story.title":{en:"Named after mother-of-pearl.",sv:"Uppkallad efter pärlemor.",no:"Oppkalt etter perlemor.",da:"Opkaldt efter perlemor."},
-  "story.p1":{en:"Nacre is the luminous layer a shell builds, layer by layer, to protect what is inside. It is strong, smooth and quietly beautiful.",sv:"Nacre är det skimrande lager som ett snäckskal bygger upp, lager för lager, för att skydda det som finns inuti. Det är starkt, slätt och stillsamt vackert.",no:"Nacre er det skimrende laget et skjell bygger opp, lag for lag, for å beskytte det som er inni. Det er sterkt, glatt og stillferdig vakkert.",da:"Nacre er det skinnende lag, som en muslingeskal opbygger, lag for lag, for at beskytte det, der er indeni. Det er stærkt, glat og stille smukt."},
-  "story.p2":{en:"It is also one of the oldest known dental implant materials. Around 600 AD, the Maya replaced missing teeth with pieces of shell, and the bone grew around them.",sv:"Det är också ett av de äldsta kända materialen för tandimplantat. Runt år 600 ersatte mayafolket saknade tänder med bitar av snäckskal, och benet växte fast runt dem.",no:"Det er også et av de eldste kjente materialene for tannimplantater. Rundt år 600 erstattet mayaene manglende tenner med biter av skjell, og beinet vokste fast rundt dem.",da:"Det er også et af de ældste kendte materialer til tandimplantater. Omkring år 600 erstattede mayaerne manglende tænder med stykker af muslingeskal, og knoglen voksede fast omkring dem."},
-  "story.p3":{en:"That is the kind of care we stand for: patient, careful work that protects you.",sv:"Det är den omsorg vi står för: tålmodigt, noggrant arbete som skyddar dig.",no:"Det er den omsorgen vi står for: tålmodig og grundig arbeid som beskytter deg.",da:"Det er den omsorg, vi står for: tålmodigt og omhyggeligt arbejde, der beskytter dig."},
-  "alt.shell":{en:"Close-up of an abalone shell with iridescent mother-of-pearl",sv:"Närbild av ett abalonskal med skimrande pärlemor",no:"Nærbilde av et abaloneskjell med skimrende perlemor",da:"Nærbillede af en abaloneskal med skinnende perlemor"},
-  "faq.title":{en:"Common questions",sv:"Vanliga frågor",no:"Vanlige spørsmål",da:"Ofte stillede spørgsmål"},
-  "blog.title":{en:"Read before you travel",sv:"Läs innan du reser",no:"Les før du reiser",da:"Læs, før du rejser"},
-  "blog.all":{en:"All articles",sv:"Alla artiklar",no:"Alle artikler",da:"Alle artikler"},
-  "blog.note":{en:"Articles are in English.",sv:"Artiklarna är på engelska.",no:"Artiklene er på engelsk.",da:"Artiklerne er på engelsk."},
-  "q1":{en:"Are you a dental clinic?",sv:"Är ni en tandklinik?",no:"Er dere en tannklinikk?",da:"Er I en tandklinik?"},
-  "a1":{en:"No. Nacre is an independent coordination service. The licensed clinic you choose is responsible for diagnosis and treatment.",sv:"Nej. Nacre är en oberoende koordinationstjänst. Den legitimerade klinik du väljer ansvarar för diagnos och behandling.",no:"Nei. Nacre er en uavhengig koordineringstjeneste. Den autoriserte klinikken du velger, har ansvaret for diagnose og behandling.",da:"Nej. Nacre er en uafhængig koordineringstjeneste. Den autoriserede klinik, du vælger, er ansvarlig for diagnose og behandling."},
-  "q2":{en:"How are clinics selected?",sv:"Hur väljs klinikerna ut?",no:"Hvordan velges klinikkene?",da:"Hvordan udvælges klinikkerne?"},
-  "a2":{en:"We work with licensed clinics in Gdańsk with experienced specialists, English-speaking staff and clear written treatment plans.",sv:"Vi samarbetar med legitimerade kliniker i Gdańsk med erfarna specialister, engelsktalande personal och tydliga skriftliga behandlingsplaner.",no:"Vi samarbeider med autoriserte klinikker i Gdańsk med erfarne spesialister, engelsktalende personale og tydelige skriftlige behandlingsplaner.",da:"Vi samarbejder med autoriserede klinikker i Gdańsk med erfarne specialister, engelsktalende personale og klare skriftlige behandlingsplaner."},
-  "q3":{en:"What does it cost?",sv:"Vad kostar det?",no:"Hva koster det?",da:"Hvad koster det?"},
-  "a3":{en:"Before you commit, you receive a written quote with the clinic's treatment costs and our concierge fee shown separately.",sv:"Innan du bestämmer dig får du en skriftlig offert där klinikens behandlingskostnad och vår concierge-avgift visas separat.",no:"Før du bestemmer deg, får du et skriftlig tilbud der klinikkens behandlingskostnad og vårt concierge-honorar vises hver for seg.",da:"Før du beslutter dig, får du et skriftligt tilbud, hvor klinikkens behandlingspris og vores concierge-honorar står hver for sig."},
-  "q4":{en:"How many trips will I need?",sv:"Hur många resor behöver jag göra?",no:"Hvor mange reiser trenger jeg?",da:"Hvor mange rejser skal jeg regne med?"},
-  "a4":{en:"It depends on the treatment. Implants usually need two visits a few months apart, while crowns or veneers can often be done in one stay. The clinic confirms this in your plan.",sv:"Det beror på behandlingen. Implantat kräver oftast två besök med några månaders mellanrum, medan kronor eller fasader ofta klaras av under en vistelse. Kliniken bekräftar detta i din plan.",no:"Det avhenger av behandlingen. Implantater krever som regel to besøk med noen måneders mellomrom, mens kroner eller fasetter ofte kan gjøres på ett opphold. Klinikken bekrefter dette i planen din.",da:"Det afhænger af behandlingen. Implantater kræver som regel to besøg med nogle måneders mellemrum, mens kroner eller facader ofte kan klares på ét ophold. Klinikken bekræfter dette i din plan."},
-  "q5":{en:"What if I need help after I return home?",sv:"Vad händer om jag behöver hjälp när jag kommit hem?",no:"Hva om jeg trenger hjelp etter at jeg har kommet hjem?",da:"Hvad sker der, hvis jeg har brug for hjælp, når jeg er kommet hjem?"},
-  "a5":{en:"Contact your coordinator. We pass your questions to the clinic, arrange a video consultation if needed and help plan any follow-up visit.",sv:"Kontakta din koordinator. Vi för vidare dina frågor till kliniken, ordnar ett videosamtal vid behov och hjälper till att planera eventuella återbesök.",no:"Kontakt koordinatoren din. Vi sender spørsmålene dine videre til klinikken, ordner en videokonsultasjon ved behov og hjelper med å planlegge eventuelle kontrollbesøk.",da:"Kontakt din koordinator. Vi giver dine spørgsmål videre til klinikken, arrangerer en videokonsultation efter behov og hjælper med at planlægge eventuelle kontrolbesøg."},
-  "form.eyebrow":{en:"No obligation",sv:"Helt utan förpliktelser",no:"Helt uforpliktende",da:"Helt uforpligtende"},
-  "form.title":{en:"Tell us what you are considering.",sv:"Berätta vad du funderar på.",no:"Fortell oss hva du vurderer.",da:"Fortæl os, hvad du overvejer."},
-  "form.sub":{en:"We read every request ourselves and reply personally with the next steps.",sv:"Vi läser varje förfrågan själva och svarar personligen med nästa steg.",no:"Vi leser hver henvendelse selv og svarer personlig med neste steg.",da:"Vi læser selv hver henvendelse og svarer personligt med de næste skridt."},
-  "form.privacy":{en:"Please do not send medical records yet. We will ask for them securely if needed.",sv:"Skicka inga journaler ännu. Vi ber om dem på ett säkert sätt om det behövs.",no:"Ikke send journaler ennå. Vi ber om dem på en sikker måte ved behov.",da:"Send ikke journaler endnu. Vi beder om dem på en sikker måde, hvis det er nødvendigt."},
-  "f.name":{en:"Full name",sv:"Namn",no:"Navn",da:"Navn"},
-  "f.email":{en:"Email",sv:"E-post",no:"E-post",da:"E-mail"},
-  "f.phone":{en:"Phone (optional)",sv:"Telefon (valfritt)",no:"Telefon (valgfritt)",da:"Telefon (valgfrit)"},
-  "f.country":{en:"Country",sv:"Land",no:"Land",da:"Land"},
-  "f.select":{en:"Select",sv:"Välj",no:"Velg",da:"Vælg"},
-  "c.se":{en:"Sweden",sv:"Sverige",no:"Sverige",da:"Sverige"},
-  "c.no":{en:"Norway",sv:"Norge",no:"Norge",da:"Norge"},
-  "c.dk":{en:"Denmark",sv:"Danmark",no:"Danmark",da:"Danmark"},
-  "c.fi":{en:"Finland",sv:"Finland",no:"Finland",da:"Finland"},
-  "c.other":{en:"Other",sv:"Annat",no:"Annet",da:"Andet"},
-  "f.interest":{en:"Main interest",sv:"Huvudsakligt intresse",no:"Hovedinteresse",da:"Primær interesse"},
-  "f.timing":{en:"When would you like to travel?",sv:"När vill du resa?",no:"Når vil du reise?",da:"Hvornår vil du rejse?"},
-  "w.soon":{en:"Within 3 months",sv:"Inom 3 månader",no:"Innen 3 måneder",da:"Inden for 3 måneder"},
-  "w.mid":{en:"In 3 to 6 months",sv:"Om 3 till 6 månader",no:"Om 3 til 6 måneder",da:"Om 3 til 6 måneder"},
-  "w.later":{en:"Later, just exploring",sv:"Senare, jag undersöker bara",no:"Senere, jeg undersøker bare",da:"Senere, jeg undersøger bare"},
-  "f.msg":{en:"Anything we should know? (optional)",sv:"Något vi bör veta? (valfritt)",no:"Noe vi bør vite? (valgfritt)",da:"Noget, vi bør vide? (valgfrit)"},
-  "f.msghint":{en:"English is preferred, but you are welcome to write in your own language.",sv:"Skriv gärna på engelska, men du får också skriva på svenska.",no:"Skriv gjerne på engelsk, men du kan også skrive på norsk.",da:"Skriv gerne på engelsk, men du må også gerne skrive på dansk."},
-  "f.consent":{en:"I agree that Nacre may use my details to answer this request and share them with a partner clinic only with my permission.",sv:"Jag godkänner att Nacre använder mina uppgifter för att besvara förfrågan och endast delar dem med en partnerklinik med mitt tillstånd.",no:"Jeg godtar at Nacre bruker opplysningene mine til å svare på henvendelsen og bare deler dem med en partnerklinikk med min tillatelse.",da:"Jeg accepterer, at Nacre bruger mine oplysninger til at besvare henvendelsen og kun deler dem med en partnerklinik med min tilladelse."},
-  "f.sending":{en:"Sending...",sv:"Skickar...",no:"Sender...",da:"Sender..."},
-  "f.ok.t":{en:"Thank you. Your request has been sent.",sv:"Tack. Din förfrågan har skickats.",no:"Takk. Henvendelsen din er sendt.",da:"Tak. Din henvendelse er sendt."},
-  "f.ok.d":{en:"We will reply to the email address you gave us.",sv:"Vi svarar till den e-postadress du angav.",no:"Vi svarer til e-postadressen du oppga.",da:"Vi svarer til den e-mailadresse, du har oplyst."},
-  "f.err":{en:"Something went wrong. Please try again in a moment.",sv:"Något gick fel. Försök igen om en stund.",no:"Noe gikk galt. Prøv igjen om litt.",da:"Noget gik galt. Prøv igen om lidt."},
-  "v.required":{en:"Please fill in this field.",sv:"Fyll i det här fältet.",no:"Fyll ut dette feltet.",da:"Udfyld dette felt."},
-  "v.email":{en:"Please enter a valid email address.",sv:"Ange en giltig e-postadress.",no:"Skriv inn en gyldig e-postadresse.",da:"Indtast en gyldig e-mailadresse."},
-  "v.consent":{en:"Please accept to continue.",sv:"Godkänn för att fortsätta.",no:"Godta for å fortsette.",da:"Accepter for at fortsætte."},
-  "foot.tag":{en:"Private dental concierge",sv:"Privat tandvårdsconcierge",no:"Privat concierge for tannbehandling",da:"Privat concierge for tandbehandling"},
-  "foot.disc":{en:"Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.",sv:"Nacre är en tjänst för patientkoordination och utför ingen medicinsk behandling eller tandvård. All behandling planeras och utförs av oberoende legitimerade kliniker, som ansvarar för den kliniska vården.",no:"Nacre er en tjeneste for pasientkoordinering og tilbyr ikke medisinsk behandling eller tannbehandling. All behandling planlegges og utføres av uavhengige autoriserte klinikker, som har ansvaret for den kliniske behandlingen.",da:"Nacre er en tjeneste til patientkoordinering og udfører ikke medicinsk behandling eller tandbehandling. Al behandling planlægges og udføres af uafhængige autoriserede klinikker, som er ansvarlige for den kliniske behandling."},
-  "alt.hero":{en:"Historic facades of Gdańsk reflected in the Motława river at dusk",sv:"Historiska fasader i Gdańsk speglas i floden Motława i skymningen",no:"Historiske fasader i Gdańsk speiler seg i elven Motława i skumringen",da:"Historiske facader i Gdańsk spejler sig i floden Motława i skumringen"},
-  "alt.consult":{en:"A dentist talking calmly with a patient in a bright, modern clinic",sv:"En tandläkare samtalar lugnt med en patient på en ljus, modern klinik",no:"En tannlege snakker rolig med en pasient på en lys, moderne klinikk",da:"En tandlæge taler roligt med en patient på en lys, moderne klinik"},
-  "alt.car":{en:"A chauffeur in a suit opening the door of a black van",sv:"En chaufför i kostym öppnar dörren till en svart minibuss",no:"En sjåfør i dress åpner døren til en svart minibuss",da:"En chauffør i jakkesæt åbner døren til en sort minibus"},
-  "alt.room":{en:"A bright hotel room with a neatly made bed and bedside lamps",sv:"Ett ljust hotellrum med en prydligt bäddad säng och sänglampor",no:"Et lyst hotellrom med en pent oppredd seng og nattlamper",da:"Et lyst hotelværelse med en pænt redt seng og natlamper"},
-  "alt.sea":{en:"Calm grey sea with a long pier in the distance",sv:"Stilla grått hav med en lång pir i fjärran",no:"Rolig grått hav med en lang brygge i det fjerne",da:"Roligt gråt hav med en lang mole i det fjerne"},
-  "alt.city":{en:"The Motława riverside in Gdańsk with the medieval crane and colourful houses",sv:"Strandpromenaden vid Motława i Gdańsk med den medeltida kranen och färgglada hus",no:"Elvebredden ved Motława i Gdańsk med den middelalderske kranen og fargerike hus",da:"Flodbredden ved Motława i Gdańsk med den middelalderlige kran og farverige huse"}
+  "skip":{en:"Skip to content",sv:"Hoppa till innehållet",no:"Hopp til innholdet",da:"Spring til indholdet",fi:"Siirry sisältöön"},
+  "nav.how":{en:"How it works",sv:"Så fungerar det",no:"Slik fungerer det",da:"Sådan fungerer det",fi:"Näin se toimii"},
+  "nav.included":{en:"What's included",sv:"Det här ingår",no:"Dette er inkludert",da:"Det er inkluderet",fi:"Mitä saat"},
+  "nav.gdansk":{en:"Why Gdańsk",sv:"Varför Gdańsk",no:"Hvorfor Gdańsk",da:"Hvorfor Gdańsk",fi:"Miksi Gdańsk"},
+  "nav.faq":{en:"Questions",sv:"Frågor",no:"Spørsmål",da:"Spørgsmål",fi:"Kysymyksiä"},
+  "nav.blog":{en:"Articles",sv:"Artiklar",no:"Artikler",da:"Artikler",fi:"Artikkelit"},
+  "cta":{en:"Request a plan",sv:"Begär en plan",no:"Be om en plan",da:"Bed om en plan",fi:"Pyydä suunnitelma"},
+  "hero.eyebrow":{en:"Dental concierge in Gdańsk",sv:"Tandvårdsconcierge i Gdańsk",no:"Concierge for tannbehandling i Gdańsk",da:"Concierge for tandbehandling i Gdańsk",fi:"Hammashoidon concierge-palvelu Gdańskissa"},
+  "hero.title":{en:"Dental care in Gdańsk, arranged for you.",sv:"Tandvård i Gdańsk, ordnad för dig.",no:"Tannbehandling i Gdańsk, ordnet for deg.",da:"Tandbehandling i Gdańsk, arrangeret for dig.",fi:"Hammashoito Gdańskissa ilman vaivaa."},
+  "hero.sub":{en:"We match you with a trusted clinic and coordinate your treatment, from first question to follow-up at home.",sv:"Vi matchar dig med en betrodd klinik och samordnar din behandling, från första fråga till uppföljning hemma.",no:"Vi finner en klinikk du kan stole på, og koordinerer behandlingen din, fra første spørsmål til oppfølging hjemme.",da:"Vi finder en klinik, du kan stole på, og koordinerer din behandling, fra første spørgsmål til opfølgning hjemme.",fi:"Löydämme sinulle luotettavan klinikan ja koordinoimme hoitosi ensimmäisestä kysymyksestä jälkiseurantaan kotona."},
+  "st.strong":{en:"Nacre is not a clinic.",sv:"Nacre är ingen klinik.",no:"Nacre er ikke en klinikk.",da:"Nacre er ikke en klinik.",fi:"Nacre ei ole klinikka."},
+  "st.text":{en:"We are your independent coordinator: we find the right licensed clinic, organise your treatment and stay with you throughout.",sv:"Vi är din oberoende koordinator: vi hittar rätt legitimerad klinik, planerar din behandling och finns med dig hela vägen.",no:"Vi er din uavhengige koordinator: vi finner riktig autorisert klinikk, organiserer behandlingen din og er med deg hele veien.",da:"Vi er din uafhængige koordinator: vi finder den rette autoriserede klinik, organiserer din behandling og er med dig hele vejen.",fi:"Olemme riippumaton koordinaattorisi: löydämme sinulle sopivan klinikan, jolla on asianmukaiset luvat, järjestämme hoitosi ja olemme tukenasi koko matkan ajan."},
+  "st.note":{en:"All treatment is planned and performed by the clinic's own licensed dentists.",sv:"All behandling planeras och utförs av klinikens egna legitimerade tandläkare.",no:"All behandling planlegges og utføres av klinikkens egne autoriserte tannleger.",da:"Al behandling planlægges og udføres af klinikkens egne autoriserede tandlæger.",fi:"Kaikki hoidot suunnittelevat ja toteuttavat klinikan omat laillistetut hammaslääkärit."},
+  "how.title":{en:"From first message to final check.",sv:"Från första meddelandet till sista kontrollen.",no:"Fra første melding til siste kontroll.",da:"Fra første besked til sidste kontrol.",fi:"Ensimmäisestä viestistä viimeiseen tarkastukseen."},
+  "how.s1.t":{en:"Share",sv:"Berätta",no:"Fortell",da:"Fortæl",fi:"Kerro"},
+  "how.s1.d":{en:"Tell us what you are considering. We reply personally with questions and next steps.",sv:"Berätta vad du funderar på. Vi svarar personligen med frågor och nästa steg.",no:"Fortell hva du vurderer. Vi svarer personlig med spørsmål og neste steg.",da:"Fortæl, hvad du overvejer. Vi svarer personligt med spørgsmål og næste skridt.",fi:"Kerro, mitä harkitset. Vastaamme henkilökohtaisesti ja kerromme seuraavat askeleet."},
+  "how.s2.t":{en:"Compare",sv:"Jämför",no:"Sammenlign",da:"Sammenlign",fi:"Vertaa"},
+  "how.s2.d":{en:"You receive a written treatment plan and price from the clinic before you book anything.",sv:"Du får en skriftlig behandlingsplan och ett pris från kliniken innan du bokar något.",no:"Du får en skriftlig behandlingsplan og pris fra klinikken før du bestiller noe.",da:"Du får en skriftlig behandlingsplan og pris fra klinikken, før du booker noget.",fi:"Saat klinikalta kirjallisen hoitosuunnitelman ja hinnan ennen kuin varaat mitään."},
+  "how.s3.t":{en:"Travel",sv:"Res",no:"Reis",da:"Rejs",fi:"Matkusta"},
+  "how.s3.d":{en:"We schedule your appointments, can arrange airport transfers and recommend hotels close to the clinic.",sv:"Vi bokar dina besök, kan ordna transfer från flygplatsen och tipsar om hotell nära kliniken.",no:"Vi setter opp avtalene dine, kan ordne transport fra flyplassen og anbefaler hoteller nær klinikken.",da:"Vi planlægger dine aftaler, kan arrangere transport fra lufthavnen og anbefaler hoteller tæt på klinikken.",fi:"Sovimme käyntisi, voimme järjestää kuljetuksen lentokentältä ja suosittelemme hotelleja klinikan läheltä."},
+  "how.s4.t":{en:"Follow up",sv:"Följ upp",no:"Følg opp",da:"Følg op",fi:"Seuranta"},
+  "how.s4.d":{en:"Back home, we stay in touch and coordinate any follow-up with your clinic.",sv:"Hemma igen håller vi kontakten och samordnar eventuell uppföljning med kliniken.",no:"Når du er hjemme igjen, holder vi kontakten og koordinerer eventuell oppfølging med klinikken.",da:"Når du er hjemme igen, holder vi kontakten og koordinerer eventuel opfølgning med klinikken.",fi:"Kotiin palattuasi pidämme yhteyttä ja koordinoimme mahdollisen jälkiseurannan klinikan kanssa."},
+  "incl.title":{en:"Everything around the treatment, handled.",sv:"Allt runt omkring behandlingen, ordnat.",no:"Alt rundt behandlingen, ordnet.",da:"Alt omkring behandlingen, klaret.",fi:"Huolehdimme kaikesta hoidon ympärillä."},
+  "incl.match.t":{en:"Clinic matching",sv:"Rätt klinik",no:"Riktig klinikk",da:"Den rette klinik",fi:"Oikea klinikka"},
+  "incl.match.d":{en:"Licensed clinics chosen for your case, with plans and prices in writing.",sv:"Legitimerade kliniker utvalda för ditt fall, med planer och priser skriftligt.",no:"Autoriserte klinikker valgt ut for ditt tilfelle, med planer og priser skriftlig.",da:"Autoriserede klinikker udvalgt til dit behov, med planer og priser på skrift.",fi:"Tapaukseesi sopivat klinikat, joilla on asianmukaiset luvat, sekä kirjalliset suunnitelmat ja hinnat."},
+  "crit.1":{en:"Licensed dentists experienced in implants",sv:"Legitimerade tandläkare med erfarenhet av implantat",no:"Autoriserte tannleger med erfaring med implantater",da:"Autoriserede tandlæger med erfaring i implantater",fi:"Laillistetut hammaslääkärit, joilla on kokemusta implanteista"},
+  "crit.2":{en:"3D diagnostics (CBCT) on site",sv:"3D-diagnostik (CBCT) på plats",no:"3D-diagnostikk (CBCT) på stedet",da:"3D-diagnostik (CBCT) på stedet",fi:"3D-kuvantaminen (CBCT) paikan päällä"},
+  "crit.3":{en:"Written treatment plan and price",sv:"Skriftlig behandlingsplan och pris",no:"Skriftlig behandlingsplan og pris",da:"Skriftlig behandlingsplan og pris",fi:"Kirjallinen hoitosuunnitelma ja hinta"},
+  "crit.4":{en:"English-speaking team",sv:"Engelsktalande personal",no:"Engelsktalende personale",da:"Engelsktalende personale",fi:"Englantia puhuva henkilökunta"},
+  "incl.transfer.t":{en:"Airport transfers",sv:"Flygplatstransfer",no:"Flyplasstransport",da:"Lufthavnstransport",fi:"Lentokenttäkuljetukset"},
+  "incl.transfer.d":{en:"On request, a driver meets you at the airport and takes you to your appointments.",sv:"På begäran möter en chaufför dig på flygplatsen och kör dig till dina besök.",no:"Ved ønske møter en sjåfør deg på flyplassen og kjører deg til avtalene dine.",da:"Efter ønske møder en chauffør dig i lufthavnen og kører dig til dine aftaler.",fi:"Pyynnöstä kuljettaja tulee sinua vastaan lentokentälle ja vie sinut vastaanotoille."},
+  "incl.stay.t":{en:"Hotel recommendations",sv:"Hotelltips",no:"Hotellanbefalinger",da:"Hotelanbefalinger",fi:"Hotellisuositukset"},
+  "incl.stay.d":{en:"Quiet hotels close to your clinic, which you book directly.",sv:"Lugna hotell nära kliniken, som du bokar direkt.",no:"Rolige hoteller nær klinikken, som du bestiller selv.",da:"Rolige hoteller tæt på klinikken, som du selv booker.",fi:"Rauhallisia hotelleja klinikan lähellä. Varaat ne itse suoraan."},
+  "incl.coord.t":{en:"One personal contact",sv:"En personlig kontakt",no:"Én personlig kontakt",da:"Én personlig kontakt",fi:"Yksi henkilökohtainen yhteyshenkilö"},
+  "incl.coord.d":{en:"The same coordinator from your first message to your final check.",sv:"Samma koordinator från ditt första meddelande till din sista kontroll.",no:"Samme koordinator fra første melding til siste kontroll.",da:"Den samme koordinator fra din første besked til din sidste kontrol.",fi:"Sama koordinaattori ensimmäisestä viestistä viimeiseen tarkastukseen."},
+  "incl.after.t":{en:"Aftercare at home",sv:"Eftervård hemma",no:"Oppfølging hjemme",da:"Opfølgning hjemme",fi:"Jälkiseuranta kotona"},
+  "incl.after.d":{en:"Follow-up after you return, arranged together with your clinic.",sv:"Uppföljning när du kommit hem, ordnad tillsammans med kliniken.",no:"Oppfølging når du er hjemme igjen, ordnet sammen med klinikken.",da:"Opfølgning, når du er hjemme igen, arrangeret sammen med klinikken.",fi:"Seuranta kotiinpaluun jälkeen yhdessä klinikkasi kanssa."},
+  "treat.title":{en:"Treatments we coordinate",sv:"Behandlingar vi samordnar",no:"Behandlinger vi koordinerer",da:"Behandlinger, vi koordinerer",fi:"Hoidot, joita koordinoimme"},
+  "t.implants":{en:"Dental implants",sv:"Tandimplantat",no:"Tannimplantater",da:"Tandimplantater",fi:"Hammasimplantit"},
+  "t.fullarch":{en:"Full-arch restorations",sv:"Helkäksbehandling",no:"Helkjevebehandling",da:"Helkæbebehandling",fi:"Koko hammaskaaren hoidot"},
+  "t.crowns":{en:"Crowns and bridges",sv:"Kronor och broar",no:"Kroner og broer",da:"Kroner og broer",fi:"Kruunut ja sillat"},
+  "t.veneers":{en:"Porcelain veneers",sv:"Porslinsfasader",no:"Porselensfasetter",da:"Porcelænsfacader",fi:"Posliinilaminaatit"},
+  "t.smile":{en:"Smile design",sv:"Smile design",no:"Smile design",da:"Smile design",fi:"Hymyn suunnittelu"},
+  "t.whitening":{en:"Teeth whitening",sv:"Tandblekning",no:"Tannbleking",da:"Tandblegning",fi:"Hampaiden valkaisu"},
+  "t.unsure":{en:"Not sure yet",sv:"Vet inte ännu",no:"Vet ikke ennå",da:"Ved ikke endnu",fi:"En ole vielä varma"},
+  "treat.note":{en:"The clinic confirms which treatment suits you after an examination.",sv:"Kliniken bekräftar vilken behandling som passar dig efter en undersökning.",no:"Klinikken bekrefter hvilken behandling som passer deg etter en undersøkelse.",da:"Klinikken bekræfter, hvilken behandling der passer til dig, efter en undersøgelse.",fi:"Klinikka vahvistaa tutkimuksen jälkeen, mikä hoito sopii sinulle."},
+  "city.title":{en:"A calm city by the sea, close to home.",sv:"En lugn stad vid havet, nära hemma.",no:"En rolig by ved havet, nær hjemme.",da:"En rolig by ved havet, tæt på hjemme.",fi:"Rauhallinen kaupunki meren rannalla, lähellä kotia."},
+  "city.d":{en:"Direct flights from Oslo, Stockholm, Copenhagen, Helsinki and other Nordic cities, plus ferries from Sweden. Between appointments: the old town, the seaside at Sopot and good food.",sv:"Direktflyg från Oslo, Stockholm, Köpenhamn, Helsingfors och fler nordiska städer, samt färjor från Sverige. Mellan besöken: gamla stan, havet i Sopot och god mat.",no:"Direktefly fra Oslo, Stockholm, København, Helsingfors og flere nordiske byer, i tillegg til ferjer fra Sverige. Mellom avtalene: gamlebyen, sjøen i Sopot og god mat.",da:"Direkte fly fra Oslo, Stockholm, København, Helsinki og flere nordiske byer samt færger fra Sverige. Mellem aftalerne: den gamle bydel, havet ved Sopot og god mad.",fi:"Suorat lennot Oslosta, Tukholmasta, Kööpenhaminasta, Helsingistä ja muista Pohjoismaiden kaupungeista sekä lautat Ruotsista. Käyntien välissä: vanha kaupunki, Sopotin ranta ja hyvä ruoka."},
+  "story.eyebrow":{en:"Why Nacre",sv:"Varför Nacre",no:"Hvorfor Nacre",da:"Hvorfor Nacre",fi:"Miksi Nacre"},
+  "story.title":{en:"Named after mother-of-pearl.",sv:"Uppkallad efter pärlemor.",no:"Oppkalt etter perlemor.",da:"Opkaldt efter perlemor.",fi:"Nimetty helmiäisen mukaan."},
+  "story.p1":{en:"Nacre is the luminous layer a shell builds, layer by layer, to protect what is inside. It is strong, smooth and quietly beautiful.",sv:"Nacre är det skimrande lager som ett snäckskal bygger upp, lager för lager, för att skydda det som finns inuti. Det är starkt, slätt och stillsamt vackert.",no:"Nacre er det skimrende laget et skjell bygger opp, lag for lag, for å beskytte det som er inni. Det er sterkt, glatt og stillferdig vakkert.",da:"Nacre er det skinnende lag, som en muslingeskal opbygger, lag for lag, for at beskytte det, der er indeni. Det er stærkt, glat og stille smukt.",fi:"Nacre eli helmiäinen on hohtava kerros, jonka simpukankuori rakentaa kerros kerrokselta suojatakseen sitä, mitä sen sisällä on. Se on vahva, sileä ja hillityn kaunis."},
+  "story.p2":{en:"It is also one of the oldest known dental implant materials. Around 600 AD, the Maya replaced missing teeth with pieces of shell, and the bone grew around them.",sv:"Det är också ett av de äldsta kända materialen för tandimplantat. Runt år 600 ersatte mayafolket saknade tänder med bitar av snäckskal, och benet växte fast runt dem.",no:"Det er også et av de eldste kjente materialene for tannimplantater. Rundt år 600 erstattet mayaene manglende tenner med biter av skjell, og beinet vokste fast rundt dem.",da:"Det er også et af de ældste kendte materialer til tandimplantater. Omkring år 600 erstattede mayaerne manglende tænder med stykker af muslingeskal, og knoglen voksede fast omkring dem.",fi:"Se on myös yksi vanhimmista tunnetuista hammasimplanttimateriaaleista. Noin vuonna 600 mayat korvasivat puuttuvia hampaita simpukankuoren paloilla, ja luu kasvoi niiden ympärille."},
+  "story.p3":{en:"That is the kind of care we stand for: patient, careful work that protects you.",sv:"Det är den omsorg vi står för: tålmodigt, noggrant arbete som skyddar dig.",no:"Det er den omsorgen vi står for: tålmodig og grundig arbeid som beskytter deg.",da:"Det er den omsorg, vi står for: tålmodigt og omhyggeligt arbejde, der beskytter dig.",fi:"Sellaista huolenpitoa me edustamme: kärsivällistä ja huolellista työtä, joka suojaa sinua."},
+  "alt.shell":{en:"A white nautilus shell on a pale background",sv:"Ett vitt nautilusskal mot en ljus bakgrund",no:"Et hvitt nautilusskjell mot en lys bakgrunn",da:"En hvid nautilusskal mod en lys baggrund",fi:"Valkoinen nautiluksen kuori vaalealla taustalla"},
+  "faq.title":{en:"Common questions",sv:"Vanliga frågor",no:"Vanlige spørsmål",da:"Ofte stillede spørgsmål",fi:"Usein kysyttyä"},
+  "blog.title":{en:"Read before you travel",sv:"Läs innan du reser",no:"Les før du reiser",da:"Læs, før du rejser",fi:"Lue ennen matkaa"},
+  "blog.all":{en:"All articles",sv:"Alla artiklar",no:"Alle artikler",da:"Alle artikler",fi:"Kaikki artikkelit"},
+  "blog.note":{en:"Articles are in English.",sv:"Artiklarna är på engelska.",no:"Artiklene er på engelsk.",da:"Artiklerne er på engelsk.",fi:"Artikkelit ovat englanniksi."},
+  "q1":{en:"Are you a dental clinic?",sv:"Är ni en tandklinik?",no:"Er dere en tannklinikk?",da:"Er I en tandklinik?",fi:"Oletteko hammasklinikka?"},
+  "a1":{en:"No. Nacre is an independent coordination service. The licensed clinic you choose is responsible for diagnosis and treatment.",sv:"Nej. Nacre är en oberoende koordinationstjänst. Den legitimerade klinik du väljer ansvarar för diagnos och behandling.",no:"Nei. Nacre er en uavhengig koordineringstjeneste. Den autoriserte klinikken du velger, har ansvaret for diagnose og behandling.",da:"Nej. Nacre er en uafhængig koordineringstjeneste. Den autoriserede klinik, du vælger, er ansvarlig for diagnose og behandling.",fi:"Emme. Nacre on riippumaton koordinointipalvelu. Valitsemasi klinikka, jolla on asianmukaiset luvat, vastaa diagnoosista ja hoidosta."},
+  "q2":{en:"How are clinics selected?",sv:"Hur väljs klinikerna ut?",no:"Hvordan velges klinikkene?",da:"Hvordan udvælges klinikkerne?",fi:"Miten klinikat valitaan?"},
+  "a2":{en:"We work with licensed clinics in Gdańsk with experienced specialists, English-speaking staff and clear written treatment plans.",sv:"Vi samarbetar med legitimerade kliniker i Gdańsk med erfarna specialister, engelsktalande personal och tydliga skriftliga behandlingsplaner.",no:"Vi samarbeider med autoriserte klinikker i Gdańsk med erfarne spesialister, engelsktalende personale og tydelige skriftlige behandlingsplaner.",da:"Vi samarbejder med autoriserede klinikker i Gdańsk med erfarne specialister, engelsktalende personale og klare skriftlige behandlingsplaner.",fi:"Teemme yhteistyötä Gdańskissa toimivien klinikoiden kanssa, joilla on asianmukaiset luvat, kokeneet erikoishammaslääkärit, englantia puhuva henkilökunta ja selkeät kirjalliset hoitosuunnitelmat."},
+  "q3":{en:"What does it cost?",sv:"Vad kostar det?",no:"Hva koster det?",da:"Hvad koster det?",fi:"Mitä se maksaa?"},
+  "a3":{en:"Before you commit, you receive a written quote with the clinic's treatment costs and our concierge fee shown separately.",sv:"Innan du bestämmer dig får du en skriftlig offert där klinikens behandlingskostnad och vår concierge-avgift visas separat.",no:"Før du bestemmer deg, får du et skriftlig tilbud der klinikkens behandlingskostnad og vårt concierge-honorar vises hver for seg.",da:"Før du beslutter dig, får du et skriftligt tilbud, hvor klinikkens behandlingspris og vores concierge-honorar står hver for sig.",fi:"Ennen kuin sitoudut mihinkään, saat kirjallisen tarjouksen, jossa klinikan hoitokulut ja concierge-palkkiomme on eritelty."},
+  "q4":{en:"How many trips will I need?",sv:"Hur många resor behöver jag göra?",no:"Hvor mange reiser trenger jeg?",da:"Hvor mange rejser skal jeg regne med?",fi:"Kuinka monta matkaa tarvitsen?"},
+  "a4":{en:"It depends on the treatment. Implants usually need two visits a few months apart, while crowns or veneers can often be done in one stay. The clinic confirms this in your plan.",sv:"Det beror på behandlingen. Implantat kräver oftast två besök med några månaders mellanrum, medan kronor eller fasader ofta klaras av under en vistelse. Kliniken bekräftar detta i din plan.",no:"Det avhenger av behandlingen. Implantater krever som regel to besøk med noen måneders mellomrom, mens kroner eller fasetter ofte kan gjøres på ett opphold. Klinikken bekrefter dette i planen din.",da:"Det afhænger af behandlingen. Implantater kræver som regel to besøg med nogle måneders mellemrum, mens kroner eller facader ofte kan klares på ét ophold. Klinikken bekræfter dette i din plan.",fi:"Se riippuu hoidosta. Implantit vaativat yleensä kaksi käyntiä muutaman kuukauden välein, kun taas kruunut tai laminaatit voidaan usein tehdä yhden matkan aikana. Klinikka vahvistaa tämän suunnitelmassasi."},
+  "q5":{en:"What if I need help after I return home?",sv:"Vad händer om jag behöver hjälp när jag kommit hem?",no:"Hva om jeg trenger hjelp etter at jeg har kommet hjem?",da:"Hvad sker der, hvis jeg har brug for hjælp, når jeg er kommet hjem?",fi:"Entä jos tarvitsen apua kotiinpaluun jälkeen?"},
+  "a5":{en:"Contact your coordinator. We pass your questions to the clinic, arrange a video consultation if needed and help plan any follow-up visit.",sv:"Kontakta din koordinator. Vi för vidare dina frågor till kliniken, ordnar ett videosamtal vid behov och hjälper till att planera eventuella återbesök.",no:"Kontakt koordinatoren din. Vi sender spørsmålene dine videre til klinikken, ordner en videokonsultasjon ved behov og hjelper med å planlegge eventuelle kontrollbesøk.",da:"Kontakt din koordinator. Vi giver dine spørgsmål videre til klinikken, arrangerer en videokonsultation efter behov og hjælper med at planlægge eventuelle kontrolbesøg.",fi:"Ota yhteyttä koordinaattoriisi. Välitämme kysymyksesi klinikalle, järjestämme tarvittaessa videokonsultaation ja autamme suunnittelemaan mahdollisen seurantakäynnin."},
+  "form.eyebrow":{en:"No obligation",sv:"Helt utan förpliktelser",no:"Helt uforpliktende",da:"Helt uforpligtende",fi:"Ei sitoumuksia"},
+  "form.title":{en:"Tell us what you are considering.",sv:"Berätta vad du funderar på.",no:"Fortell oss hva du vurderer.",da:"Fortæl os, hvad du overvejer.",fi:"Kerro, mitä harkitset."},
+  "form.sub":{en:"We read every request ourselves and reply personally with the next steps.",sv:"Vi läser varje förfrågan själva och svarar personligen med nästa steg.",no:"Vi leser hver henvendelse selv og svarer personlig med neste steg.",da:"Vi læser selv hver henvendelse og svarer personligt med de næste skridt.",fi:"Luemme jokaisen yhteydenoton itse, vastaamme henkilökohtaisesti ja kerromme seuraavat askeleet."},
+  "form.privacy":{en:"Please do not send medical records yet. We will ask for them securely if needed.",sv:"Skicka inga journaler ännu. Vi ber om dem på ett säkert sätt om det behövs.",no:"Ikke send journaler ennå. Vi ber om dem på en sikker måte ved behov.",da:"Send ikke journaler endnu. Vi beder om dem på en sikker måde, hvis det er nødvendigt.",fi:"Älä lähetä vielä potilasasiakirjoja. Pyydämme ne tarvittaessa turvallisesti."},
+  "f.name":{en:"Full name",sv:"Namn",no:"Navn",da:"Navn",fi:"Nimi"},
+  "f.email":{en:"Email",sv:"E-post",no:"E-post",da:"E-mail",fi:"Sähköposti"},
+  "f.phone":{en:"Phone (optional)",sv:"Telefon (valfritt)",no:"Telefon (valgfritt)",da:"Telefon (valgfrit)",fi:"Puhelin (valinnainen)"},
+  "f.country":{en:"Country",sv:"Land",no:"Land",da:"Land",fi:"Maa"},
+  "f.select":{en:"Select",sv:"Välj",no:"Velg",da:"Vælg",fi:"Valitse"},
+  "c.se":{en:"Sweden",sv:"Sverige",no:"Sverige",da:"Sverige",fi:"Ruotsi"},
+  "c.no":{en:"Norway",sv:"Norge",no:"Norge",da:"Norge",fi:"Norja"},
+  "c.dk":{en:"Denmark",sv:"Danmark",no:"Danmark",da:"Danmark",fi:"Tanska"},
+  "c.fi":{en:"Finland",sv:"Finland",no:"Finland",da:"Finland",fi:"Suomi"},
+  "c.other":{en:"Other",sv:"Annat",no:"Annet",da:"Andet",fi:"Muu"},
+  "f.interest":{en:"Main interest",sv:"Huvudsakligt intresse",no:"Hovedinteresse",da:"Primær interesse",fi:"Mikä hoito kiinnostaa?"},
+  "f.timing":{en:"When would you like to travel?",sv:"När vill du resa?",no:"Når vil du reise?",da:"Hvornår vil du rejse?",fi:"Milloin haluaisit matkustaa?"},
+  "w.soon":{en:"Within 3 months",sv:"Inom 3 månader",no:"Innen 3 måneder",da:"Inden for 3 måneder",fi:"3 kuukauden sisällä"},
+  "w.mid":{en:"In 3 to 6 months",sv:"Om 3 till 6 månader",no:"Om 3 til 6 måneder",da:"Om 3 til 6 måneder",fi:"3-6 kuukauden kuluttua"},
+  "w.later":{en:"Later, just exploring",sv:"Senare, jag undersöker bara",no:"Senere, jeg undersøker bare",da:"Senere, jeg undersøger bare",fi:"Myöhemmin, selvitän vasta vaihtoehtoja"},
+  "f.msg":{en:"Anything we should know? (optional)",sv:"Något vi bör veta? (valfritt)",no:"Noe vi bør vite? (valgfritt)",da:"Noget, vi bør vide? (valgfrit)",fi:"Onko jotain, mitä meidän pitäisi tietää? (valinnainen)"},
+  "f.msghint":{en:"English is preferred, but you are welcome to write in your own language.",sv:"Skriv gärna på engelska, men du får också skriva på svenska.",no:"Skriv gjerne på engelsk, men du kan også skrive på norsk.",da:"Skriv gerne på engelsk, men du må også gerne skrive på dansk.",fi:"Kirjoita mieluiten englanniksi, mutta voit kirjoittaa myös suomeksi."},
+  "f.consent":{en:"I agree that Nacre may use my details to answer this request and share them with a partner clinic only with my permission.",sv:"Jag godkänner att Nacre använder mina uppgifter för att besvara förfrågan och endast delar dem med en partnerklinik med mitt tillstånd.",no:"Jeg godtar at Nacre bruker opplysningene mine til å svare på henvendelsen og bare deler dem med en partnerklinikk med min tillatelse.",da:"Jeg accepterer, at Nacre bruger mine oplysninger til at besvare henvendelsen og kun deler dem med en partnerklinik med min tilladelse.",fi:"Hyväksyn, että Nacre käyttää tietojani tähän yhteydenottoon vastaamiseen ja jakaa ne kumppaniklinikalle vain luvallani."},
+  "f.sending":{en:"Sending...",sv:"Skickar...",no:"Sender...",da:"Sender...",fi:"Lähetetään..."},
+  "f.ok.t":{en:"Thank you. Your request has been sent.",sv:"Tack. Din förfrågan har skickats.",no:"Takk. Henvendelsen din er sendt.",da:"Tak. Din henvendelse er sendt.",fi:"Kiitos. Yhteydenottosi on lähetetty."},
+  "f.ok.d":{en:"We will reply to the email address you gave us.",sv:"Vi svarar till den e-postadress du angav.",no:"Vi svarer til e-postadressen du oppga.",da:"Vi svarer til den e-mailadresse, du har oplyst.",fi:"Vastaamme antamaasi sähköpostiosoitteeseen."},
+  "f.err":{en:"Something went wrong. Please try again in a moment.",sv:"Något gick fel. Försök igen om en stund.",no:"Noe gikk galt. Prøv igjen om litt.",da:"Noget gik galt. Prøv igen om lidt.",fi:"Jokin meni vikaan. Yritä hetken kuluttua uudelleen."},
+  "v.required":{en:"Please fill in this field.",sv:"Fyll i det här fältet.",no:"Fyll ut dette feltet.",da:"Udfyld dette felt.",fi:"Täytä tämä kenttä."},
+  "v.email":{en:"Please enter a valid email address.",sv:"Ange en giltig e-postadress.",no:"Skriv inn en gyldig e-postadresse.",da:"Indtast en gyldig e-mailadresse.",fi:"Anna kelvollinen sähköpostiosoite."},
+  "v.consent":{en:"Please accept to continue.",sv:"Godkänn för att fortsätta.",no:"Godta for å fortsette.",da:"Accepter for at fortsætte.",fi:"Hyväksy jatkaaksesi."},
+  "foot.tag":{en:"Private dental concierge",sv:"Privat tandvårdsconcierge",no:"Privat concierge for tannbehandling",da:"Privat concierge for tandbehandling",fi:"Yksityinen hammashoidon concierge-palvelu"},
+  "foot.disc":{en:"Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.",sv:"Nacre är en tjänst för patientkoordination och utför ingen medicinsk behandling eller tandvård. All behandling planeras och utförs av oberoende legitimerade kliniker, som ansvarar för den kliniska vården.",no:"Nacre er en tjeneste for pasientkoordinering og tilbyr ikke medisinsk behandling eller tannbehandling. All behandling planlegges og utføres av uavhengige autoriserte klinikker, som har ansvaret for den kliniske behandlingen.",da:"Nacre er en tjeneste til patientkoordinering og udfører ikke medicinsk behandling eller tandbehandling. Al behandling planlægges og udføres af uafhængige autoriserede klinikker, som er ansvarlige for den kliniske behandling.",fi:"Nacre on potilaskoordinointipalvelu eikä tarjoa lääketieteellistä hoitoa tai hammashoitoa. Kaikki hoidot suunnittelevat ja toteuttavat itsenäiset klinikat, joilla on asianmukaiset luvat ja jotka vastaavat kliinisestä hoidosta."},
+  "alt.hero":{en:"Historic facades of Gdańsk reflected in the Motława river at dusk",sv:"Historiska fasader i Gdańsk speglas i floden Motława i skymningen",no:"Historiske fasader i Gdańsk speiler seg i elven Motława i skumringen",da:"Historiske facader i Gdańsk spejler sig i floden Motława i skumringen",fi:"Gdańskin historialliset julkisivut heijastuvat Motława-jokeen iltahämärässä"},
+  "alt.consult":{en:"A dentist talking calmly with a patient in a bright, modern clinic",sv:"En tandläkare samtalar lugnt med en patient på en ljus, modern klinik",no:"En tannlege snakker rolig med en pasient på en lys, moderne klinikk",da:"En tandlæge taler roligt med en patient på en lys, moderne klinik",fi:"Hammaslääkäri keskustelee rauhallisesti potilaan kanssa valoisalla, modernilla klinikalla"},
+  "alt.car":{en:"A chauffeur in a suit opening the door of a black van",sv:"En chaufför i kostym öppnar dörren till en svart minibuss",no:"En sjåfør i dress åpner døren til en svart minibuss",da:"En chauffør i jakkesæt åbner døren til en sort minibus",fi:"Pukuun pukeutunut kuljettaja avaa mustan tila-auton oven"},
+  "alt.room":{en:"A bright hotel room with a neatly made bed and bedside lamps",sv:"Ett ljust hotellrum med en prydligt bäddad säng och sänglampor",no:"Et lyst hotellrom med en pent oppredd seng og nattlamper",da:"Et lyst hotelværelse med en pænt redt seng og natlamper",fi:"Valoisa hotellihuone, jossa on siististi pedattu sänky ja yövalot"},
+  "alt.sea":{en:"Calm grey sea with a long pier in the distance",sv:"Stilla grått hav med en lång pir i fjärran",no:"Rolig grått hav med en lang brygge i det fjerne",da:"Roligt gråt hav med en lang mole i det fjerne",fi:"Tyyni harmaa meri ja pitkä laituri kaukana"},
+  "alt.city":{en:"The Motława riverside in Gdańsk with the medieval crane and colourful houses",sv:"Strandpromenaden vid Motława i Gdańsk med den medeltida kranen och färgglada hus",no:"Elvebredden ved Motława i Gdańsk med den middelalderske kranen og fargerike hus",da:"Flodbredden ved Motława i Gdańsk med den middelalderlige kran og farverige huse",fi:"Motława-joen ranta Gdańskissa, keskiaikainen nosturi ja värikkäät talot"}
 };
 
-const LANGS = ["en","sv","no","da"];
+const LANGS = ["en","sv","no","da","fi"];
 let lang = "en";
 
 function t(key){ const e = T[key]; return e ? (e[lang] || e.en) : ""; }
@@ -695,6 +707,7 @@ function initialLang(){
     if (l.startsWith("sv")) return "sv";
     if (l.startsWith("nb") || l.startsWith("nn") || l.startsWith("no")) return "no";
     if (l.startsWith("da")) return "da";
+    if (l.startsWith("fi")) return "fi";
     if (l.startsWith("en")) return "en";
   }
   return "en";
