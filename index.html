@@ -231,30 +231,6 @@ section{position:relative}
 .faq-list details[open] summary i{transform:rotate(45deg)}
 .faq-list .a{padding:0 48px 28px 0;color:var(--muted);max-width:68ch}
 
-/* Articles */
-.art-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px}
-.link{display:inline-flex;gap:8px;align-items:center;text-decoration:none;color:var(--accent);font-weight:500;white-space:nowrap}
-.link i{font-size:18px;transition:transform .3s var(--ease)}
-.link:hover i{transform:translateX(3px)}
-.art-note{margin:-24px 0 32px;color:var(--muted);font-size:15px}
-.art-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px)}
-.art-grid a{text-decoration:none;display:block}
-.art-grid .thumb{border-radius:var(--r-panel);overflow:hidden;background:var(--surface-2)}
-.art-grid img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.art-grid a:hover img{transform:scale(1.03)}
-.art-main .thumb{aspect-ratio:16/10}
-.art-grid .meta{margin-top:18px;font-size:14px;color:var(--muted)}
-.art-main h3{margin-top:6px;font-size:clamp(1.4rem,2.2vw,1.9rem);line-height:1.15}
-.art-main .ex{margin-top:8px;color:var(--muted);max-width:52ch}
-.art-side{display:flex;flex-direction:column}
-.art-side a{display:grid;grid-template-columns:168px 1fr;gap:20px;align-items:center;padding:0 0 24px;margin-bottom:24px;border-bottom:1px solid var(--line)}
-.art-side a:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
-.art-side .thumb{aspect-ratio:4/3}
-.art-side .meta{margin:0 0 6px}
-.art-side h3{font-size:1.15rem;line-height:1.25}
-@media (max-width:860px){.art-grid{grid-template-columns:1fr}}
-@media (max-width:480px){.art-side a{grid-template-columns:112px 1fr;gap:16px}}
-
 /* Form */
 .req{background:var(--surface)}
 .req-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,6vw,96px);align-items:start}
@@ -478,18 +454,6 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
     </div>
   </section>
 
-  <!-- Articles -->
-  <section class="sec articles" id="articles" style="padding-top:0">
-    <div class="wrap">
-      <div class="art-head reveal">
-        <h2 class="h2" data-i18n="blog.title">Read before you travel</h2>
-        <a class="link" href="blog/"><span data-i18n="blog.all">All articles</span><i class="ph-light ph-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <p class="art-note" data-i18n="blog.note" hidden>Articles are in English.</p>
-      <div class="art-grid reveal" id="artGrid"></div>
-    </div>
-  </section>
-
   <!-- Request -->
   <section class="sec req" id="request">
     <div class="wrap req-grid">
@@ -568,7 +532,6 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
   </div>
 </footer>
 
-<script src="blog/posts.js"></script>
 <script>
 /* Paste your Formspree endpoint here, e.g. "https://formspree.io/f/abcdwxyz" */
 const FORM_ENDPOINT = "";
@@ -629,9 +592,6 @@ const T = {
   "story.p3":{en:"That is the kind of care we stand for: patient, careful work that protects you.",sv:"Det är den omsorg vi står för: tålmodigt, noggrant arbete som skyddar dig.",no:"Det er den omsorgen vi står for: tålmodig og grundig arbeid som beskytter deg.",da:"Det er den omsorg, vi står for: tålmodigt og omhyggeligt arbejde, der beskytter dig.",fi:"Sellaista huolenpitoa me edustamme: kärsivällistä ja huolellista työtä, joka suojaa sinua."},
   "alt.shell":{en:"A white nautilus shell on a pale background",sv:"Ett vitt nautilusskal mot en ljus bakgrund",no:"Et hvitt nautilusskjell mot en lys bakgrunn",da:"En hvid nautilusskal mod en lys baggrund",fi:"Valkoinen nautiluksen kuori vaalealla taustalla"},
   "faq.title":{en:"Common questions",sv:"Vanliga frågor",no:"Vanlige spørsmål",da:"Ofte stillede spørgsmål",fi:"Usein kysyttyä"},
-  "blog.title":{en:"Read before you travel",sv:"Läs innan du reser",no:"Les før du reiser",da:"Læs, før du rejser",fi:"Lue ennen matkaa"},
-  "blog.all":{en:"All articles",sv:"Alla artiklar",no:"Alle artikler",da:"Alle artikler",fi:"Kaikki artikkelit"},
-  "blog.note":{en:"Articles are in English.",sv:"Artiklarna är på engelska.",no:"Artiklene er på engelsk.",da:"Artiklerne er på engelsk.",fi:"Artikkelit ovat englanniksi."},
   "q1":{en:"Are you a dental clinic?",sv:"Är ni en tandklinik?",no:"Er dere en tannklinikk?",da:"Er I en tandklinik?",fi:"Oletteko hammasklinikka?"},
   "a1":{en:"No. Nacre is an independent coordination service. The licensed clinic you choose is responsible for diagnosis and treatment.",sv:"Nej. Nacre är en oberoende koordinationstjänst. Den legitimerade klinik du väljer ansvarar för diagnos och behandling.",no:"Nei. Nacre er en uavhengig koordineringstjeneste. Den autoriserte klinikken du velger, har ansvaret for diagnose og behandling.",da:"Nej. Nacre er en uafhængig koordineringstjeneste. Den autoriserede klinik, du vælger, er ansvarlig for diagnose og behandling.",fi:"Emme. Nacre on riippumaton koordinointipalvelu. Valitsemasi klinikka, jolla on asianmukaiset luvat, vastaa diagnoosista ja hoidosta."},
   "q2":{en:"How are clinics selected?",sv:"Hur väljs klinikerna ut?",no:"Hvordan velges klinikkene?",da:"Hvordan udvælges klinikkerne?",fi:"Miten klinikat valitaan?"},
@@ -693,7 +653,6 @@ function applyLang(next){
   document.querySelectorAll("[data-i18n-alt]").forEach(el => { const v = t(el.dataset.i18nAlt); if (v) el.alt = v; });
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
   const fl = document.getElementById("fLang"); if (fl) fl.value = lang;
-  const bn = document.querySelector("[data-i18n='blog.note']"); if (bn) bn.hidden = lang === "en";
   document.querySelectorAll(".field.invalid, .check.invalid").forEach(clearError);
   try { localStorage.setItem("nacre-lang", lang); } catch (e) {}
 }
@@ -724,32 +683,6 @@ const sentinel = document.createElement("div");
 sentinel.style.cssText = "position:absolute;top:0;height:1px;width:1px";
 document.body.prepend(sentinel);
 new IntersectionObserver(([e]) => nav.classList.toggle("scrolled", !e.isIntersecting)).observe(sentinel);
-
-/* Latest articles (data in blog/posts.js) */
-(function(){
-  const posts = window.NACRE_POSTS || [];
-  const grid = document.getElementById("artGrid");
-  if (!grid || !posts.length){ const s = document.getElementById("articles"); if (s) s.remove(); return; }
-  const src = (id, w, h) => "https://images.unsplash.com/" + id + "?w=" + w + "&h=" + h + "&fit=crop&q=75&auto=format";
-  const fmt = d => new Date(d + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
-  const card = (p, main) => {
-    const a = document.createElement("a");
-    a.href = "blog/" + p.slug + ".html";
-    a.innerHTML = '<div class="thumb"><img loading="lazy"></div><div><p class="meta"></p><h3></h3>' + (main ? '<p class="ex"></p>' : '') + '</div>';
-    const im = a.querySelector("img");
-    im.width = main ? 1000 : 400; im.height = main ? 625 : 300;
-    im.src = main ? src(p.img, 1000, 625) : src(p.img, 400, 300);
-    im.alt = p.alt;
-    a.querySelector(".meta").textContent = fmt(p.date) + " \u00b7 " + p.minutes + " min read";
-    a.querySelector("h3").textContent = p.title;
-    if (main) a.querySelector(".ex").textContent = p.excerpt;
-    return a;
-  };
-  const m = card(posts[0], true); m.className = "art-main"; grid.appendChild(m);
-  const side = document.createElement("div"); side.className = "art-side";
-  posts.slice(1, 3).forEach(p => side.appendChild(card(p, false)));
-  grid.appendChild(side);
-})();
 
 /* Reveal on scroll */
 const reveals = document.querySelectorAll(".reveal");
