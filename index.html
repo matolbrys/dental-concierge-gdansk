@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nacre | Private Dental Concierge in Gdańsk</title>
-<meta name="description" content="Nacre is an independent dental concierge. We match you with a licensed clinic in Gdańsk and take care of travel, stay and aftercare.">
+<meta name="description" content="Nacre is an independent dental concierge. We match you with a licensed clinic in Gdańsk and coordinate your treatment from first question to aftercare.">
 <meta property="og:title" content="Nacre | Private Dental Concierge in Gdańsk">
-<meta property="og:description" content="We match you with a licensed clinic in Gdańsk and take care of travel, stay and aftercare.">
+<meta property="og:description" content="We match you with a licensed clinic in Gdańsk and coordinate your treatment from first question to aftercare.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1200&h=630&fit=crop&q=75&auto=format">
 <meta name="theme-color" content="#F4F5F7" media="(prefers-color-scheme: light)">
@@ -219,6 +219,30 @@ section{position:relative}
 .faq-list details[open] summary i{transform:rotate(45deg)}
 .faq-list .a{padding:0 48px 28px 0;color:var(--muted);max-width:68ch}
 
+/* Articles */
+.art-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px}
+.link{display:inline-flex;gap:8px;align-items:center;text-decoration:none;color:var(--accent);font-weight:500;white-space:nowrap}
+.link i{font-size:18px;transition:transform .3s var(--ease)}
+.link:hover i{transform:translateX(3px)}
+.art-note{margin:-24px 0 32px;color:var(--muted);font-size:15px}
+.art-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px)}
+.art-grid a{text-decoration:none;display:block}
+.art-grid .thumb{border-radius:var(--r-panel);overflow:hidden;background:var(--surface-2)}
+.art-grid img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.art-grid a:hover img{transform:scale(1.03)}
+.art-main .thumb{aspect-ratio:16/10}
+.art-grid .meta{margin-top:18px;font-size:14px;color:var(--muted)}
+.art-main h3{margin-top:6px;font-size:clamp(1.4rem,2.2vw,1.9rem);line-height:1.15}
+.art-main .ex{margin-top:8px;color:var(--muted);max-width:52ch}
+.art-side{display:flex;flex-direction:column}
+.art-side a{display:grid;grid-template-columns:168px 1fr;gap:20px;align-items:center;padding:0 0 24px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.art-side a:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.art-side .thumb{aspect-ratio:4/3}
+.art-side .meta{margin:0 0 6px}
+.art-side h3{font-size:1.15rem;line-height:1.25}
+@media (max-width:860px){.art-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.art-side a{grid-template-columns:112px 1fr;gap:16px}}
+
 /* Form */
 .req{background:var(--surface)}
 .req-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,6vw,96px);align-items:start}
@@ -235,6 +259,7 @@ section{position:relative}
 .field textarea{min-height:120px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
 .field .err{font-size:14px;color:var(--danger);min-height:0}
+.field .hint{font-size:14px;color:var(--muted)}
 .field.invalid input,.field.invalid select{border-color:var(--danger)}
 .check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:14px;color:var(--muted);margin:4px 0 24px}
 .check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--accent)}
@@ -278,6 +303,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
       <li><a href="#included" data-i18n="nav.included">What's included</a></li>
       <li><a href="#gdansk" data-i18n="nav.gdansk">Why Gdańsk</a></li>
       <li><a href="#faq" data-i18n="nav.faq">Questions</a></li>
+      <li><a href="blog/" data-i18n="nav.blog">Articles</a></li>
     </ul>
     <div class="nav-actions">
       <div class="lang" role="group" aria-label="Language">
@@ -298,7 +324,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
       <div class="hero-copy">
         <p class="eyebrow" data-i18n="hero.eyebrow">Dental concierge in Gdańsk</p>
         <h1 data-i18n="hero.title">Dental care in Gdańsk, arranged for you.</h1>
-        <p class="hero-sub" data-i18n="hero.sub">We match you with a trusted clinic and take care of travel, stay and aftercare, from first question to follow-up.</p>
+        <p class="hero-sub" data-i18n="hero.sub">We match you with a trusted clinic and coordinate your treatment, from first question to follow-up at home.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#request"><span data-i18n="cta">Request a plan</span><i class="ph-light ph-arrow-right" aria-hidden="true"></i></a>
           <a class="btn btn-ghost" href="#how" data-i18n="nav.how">How it works</a>
@@ -316,7 +342,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
   <!-- Statement -->
   <section class="sec statement">
     <div class="wrap">
-      <p class="big reveal"><strong data-i18n="st.strong">Nacre is not a clinic.</strong> <span data-i18n="st.text">We are your independent coordinator: we find the right licensed clinic, handle every practical detail and stay with you throughout.</span></p>
+      <p class="big reveal"><strong data-i18n="st.strong">Nacre is not a clinic.</strong> <span data-i18n="st.text">We are your independent coordinator: we find the right licensed clinic, organise your treatment and stay with you throughout.</span></p>
       <p class="note reveal"><i class="ph-light ph-seal-check" aria-hidden="true"></i><span data-i18n="st.note">All treatment is planned and performed by the clinic's own licensed dentists.</span></p>
     </div>
   </section>
@@ -334,7 +360,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
       <ol class="steps">
         <li class="reveal"><span class="n">01</span><h3 data-i18n="how.s1.t">Share</h3><p data-i18n="how.s1.d">Tell us what you are considering. We reply personally with questions and next steps.</p></li>
         <li class="reveal"><span class="n">02</span><h3 data-i18n="how.s2.t">Compare</h3><p data-i18n="how.s2.d">You receive a written treatment plan and price from the clinic before you book anything.</p></li>
-        <li class="reveal"><span class="n">03</span><h3 data-i18n="how.s3.t">Travel</h3><p data-i18n="how.s3.d">We book your transfers and stay, and accompany you to appointments in Gdańsk.</p></li>
+        <li class="reveal"><span class="n">03</span><h3 data-i18n="how.s3.t">Travel</h3><p data-i18n="how.s3.d">We schedule your appointments, can arrange airport transfers and recommend hotels close to the clinic.</p></li>
         <li class="reveal"><span class="n">04</span><h3 data-i18n="how.s4.t">Follow up</h3><p data-i18n="how.s4.d">Back home, we stay in touch and coordinate any follow-up with your clinic.</p></li>
       </ol>
     </div>
@@ -352,12 +378,12 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
           </div>
         </article>
         <article class="cell c-transfer reveal">
-          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1770290405640-5daf7593c92a?w=1000&h=520&fit=crop&q=75&auto=format" width="1000" height="520" alt="The quiet rear seat of a private car" data-i18n-alt="alt.car"></div>
-          <div class="body"><h3 data-i18n="incl.transfer.t">Private transfers</h3><p data-i18n="incl.transfer.d">A driver meets you on arrival and takes you to every appointment.</p></div>
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1558222209-134191edfe0d?w=1000&h=520&fit=crop&crop=faces,center&q=75&auto=format" width="1000" height="520" alt="A driver in a dark suit opening the rear door of a car" data-i18n-alt="alt.car"></div>
+          <div class="body"><h3 data-i18n="incl.transfer.t">Airport transfers</h3><p data-i18n="incl.transfer.d">On request, a driver meets you at the airport and takes you to your appointments.</p></div>
         </article>
         <article class="cell c-stay reveal">
-          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1549638441-b787d2e11f14?w=720&h=480&fit=crop&q=75&auto=format" width="720" height="480" alt="A quiet, light hotel room with a made bed by the window" data-i18n-alt="alt.room"></div>
-          <div class="body"><h3 data-i18n="incl.stay.t">Accommodation</h3><p data-i18n="incl.stay.d">Quiet hotels and apartments close to your clinic.</p></div>
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1605346434674-a440ca4dc4c0?w=720&h=480&fit=crop&q=75&auto=format" width="720" height="480" alt="A bright hotel room with a neatly made bed and bedside lamps" data-i18n-alt="alt.room"></div>
+          <div class="body"><h3 data-i18n="incl.stay.t">Hotel recommendations</h3><p data-i18n="incl.stay.d">Quiet hotels close to your clinic, which you book directly.</p></div>
         </article>
         <article class="cell c-coord reveal">
           <div class="ph-wrap">
@@ -418,6 +444,18 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
     </div>
   </section>
 
+  <!-- Articles -->
+  <section class="sec articles" id="articles" style="padding-top:0">
+    <div class="wrap">
+      <div class="art-head reveal">
+        <h2 class="h2" data-i18n="blog.title">Read before you travel</h2>
+        <a class="link" href="blog/"><span data-i18n="blog.all">All articles</span><i class="ph-light ph-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <p class="art-note" data-i18n="blog.note" hidden>Articles are in English.</p>
+      <div class="art-grid reveal" id="artGrid"></div>
+    </div>
+  </section>
+
   <!-- Request -->
   <section class="sec req" id="request">
     <div class="wrap req-grid">
@@ -468,7 +506,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
                 <option value="Later" data-i18n="w.later">Later, just exploring</option>
               </select><span class="err"></span></div>
           </div>
-          <div class="field"><label for="fMsg" data-i18n="f.msg">Anything we should know? (optional)</label><textarea id="fMsg" name="message"></textarea></div>
+          <div class="field"><label for="fMsg" data-i18n="f.msg">Anything we should know? (optional)</label><textarea id="fMsg" name="message" aria-describedby="fMsgHint"></textarea><span class="hint" id="fMsgHint" data-i18n="f.msghint">English is preferred, but you are welcome to write in your own language.</span></div>
           <label class="check"><input type="checkbox" id="fConsent" name="consent" value="yes" required><span data-i18n="f.consent">I agree that Nacre may use my details to answer this request and share them with a partner clinic only with my permission.</span><span class="err" aria-live="polite"></span></label>
           <button class="btn btn-primary" type="submit" id="fSubmit"><span data-i18n="cta">Request a plan</span></button>
           <p class="form-error" id="fError" role="alert" hidden data-i18n="f.err">Something went wrong. Please try again in a moment.</p>
@@ -496,6 +534,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
   </div>
 </footer>
 
+<script src="blog/posts.js"></script>
 <script>
 /* Paste your Formspree endpoint here, e.g. "https://formspree.io/f/abcdwxyz" */
 const FORM_ENDPOINT = "";
@@ -506,12 +545,13 @@ const T = {
   "nav.included":{en:"What's included",sv:"Det här ingår",no:"Dette er inkludert",da:"Det er inkluderet"},
   "nav.gdansk":{en:"Why Gdańsk",sv:"Varför Gdańsk",no:"Hvorfor Gdańsk",da:"Hvorfor Gdańsk"},
   "nav.faq":{en:"Questions",sv:"Frågor",no:"Spørsmål",da:"Spørgsmål"},
+  "nav.blog":{en:"Articles",sv:"Artiklar",no:"Artikler",da:"Artikler"},
   "cta":{en:"Request a plan",sv:"Begär en plan",no:"Be om en plan",da:"Bed om en plan"},
   "hero.eyebrow":{en:"Dental concierge in Gdańsk",sv:"Tandvårdsconcierge i Gdańsk",no:"Concierge for tannbehandling i Gdańsk",da:"Concierge for tandbehandling i Gdańsk"},
   "hero.title":{en:"Dental care in Gdańsk, arranged for you.",sv:"Tandvård i Gdańsk, ordnad för dig.",no:"Tannbehandling i Gdańsk, ordnet for deg.",da:"Tandbehandling i Gdańsk, arrangeret for dig."},
-  "hero.sub":{en:"We match you with a trusted clinic and take care of travel, stay and aftercare, from first question to follow-up.",sv:"Vi matchar dig med en betrodd klinik och tar hand om resa, boende och eftervård, från första fråga till uppföljning.",no:"Vi finner en klinikk du kan stole på, og tar oss av reise, opphold og etterkontroll, fra første spørsmål til oppfølging.",da:"Vi finder en klinik, du kan stole på, og tager os af rejse, ophold og efterbehandling, fra første spørgsmål til opfølgning."},
+  "hero.sub":{en:"We match you with a trusted clinic and coordinate your treatment, from first question to follow-up at home.",sv:"Vi matchar dig med en betrodd klinik och samordnar din behandling, från första fråga till uppföljning hemma.",no:"Vi finner en klinikk du kan stole på, og koordinerer behandlingen din, fra første spørsmål til oppfølging hjemme.",da:"Vi finder en klinik, du kan stole på, og koordinerer din behandling, fra første spørgsmål til opfølgning hjemme."},
   "st.strong":{en:"Nacre is not a clinic.",sv:"Nacre är ingen klinik.",no:"Nacre er ikke en klinikk.",da:"Nacre er ikke en klinik."},
-  "st.text":{en:"We are your independent coordinator: we find the right licensed clinic, handle every practical detail and stay with you throughout.",sv:"Vi är din oberoende koordinator: vi hittar rätt legitimerad klinik, sköter alla praktiska detaljer och finns med dig hela vägen.",no:"Vi er din uavhengige koordinator: vi finner riktig autorisert klinikk, ordner alt det praktiske og er med deg hele veien.",da:"Vi er din uafhængige koordinator: vi finder den rette autoriserede klinik, klarer alt det praktiske og er med dig hele vejen."},
+  "st.text":{en:"We are your independent coordinator: we find the right licensed clinic, organise your treatment and stay with you throughout.",sv:"Vi är din oberoende koordinator: vi hittar rätt legitimerad klinik, planerar din behandling och finns med dig hela vägen.",no:"Vi er din uavhengige koordinator: vi finner riktig autorisert klinikk, organiserer behandlingen din og er med deg hele veien.",da:"Vi er din uafhængige koordinator: vi finder den rette autoriserede klinik, organiserer din behandling og er med dig hele vejen."},
   "st.note":{en:"All treatment is planned and performed by the clinic's own licensed dentists.",sv:"All behandling planeras och utförs av klinikens egna legitimerade tandläkare.",no:"All behandling planlegges og utføres av klinikkens egne autoriserte tannleger.",da:"Al behandling planlægges og udføres af klinikkens egne autoriserede tandlæger."},
   "how.title":{en:"From first message to final check.",sv:"Från första meddelandet till sista kontrollen.",no:"Fra første melding til siste kontroll.",da:"Fra første besked til sidste kontrol."},
   "how.s1.t":{en:"Share",sv:"Berätta",no:"Fortell",da:"Fortæl"},
@@ -519,16 +559,16 @@ const T = {
   "how.s2.t":{en:"Compare",sv:"Jämför",no:"Sammenlign",da:"Sammenlign"},
   "how.s2.d":{en:"You receive a written treatment plan and price from the clinic before you book anything.",sv:"Du får en skriftlig behandlingsplan och ett pris från kliniken innan du bokar något.",no:"Du får en skriftlig behandlingsplan og pris fra klinikken før du bestiller noe.",da:"Du får en skriftlig behandlingsplan og pris fra klinikken, før du booker noget."},
   "how.s3.t":{en:"Travel",sv:"Res",no:"Reis",da:"Rejs"},
-  "how.s3.d":{en:"We book your transfers and stay, and accompany you to appointments in Gdańsk.",sv:"Vi bokar transfer och boende och följer med dig till besöken i Gdańsk.",no:"Vi bestiller transport og overnatting og følger deg til avtalene i Gdańsk.",da:"Vi booker transport og ophold og følger dig til aftalerne i Gdańsk."},
+  "how.s3.d":{en:"We schedule your appointments, can arrange airport transfers and recommend hotels close to the clinic.",sv:"Vi bokar dina besök, kan ordna transfer från flygplatsen och tipsar om hotell nära kliniken.",no:"Vi setter opp avtalene dine, kan ordne transport fra flyplassen og anbefaler hoteller nær klinikken.",da:"Vi planlægger dine aftaler, kan arrangere transport fra lufthavnen og anbefaler hoteller tæt på klinikken."},
   "how.s4.t":{en:"Follow up",sv:"Följ upp",no:"Følg opp",da:"Følg op"},
   "how.s4.d":{en:"Back home, we stay in touch and coordinate any follow-up with your clinic.",sv:"Hemma igen håller vi kontakten och samordnar eventuell uppföljning med kliniken.",no:"Når du er hjemme igjen, holder vi kontakten og koordinerer eventuell oppfølging med klinikken.",da:"Når du er hjemme igen, holder vi kontakten og koordinerer eventuel opfølgning med klinikken."},
   "incl.title":{en:"Everything around the treatment, handled.",sv:"Allt runt omkring behandlingen, ordnat.",no:"Alt rundt behandlingen, ordnet.",da:"Alt omkring behandlingen, klaret."},
   "incl.match.t":{en:"Clinic matching",sv:"Rätt klinik",no:"Riktig klinikk",da:"Den rette klinik"},
   "incl.match.d":{en:"Licensed clinics chosen for your case, with plans and prices in writing.",sv:"Legitimerade kliniker utvalda för ditt fall, med planer och priser skriftligt.",no:"Autoriserte klinikker valgt ut for ditt tilfelle, med planer og priser skriftlig.",da:"Autoriserede klinikker udvalgt til dit behov, med planer og priser på skrift."},
-  "incl.transfer.t":{en:"Private transfers",sv:"Privat transfer",no:"Privat transport",da:"Privat transport"},
-  "incl.transfer.d":{en:"A driver meets you on arrival and takes you to every appointment.",sv:"En chaufför möter dig vid ankomst och kör dig till varje besök.",no:"En sjåfør møter deg ved ankomst og kjører deg til hver avtale.",da:"En chauffør møder dig ved ankomst og kører dig til hver aftale."},
-  "incl.stay.t":{en:"Accommodation",sv:"Boende",no:"Overnatting",da:"Ophold"},
-  "incl.stay.d":{en:"Quiet hotels and apartments close to your clinic.",sv:"Lugna hotell och lägenheter nära kliniken.",no:"Rolige hoteller og leiligheter nær klinikken.",da:"Rolige hoteller og lejligheder tæt på klinikken."},
+  "incl.transfer.t":{en:"Airport transfers",sv:"Flygplatstransfer",no:"Flyplasstransport",da:"Lufthavnstransport"},
+  "incl.transfer.d":{en:"On request, a driver meets you at the airport and takes you to your appointments.",sv:"På begäran möter en chaufför dig på flygplatsen och kör dig till dina besök.",no:"Ved ønske møter en sjåfør deg på flyplassen og kjører deg til avtalene dine.",da:"Efter ønske møder en chauffør dig i lufthavnen og kører dig til dine aftaler."},
+  "incl.stay.t":{en:"Hotel recommendations",sv:"Hotelltips",no:"Hotellanbefalinger",da:"Hotelanbefalinger"},
+  "incl.stay.d":{en:"Quiet hotels close to your clinic, which you book directly.",sv:"Lugna hotell nära kliniken, som du bokar direkt.",no:"Rolige hoteller nær klinikken, som du bestiller selv.",da:"Rolige hoteller tæt på klinikken, som du selv booker."},
   "incl.coord.t":{en:"One personal contact",sv:"En personlig kontakt",no:"Én personlig kontakt",da:"Én personlig kontakt"},
   "incl.coord.d":{en:"The same coordinator from your first message to your final check.",sv:"Samma koordinator från ditt första meddelande till din sista kontroll.",no:"Samme koordinator fra første melding til siste kontroll.",da:"Den samme koordinator fra din første besked til din sidste kontrol."},
   "incl.after.t":{en:"Aftercare at home",sv:"Eftervård hemma",no:"Oppfølging hjemme",da:"Opfølgning hjemme"},
@@ -545,6 +585,9 @@ const T = {
   "city.title":{en:"A calm city by the sea, close to home.",sv:"En lugn stad vid havet, nära hemma.",no:"En rolig by ved havet, nær hjemme.",da:"En rolig by ved havet, tæt på hjemme."},
   "city.d":{en:"Direct flights from Oslo, Stockholm, Copenhagen, Helsinki and other Nordic cities, plus ferries from Sweden. Between appointments: the old town, the seaside at Sopot and good food.",sv:"Direktflyg från Oslo, Stockholm, Köpenhamn, Helsingfors och fler nordiska städer, samt färjor från Sverige. Mellan besöken: gamla stan, havet i Sopot och god mat.",no:"Direktefly fra Oslo, Stockholm, København, Helsingfors og flere nordiske byer, i tillegg til ferjer fra Sverige. Mellom avtalene: gamlebyen, sjøen i Sopot og god mat.",da:"Direkte fly fra Oslo, Stockholm, København, Helsinki og flere nordiske byer samt færger fra Sverige. Mellem aftalerne: den gamle bydel, havet ved Sopot og god mad."},
   "faq.title":{en:"Common questions",sv:"Vanliga frågor",no:"Vanlige spørsmål",da:"Ofte stillede spørgsmål"},
+  "blog.title":{en:"Read before you travel",sv:"Läs innan du reser",no:"Les før du reiser",da:"Læs, før du rejser"},
+  "blog.all":{en:"All articles",sv:"Alla artiklar",no:"Alle artikler",da:"Alle artikler"},
+  "blog.note":{en:"Articles are in English.",sv:"Artiklarna är på engelska.",no:"Artiklene er på engelsk.",da:"Artiklerne er på engelsk."},
   "q1":{en:"Are you a dental clinic?",sv:"Är ni en tandklinik?",no:"Er dere en tannklinikk?",da:"Er I en tandklinik?"},
   "a1":{en:"No. Nacre is an independent coordination service. The licensed clinic you choose is responsible for diagnosis and treatment.",sv:"Nej. Nacre är en oberoende koordinationstjänst. Den legitimerade klinik du väljer ansvarar för diagnos och behandling.",no:"Nei. Nacre er en uavhengig koordineringstjeneste. Den autoriserte klinikken du velger, har ansvaret for diagnose og behandling.",da:"Nej. Nacre er en uafhængig koordineringstjeneste. Den autoriserede klinik, du vælger, er ansvarlig for diagnose og behandling."},
   "q2":{en:"How are clinics selected?",sv:"Hur väljs klinikerna ut?",no:"Hvordan velges klinikkene?",da:"Hvordan udvælges klinikkerne?"},
@@ -575,6 +618,7 @@ const T = {
   "w.mid":{en:"In 3 to 6 months",sv:"Om 3 till 6 månader",no:"Om 3 til 6 måneder",da:"Om 3 til 6 måneder"},
   "w.later":{en:"Later, just exploring",sv:"Senare, jag undersöker bara",no:"Senere, jeg undersøker bare",da:"Senere, jeg undersøger bare"},
   "f.msg":{en:"Anything we should know? (optional)",sv:"Något vi bör veta? (valfritt)",no:"Noe vi bør vite? (valgfritt)",da:"Noget, vi bør vide? (valgfrit)"},
+  "f.msghint":{en:"English is preferred, but you are welcome to write in your own language.",sv:"Skriv gärna på engelska, men du får också skriva på svenska.",no:"Skriv gjerne på engelsk, men du kan også skrive på norsk.",da:"Skriv gerne på engelsk, men du må også gerne skrive på dansk."},
   "f.consent":{en:"I agree that Nacre may use my details to answer this request and share them with a partner clinic only with my permission.",sv:"Jag godkänner att Nacre använder mina uppgifter för att besvara förfrågan och endast delar dem med en partnerklinik med mitt tillstånd.",no:"Jeg godtar at Nacre bruker opplysningene mine til å svare på henvendelsen og bare deler dem med en partnerklinikk med min tillatelse.",da:"Jeg accepterer, at Nacre bruger mine oplysninger til at besvare henvendelsen og kun deler dem med en partnerklinik med min tilladelse."},
   "f.sending":{en:"Sending...",sv:"Skickar...",no:"Sender...",da:"Sender..."},
   "f.ok.t":{en:"Thank you. Your request has been sent.",sv:"Tack. Din förfrågan har skickats.",no:"Takk. Henvendelsen din er sendt.",da:"Tak. Din henvendelse er sendt."},
@@ -587,8 +631,8 @@ const T = {
   "foot.disc":{en:"Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.",sv:"Nacre är en tjänst för patientkoordination och utför ingen medicinsk behandling eller tandvård. All behandling planeras och utförs av oberoende legitimerade kliniker, som ansvarar för den kliniska vården.",no:"Nacre er en tjeneste for pasientkoordinering og tilbyr ikke medisinsk behandling eller tannbehandling. All behandling planlegges og utføres av uavhengige autoriserte klinikker, som har ansvaret for den kliniske behandlingen.",da:"Nacre er en tjeneste til patientkoordinering og udfører ikke medicinsk behandling eller tandbehandling. Al behandling planlægges og udføres af uafhængige autoriserede klinikker, som er ansvarlige for den kliniske behandling."},
   "alt.hero":{en:"Historic facades of Gdańsk reflected in the Motława river at dusk",sv:"Historiska fasader i Gdańsk speglas i floden Motława i skymningen",no:"Historiske fasader i Gdańsk speiler seg i elven Motława i skumringen",da:"Historiske facader i Gdańsk spejler sig i floden Motława i skumringen"},
   "alt.consult":{en:"A dentist talking calmly with a patient in a bright, modern clinic",sv:"En tandläkare samtalar lugnt med en patient på en ljus, modern klinik",no:"En tannlege snakker rolig med en pasient på en lys, moderne klinikk",da:"En tandlæge taler roligt med en patient på en lys, moderne klinik"},
-  "alt.car":{en:"The quiet rear seat of a private car",sv:"Det lugna baksätet i en privat bil",no:"Det rolige baksetet i en privat bil",da:"Det rolige bagsæde i en privat bil"},
-  "alt.room":{en:"A quiet, light hotel room with a made bed by the window",sv:"Ett lugnt, ljust hotellrum med en bäddad säng vid fönstret",no:"Et rolig, lyst hotellrom med oppredd seng ved vinduet",da:"Et roligt, lyst hotelværelse med redt seng ved vinduet"},
+  "alt.car":{en:"A driver in a dark suit opening the rear door of a car",sv:"En chaufför i mörk kostym öppnar bakdörren på en bil",no:"En sjåfør i mørk dress åpner bakdøren på en bil",da:"En chauffør i mørkt jakkesæt åbner bagdøren på en bil"},
+  "alt.room":{en:"A bright hotel room with a neatly made bed and bedside lamps",sv:"Ett ljust hotellrum med en prydligt bäddad säng och sänglampor",no:"Et lyst hotellrom med en pent oppredd seng og nattlamper",da:"Et lyst hotelværelse med en pænt redt seng og natlamper"},
   "alt.sea":{en:"Calm grey sea with a long pier in the distance",sv:"Stilla grått hav med en lång pir i fjärran",no:"Rolig grått hav med en lang brygge i det fjerne",da:"Roligt gråt hav med en lang mole i det fjerne"},
   "alt.city":{en:"The Motława riverside in Gdańsk with the medieval crane and colourful houses",sv:"Strandpromenaden vid Motława i Gdańsk med den medeltida kranen och färgglada hus",no:"Elvebredden ved Motława i Gdańsk med den middelalderske kranen og fargerike hus",da:"Flodbredden ved Motława i Gdańsk med den middelalderlige kran og farverige huse"}
 };
@@ -605,6 +649,7 @@ function applyLang(next){
   document.querySelectorAll("[data-i18n-alt]").forEach(el => { const v = t(el.dataset.i18nAlt); if (v) el.alt = v; });
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
   const fl = document.getElementById("fLang"); if (fl) fl.value = lang;
+  const bn = document.querySelector("[data-i18n='blog.note']"); if (bn) bn.hidden = lang === "en";
   document.querySelectorAll(".field.invalid, .check.invalid").forEach(clearError);
   try { localStorage.setItem("nacre-lang", lang); } catch (e) {}
 }
@@ -634,6 +679,32 @@ const sentinel = document.createElement("div");
 sentinel.style.cssText = "position:absolute;top:0;height:1px;width:1px";
 document.body.prepend(sentinel);
 new IntersectionObserver(([e]) => nav.classList.toggle("scrolled", !e.isIntersecting)).observe(sentinel);
+
+/* Latest articles (data in blog/posts.js) */
+(function(){
+  const posts = window.NACRE_POSTS || [];
+  const grid = document.getElementById("artGrid");
+  if (!grid || !posts.length){ const s = document.getElementById("articles"); if (s) s.remove(); return; }
+  const src = (id, w, h) => "https://images.unsplash.com/" + id + "?w=" + w + "&h=" + h + "&fit=crop&q=75&auto=format";
+  const fmt = d => new Date(d + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  const card = (p, main) => {
+    const a = document.createElement("a");
+    a.href = "blog/" + p.slug + ".html";
+    a.innerHTML = '<div class="thumb"><img loading="lazy"></div><div><p class="meta"></p><h3></h3>' + (main ? '<p class="ex"></p>' : '') + '</div>';
+    const im = a.querySelector("img");
+    im.width = main ? 1000 : 400; im.height = main ? 625 : 300;
+    im.src = main ? src(p.img, 1000, 625) : src(p.img, 400, 300);
+    im.alt = p.alt;
+    a.querySelector(".meta").textContent = fmt(p.date) + " \u00b7 " + p.minutes + " min read";
+    a.querySelector("h3").textContent = p.title;
+    if (main) a.querySelector(".ex").textContent = p.excerpt;
+    return a;
+  };
+  const m = card(posts[0], true); m.className = "art-main"; grid.appendChild(m);
+  const side = document.createElement("div"); side.className = "art-side";
+  posts.slice(1, 3).forEach(p => side.appendChild(card(p, false)));
+  grid.appendChild(side);
+})();
 
 /* Reveal on scroll */
 const reveals = document.querySelectorAll(".reveal");
