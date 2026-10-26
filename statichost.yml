@@ -1,0 +1,2 @@
+# statichost.eu: plain HTML site, publish the repository root as-is (no build step)
+public: .
