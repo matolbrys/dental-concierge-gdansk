@@ -1,14 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-page="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nacre | Private Dental Concierge in Gdańsk</title>
-<meta name="description" content="Nacre is an independent dental concierge. We match you with a licensed clinic in Gdańsk and coordinate your treatment from first question to aftercare.">
-<meta property="og:title" content="Nacre | Private Dental Concierge in Gdańsk">
-<meta property="og:description" content="We match you with a licensed clinic in Gdańsk and coordinate your treatment from first question to aftercare.">
+<script>
+/* Root page only: send visitors to their language version (saved choice, ?lang= or browser language) */
+(function(){var d=document.documentElement;if(d.getAttribute("data-page")!=="en")return;var L={en:"",sv:"/sv/",no:"/no/",da:"/da/",fi:"/fi/"},p=new URLSearchParams(location.search).get("lang");if(!p){try{p=localStorage.getItem("nacre-lang")}catch(e){}}if(!p){var n=(navigator.languages||[navigator.language||""]).map(function(l){return String(l).toLowerCase()});for(var i=0;i<n.length&&!p;i++){var l=n[i];if(l.indexOf("en")===0)p="en";else if(l.indexOf("sv")===0)p="sv";else if(/^(nb|nn|no)/.test(l))p="no";else if(l.indexOf("da")===0)p="da";else if(l.indexOf("fi")===0)p="fi";}}if(p&&L[p])location.replace(L[p]+location.hash);})();
+</script>
+<!-- seo -->
+<title>Nacre | Private dental concierge in Gdańsk, Poland</title>
+<meta name="description" content="Considering dental implants in Poland? Nacre, an independent concierge in Gdańsk, matches you with a licensed clinic and coordinates your stay. Not a clinic.">
+<link rel="canonical" href="https://wearenacre.com/">
+<link rel="alternate" hreflang="en" href="https://wearenacre.com/">
+<link rel="alternate" hreflang="sv" href="https://wearenacre.com/sv/">
+<link rel="alternate" hreflang="no" href="https://wearenacre.com/no/">
+<link rel="alternate" hreflang="da" href="https://wearenacre.com/da/">
+<link rel="alternate" hreflang="fi" href="https://wearenacre.com/fi/">
+<link rel="alternate" hreflang="x-default" href="https://wearenacre.com/">
+<meta property="og:site_name" content="Nacre">
+<meta property="og:title" content="Nacre | Private dental concierge in Gdańsk, Poland">
+<meta property="og:description" content="Considering dental implants in Poland? Nacre, an independent concierge in Gdańsk, matches you with a licensed clinic and coordinates your stay. Not a clinic.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://wearenacre.com/">
+<meta property="og:locale" content="en_GB">
 <meta property="og:image" content="https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1200&h=630&fit=crop&q=75&auto=format">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://wearenacre.com/#org","name":"Nacre","url":"https://wearenacre.com/","email":"hello@wearenacre.com","description":"Considering dental implants in Poland? Nacre, an independent concierge in Gdańsk, matches you with a licensed clinic and coordinates your stay. Not a clinic.","address":{"@type":"PostalAddress","addressLocality":"Gdańsk","addressCountry":"PL"},"areaServed":[{"@type":"Country","name":"Sweden"},{"@type":"Country","name":"Norway"},{"@type":"Country","name":"Denmark"},{"@type":"Country","name":"Finland"}]},{"@type":"WebSite","@id":"https://wearenacre.com/#website","url":"https://wearenacre.com/","name":"Nacre","publisher":{"@id":"https://wearenacre.com/#org"}},{"@type":"WebPage","@id":"https://wearenacre.com/#page","url":"https://wearenacre.com/","name":"Nacre | Private dental concierge in Gdańsk, Poland","description":"Considering dental implants in Poland? Nacre, an independent concierge in Gdańsk, matches you with a licensed clinic and coordinates your stay. Not a clinic.","inLanguage":"en","isPartOf":{"@id":"https://wearenacre.com/#website"},"about":{"@id":"https://wearenacre.com/#org"}},{"@type":"FAQPage","@id":"https://wearenacre.com/#faq","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Are you a dental clinic?","acceptedAnswer":{"@type":"Answer","text":"No. Nacre is an independent concierge service and does not provide any medical or dental care. The licensed clinic you choose is solely responsible for diagnosis and treatment."}},{"@type":"Question","name":"How are clinics selected?","acceptedAnswer":{"@type":"Answer","text":"We work with licensed clinics in Gdańsk with experienced specialists, English-speaking staff and clear written treatment plans."}},{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Before you commit, you receive a written quote with the clinic's treatment costs and our concierge fee shown separately."}},{"@type":"Question","name":"How many trips will I need?","acceptedAnswer":{"@type":"Answer","text":"It depends on the treatment. Implants usually need two visits a few months apart, while crowns or veneers can often be done in one stay. The clinic confirms this in your plan."}},{"@type":"Question","name":"What if I need help after I return home?","acceptedAnswer":{"@type":"Answer","text":"Contact your coordinator. We pass your questions to the clinic, arrange a video consultation with the dentist if needed and help plan any follow-up visit. Medical questions are always answered by the clinic."}}]}]}</script>
+<!-- /seo -->
 <meta name="theme-color" content="#F4F5F7" media="(prefers-color-scheme: light)">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://images.unsplash.com">
@@ -298,7 +316,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
       <li><a href="#included" data-i18n="nav.included">What's included</a></li>
       <li><a href="#gdansk" data-i18n="nav.gdansk">Why Gdańsk</a></li>
       <li><a href="#faq" data-i18n="nav.faq">Questions</a></li>
-      <li><a href="blog/" data-i18n="nav.blog">Articles</a></li>
+      <li><a href="/blog/" data-i18n="nav.blog">Articles</a></li>
     </ul>
     <div class="nav-actions">
       <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -330,7 +348,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
   <section class="hero" id="top">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow" data-i18n="hero.eyebrow">Private dental concierge, Gdańsk</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Private dental concierge in Gdańsk, Poland</p>
         <h1 data-i18n="hero.title">Dental care in Gdańsk, calmly coordinated.</h1>
         <p class="hero-sub" data-i18n="hero.sub">A private concierge service: we find the right clinic and quietly take care of everything around your treatment.</p>
         <div class="hero-ctas">
@@ -380,7 +398,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
       <h2 class="h2 incl-head reveal" data-i18n="incl.title">Everything around your treatment, taken care of.</h2>
       <div class="bento">
         <article class="cell c-match reveal">
-          <div class="pic"><img loading="lazy" src="img/clinic-matching.webp" width="1000" height="620" alt="A coordinator in a navy sweater reviewing a printed treatment plan, with a dental X-ray on a tablet" data-i18n-alt="alt.match"></div>
+          <div class="pic"><img loading="lazy" src="/img/clinic-matching.webp" width="1000" height="620" alt="A coordinator in a navy sweater reviewing a printed treatment plan, with a dental X-ray on a tablet" data-i18n-alt="alt.match"></div>
           <div class="body">
             <h3 data-i18n="incl.match.t">Clinic matching</h3><p data-i18n="incl.match.d">Licensed clinics selected for your case, with plans and prices set out in writing.</p>
             <ul class="criteria">
@@ -392,15 +410,15 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
           </div>
         </article>
         <article class="cell c-transfer reveal">
-          <div class="pic"><img loading="lazy" src="img/airport-transfer.webp" width="1000" height="520" alt="A driver in a dark coat wheeling a traveller's suitcase to a dark car at a small airport" data-i18n-alt="alt.car"></div>
+          <div class="pic"><img loading="lazy" src="/img/airport-transfer.webp" width="1000" height="520" alt="A driver in a dark coat wheeling a traveller's suitcase to a dark car at a small airport" data-i18n-alt="alt.car"></div>
           <div class="body"><h3 data-i18n="incl.transfer.t">Airport transfers</h3><p data-i18n="incl.transfer.d">On request, a private driver meets you at arrivals and brings you to each appointment.</p></div>
         </article>
         <article class="cell c-stay reveal">
-          <div class="pic"><img loading="lazy" src="img/hotel-room.webp" width="720" height="480" alt="A calm hotel room with linen bedding and a window overlooking the old-town rooftops of Gdańsk" data-i18n-alt="alt.room"></div>
+          <div class="pic"><img loading="lazy" src="/img/hotel-room.webp" width="720" height="480" alt="A calm hotel room with linen bedding and a window overlooking the old-town rooftops of Gdańsk" data-i18n-alt="alt.room"></div>
           <div class="body"><h3 data-i18n="incl.stay.t">Hotel recommendations</h3><p data-i18n="incl.stay.d">We suggest quiet hotels near the clinic. You book directly, on your own terms.</p></div>
         </article>
         <article class="cell c-coord reveal">
-          <div class="pic"><img loading="lazy" src="img/personal-coordinator.webp" width="720" height="480" alt="A coordinator on the phone at a window desk, with a notebook and a cup of tea" data-i18n-alt="alt.coord"></div>
+          <div class="pic"><img loading="lazy" src="/img/personal-coordinator.webp" width="720" height="480" alt="A coordinator on the phone at a window desk, with a notebook and a cup of tea" data-i18n-alt="alt.coord"></div>
           <div class="body"><i class="ph-light ph-chat-circle-text ico" aria-hidden="true"></i><h3 data-i18n="incl.coord.t">One person, always</h3><p data-i18n="incl.coord.d">The same coordinator from your first message to your final check, reachable when you need them.</p></div>
         </article>
         <article class="cell c-after reveal">
@@ -446,7 +464,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
   <section class="sec story" id="story">
     <div class="wrap story-grid">
       <div class="story-img reveal">
-        <img loading="lazy" src="img/mother-of-pearl.webp" width="900" height="1100" alt="Close-up of polished mother-of-pearl with soft ribbons of pink, lavender and mint" data-i18n-alt="alt.shell">
+        <img loading="lazy" src="/img/mother-of-pearl.webp" width="900" height="1100" alt="Close-up of polished mother-of-pearl with soft ribbons of pink, lavender and mint" data-i18n-alt="alt.shell">
       </div>
       <div class="story-text reveal">
         <p class="eyebrow" data-i18n="story.eyebrow">Why Nacre</p>
@@ -563,7 +581,7 @@ const T = {
   "nav.faq":{en:"Questions",sv:"Frågor",no:"Spørsmål",da:"Spørgsmål",fi:"Kysymyksiä"},
   "nav.blog":{en:"Articles",sv:"Artiklar",no:"Artikler",da:"Artikler",fi:"Artikkelit"},
   "cta":{en:"Start a conversation",sv:"Börja med ett samtal",no:"Start en samtale",da:"Start en samtale",fi:"Aloita keskustelu"},
-  "hero.eyebrow":{en:"Private dental concierge, Gdańsk",sv:"Privat tandvårdsconcierge, Gdańsk",no:"Privat concierge for tannbehandling, Gdańsk",da:"Privat concierge for tandbehandling, Gdańsk",fi:"Yksityinen hammashoidon concierge, Gdańsk"},
+  "hero.eyebrow":{en:"Private dental concierge in Gdańsk, Poland",sv:"Privat tandvårdsconcierge i Gdańsk, Polen",no:"Privat concierge for tannbehandling i Gdańsk, Polen",da:"Privat concierge for tandbehandling i Gdańsk, Polen",fi:"Yksityinen hammashoidon concierge, Gdańsk, Puola"},
   "hero.title":{en:"Dental care in Gdańsk, calmly coordinated.",sv:"Tandvård i Gdańsk, lugnt samordnad.",no:"Tannbehandling i Gdańsk, rolig koordinert.",da:"Tandbehandling i Gdańsk, roligt koordineret.",fi:"Hammashoito Gdańskissa, rauhallisesti koordinoituna."},
   "hero.sub":{en:"A private concierge service: we find the right clinic and quietly take care of everything around your treatment.",sv:"En privat conciergetjänst: vi hittar rätt klinik och tar i lugn och ro hand om allt runt din behandling.",no:"En privat concierge-tjeneste: vi finner riktig klinikk og tar oss rolig av alt rundt behandlingen din.",da:"En privat concierge-service: vi finder den rette klinik og tager os roligt af alt omkring din behandling.",fi:"Yksityinen concierge-palvelu: löydämme sinulle sopivan klinikan ja huolehdimme rauhallisesti kaikesta hoitosi ympärillä."},
   "st.strong":{en:"Nacre is a concierge service, not a clinic.",sv:"Nacre är en conciergetjänst, inte en klinik.",no:"Nacre er en concierge-tjeneste, ikke en klinikk.",da:"Nacre er en concierge-service, ikke en klinik.",fi:"Nacre on concierge-palvelu, ei klinikka."},
@@ -663,7 +681,9 @@ const T = {
 };
 
 const LANGS = ["en","sv","no","da","fi"];
-let lang = "en";
+const LANG_URL = {en:"/",sv:"/sv/",no:"/no/",da:"/da/",fi:"/fi/"};
+const PAGE_LANG = LANGS.includes(document.documentElement.dataset.page) ? document.documentElement.dataset.page : "en";
+let lang = PAGE_LANG;
 
 function t(key){ const e = T[key]; return e ? (e[lang] || e.en) : ""; }
 
@@ -680,22 +700,13 @@ function applyLang(next){
   document.getElementById("langMenu").setAttribute("aria-label", t("nav.lang"));
   const fl = document.getElementById("fLang"); if (fl) fl.value = lang;
   document.querySelectorAll(".field.invalid, .check.invalid").forEach(clearError);
-  try { localStorage.setItem("nacre-lang", lang); } catch (e) {}
 }
 
-function initialLang(){
-  const q = new URLSearchParams(location.search).get("lang");
-  if (q && LANGS.includes(q)) return q;
-  try { const s = localStorage.getItem("nacre-lang"); if (s && LANGS.includes(s)) return s; } catch (e) {}
-  const nav = (navigator.languages || [navigator.language || "en"]).map(l => l.toLowerCase());
-  for (const l of nav){
-    if (l.startsWith("sv")) return "sv";
-    if (l.startsWith("nb") || l.startsWith("nn") || l.startsWith("no")) return "no";
-    if (l.startsWith("da")) return "da";
-    if (l.startsWith("fi")) return "fi";
-    if (l.startsWith("en")) return "en";
-  }
-  return "en";
+/* Each language has its own address (/sv/, /no/, /da/, /fi/); switching goes there and remembers the choice */
+function goLang(next){
+  if (!LANGS.includes(next)) return;
+  try { localStorage.setItem("nacre-lang", next); } catch (e) {}
+  if (next !== PAGE_LANG) location.href = LANG_URL[next] + location.hash;
 }
 
 document.documentElement.classList.add("js");
@@ -708,7 +719,7 @@ document.documentElement.classList.add("js");
   const focus = n => { i = (n + opts.length) % opts.length; opts.forEach((o, k) => o.classList.toggle("active", k === i)); menu.setAttribute("aria-activedescendant", opts[i].id); };
   const open = () => { menu.classList.add("open"); btn.setAttribute("aria-expanded", "true"); focus(opts.findIndex(o => o.dataset.lang === lang)); menu.focus(); };
   const close = (refocus) => { menu.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); if (refocus) btn.focus(); };
-  const pick = o => { applyLang(o.dataset.lang); close(true); };
+  const pick = o => { close(true); goLang(o.dataset.lang); };
   btn.addEventListener("click", () => menu.classList.contains("open") ? close(false) : open());
   btn.addEventListener("keydown", e => { if (e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); open(); } });
   opts.forEach((o, k) => { o.addEventListener("click", () => pick(o)); o.addEventListener("mousemove", () => focus(k)); });
@@ -723,7 +734,7 @@ document.documentElement.classList.add("js");
   });
   document.addEventListener("click", e => { if (!e.target.closest(".lang")) close(false); });
 })();
-applyLang(initialLang());
+applyLang(PAGE_LANG);
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /* Nav border once the page moves (IntersectionObserver, no scroll listener) */
