@@ -551,8 +551,8 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
 </footer>
 
 <script>
-/* Paste your Formspree endpoint here, e.g. "https://formspree.io/f/abcdwxyz" */
-const FORM_ENDPOINT = "";
+/* SimplyForms endpoint (EU, stores nothing; submissions are emailed to hello@wearenacre.com) */
+const FORM_ENDPOINT = "https://api.simplyforms.app/v1/forms/8MPfboGDMNUYhjTe9PbmYQ";
 
 const T = {
   "nav.lang":{en:"Language",sv:"Språk",no:"Språk",da:"Sprog",fi:"Kieli"},
@@ -782,8 +782,13 @@ form.addEventListener("submit", async e => {
   submit.disabled = true; label.textContent = t("f.sending");
   try {
     if (!FORM_ENDPOINT) throw new Error("Form endpoint not configured yet (FORM_ENDPOINT is empty).");
-    const res = await fetch(FORM_ENDPOINT, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } });
-    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = new FormData(form);
+    const trap = data.get("_gotcha");
+    data.delete("_gotcha");
+    if (!trap) {
+      const res = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { "Accept": "application/json" } });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+    }
     box.classList.add("done");
     box.querySelector(".success").focus?.();
   } catch (err) {
