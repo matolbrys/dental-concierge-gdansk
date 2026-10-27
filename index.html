@@ -28,6 +28,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://wearenacre.com/#org","name":"Nacre","url":"https://wearenacre.com/","email":"hello@wearenacre.com","description":"Considering dental implants in Poland? Nacre, an independent concierge in Gdańsk, matches you with a licensed clinic and coordinates your stay. Not a clinic.","address":{"@type":"PostalAddress","addressLocality":"Gdańsk","addressCountry":"PL"},"areaServed":[{"@type":"Country","name":"Sweden"},{"@type":"Country","name":"Norway"},{"@type":"Country","name":"Denmark"},{"@type":"Country","name":"Finland"}]},{"@type":"WebSite","@id":"https://wearenacre.com/#website","url":"https://wearenacre.com/","name":"Nacre","publisher":{"@id":"https://wearenacre.com/#org"}},{"@type":"WebPage","@id":"https://wearenacre.com/#page","url":"https://wearenacre.com/","name":"Nacre | Private dental concierge in Gdańsk, Poland","description":"Considering dental implants in Poland? Nacre, an independent concierge in Gdańsk, matches you with a licensed clinic and coordinates your stay. Not a clinic.","inLanguage":"en","isPartOf":{"@id":"https://wearenacre.com/#website"},"about":{"@id":"https://wearenacre.com/#org"}},{"@type":"FAQPage","@id":"https://wearenacre.com/#faq","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Are you a dental clinic?","acceptedAnswer":{"@type":"Answer","text":"No. Nacre is an independent concierge service and does not provide any medical or dental care. The licensed clinic you choose is solely responsible for diagnosis and treatment."}},{"@type":"Question","name":"How are clinics selected?","acceptedAnswer":{"@type":"Answer","text":"We work with licensed clinics in Gdańsk with experienced specialists, English-speaking staff and clear written treatment plans."}},{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Before you commit, you receive a written quote with the clinic's treatment costs and our concierge fee shown separately."}},{"@type":"Question","name":"How many trips will I need?","acceptedAnswer":{"@type":"Answer","text":"It depends on the treatment. Implants usually need two visits a few months apart, while crowns or veneers can often be done in one stay. The clinic confirms this in your plan."}},{"@type":"Question","name":"What if I need help after I return home?","acceptedAnswer":{"@type":"Answer","text":"Contact your coordinator. We pass your questions to the clinic, arrange a video consultation with the dentist if needed and help plan any follow-up visit. Medical questions are always answered by the clinic."}}]}]}</script>
 <!-- /seo -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F4F5F7" media="(prefers-color-scheme: light)">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://images.unsplash.com">
@@ -291,6 +292,17 @@ section{position:relative}
 @media (max-width:860px){.req-grid{grid-template-columns:1fr}}
 @media (max-width:520px){.row{grid-template-columns:1fr;gap:0}}
 
+/* Who we are */
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,96px);align-items:start;border-top:1px solid var(--line);padding-top:clamp(48px,6vw,80px)}
+.about-text p{color:var(--muted);max-width:56ch}
+.about-text p + p{margin-top:18px}
+.about-text .about-mail{color:var(--text)}
+.about-mail a{color:var(--accent);font-weight:500;text-underline-offset:3px}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+.fine{margin:-18px 0 24px 34px;font-size:14px}
+.fine a{color:var(--muted);text-underline-offset:3px}
+.fine a:hover{color:var(--text)}
+
 /* Footer */
 footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
 .foot{display:grid;grid-template-columns:1fr 1.6fr;gap:40px}
@@ -298,6 +310,11 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
 .foot .tag{margin-top:10px}
 .foot .disc{max-width:70ch}
 .foot .copy{margin-top:20px}
+.foot .links{margin-top:18px;line-height:1.9}
+.foot .links a{color:var(--text);text-decoration:none}
+.foot .links a:hover{text-decoration:underline;text-underline-offset:3px}
+.foot .links span{margin:0 6px}
+.foot .company{margin-top:10px}
 @media (max-width:760px){.foot{grid-template-columns:1fr}}
 
 @media (prefers-reduced-motion:reduce){
@@ -477,6 +494,18 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
     </div>
   </section>
 
+  <!-- Who we are -->
+  <section class="sec about" id="about" style="padding-top:0">
+    <div class="wrap about-grid reveal">
+      <h2 class="h2" data-i18n="about.title">Who you will be talking to.</h2>
+      <div class="about-text">
+        <p data-i18n="about.p1">Nacre is run from Gdańsk by Mateusz, your patient coordinator. He reads every request himself, speaks with the clinics on your behalf and stays your contact from the first message to the follow-up at home.</p>
+        <p data-i18n="about.p2">Mateusz is not a dentist, and Nacre is not a clinic. Medical questions always go to the clinic's licensed dentists, and you receive their answers in writing.</p>
+        <p class="about-mail"><span data-i18n="about.mail">You can also write to us directly:</span> <a href="mailto:hello@wearenacre.com">hello@wearenacre.com</a></p>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="sec" id="faq">
     <div class="wrap">
@@ -543,6 +572,7 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
           </div>
           <div class="field"><label for="fMsg" data-i18n="f.msg">Anything we should know? (optional)</label><textarea id="fMsg" name="message" aria-describedby="fMsgHint"></textarea><span class="hint" id="fMsgHint" data-i18n="f.msghint">English is preferred, but you are welcome to write in your own language.</span></div>
           <label class="check"><input type="checkbox" id="fConsent" name="consent" value="yes" required><span data-i18n="f.consent">I agree that Nacre may use my details to answer this request and share them with a partner clinic only with my permission.</span><span class="err" aria-live="polite"></span></label>
+          <p class="fine"><a href="/privacy.html" data-i18n="f.privacy.link">How we handle your data</a></p>
           <button class="btn btn-primary" type="submit" id="fSubmit"><span data-i18n="cta">Start a conversation</span></button>
           <p class="form-error" id="fError" role="alert" hidden data-i18n="f.err">Something went wrong. Please try again in a moment.</p>
         </form>
@@ -561,6 +591,8 @@ footer{padding:56px 0 48px;border-top:1px solid var(--line);font-size:14px;color
     <div>
       <div class="logo">NACRE</div>
       <p class="tag" data-i18n="foot.tag">Private dental concierge. Not a medical provider.</p>
+      <p class="links"><a href="/blog/" data-i18n="nav.blog">Articles</a><span aria-hidden="true">&middot;</span><a href="/privacy.html" data-i18n="foot.privacy">Privacy policy</a><span aria-hidden="true">&middot;</span><a href="mailto:hello@wearenacre.com">hello@wearenacre.com</a></p>
+      <!-- company --><!-- /company -->
     </div>
     <div>
       <p class="disc" data-i18n="foot.disc">Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.</p>
@@ -669,6 +701,12 @@ const T = {
   "v.required":{en:"Please fill in this field.",sv:"Fyll i det här fältet.",no:"Fyll ut dette feltet.",da:"Udfyld dette felt.",fi:"Täytä tämä kenttä."},
   "v.email":{en:"Please enter a valid email address.",sv:"Ange en giltig e-postadress.",no:"Skriv inn en gyldig e-postadresse.",da:"Indtast en gyldig e-mailadresse.",fi:"Anna kelvollinen sähköpostiosoite."},
   "v.consent":{en:"Please accept to continue.",sv:"Godkänn för att fortsätta.",no:"Godta for å fortsette.",da:"Accepter for at fortsætte.",fi:"Hyväksy jatkaaksesi."},
+  "about.title":{en:"Who you will be talking to.",sv:"Vem du kommer att prata med.",no:"Hvem du kommer til å snakke med.",da:"Hvem du kommer til at tale med.",fi:"Kenen kanssa asioit."},
+  "about.p1":{en:"Nacre is run from Gdańsk by Mateusz, your patient coordinator. He reads every request himself, speaks with the clinics on your behalf and stays your contact from the first message to the follow-up at home.",sv:"Nacre drivs från Gdańsk av Mateusz, din patientkoordinator. Han läser varje förfrågan själv, talar med klinikerna för din räkning och är din kontaktperson från det första meddelandet till uppföljningen hemma.",no:"Nacre drives fra Gdańsk av Mateusz, pasientkoordinatoren din. Han leser hver forespørsel selv, snakker med klinikkene på dine vegne og er kontaktpersonen din fra den første meldingen til oppfølgingen hjemme.",da:"Nacre drives fra Gdańsk af Mateusz, din patientkoordinator. Han læser selv hver forespørgsel, taler med klinikkerne på dine vegne og er din kontaktperson fra den første besked til opfølgningen derhjemme.",fi:"Nacrea johtaa Gdańskista Mateusz, potilaskoordinaattorisi. Hän lukee jokaisen yhteydenoton itse, keskustelee klinikoiden kanssa puolestasi ja on yhteyshenkilösi ensimmäisestä viestistä kotona tehtävään seurantaan asti."},
+  "about.p2":{en:"Mateusz is not a dentist, and Nacre is not a clinic. Medical questions always go to the clinic's licensed dentists, and you receive their answers in writing.",sv:"Mateusz är inte tandläkare, och Nacre är ingen klinik. Medicinska frågor går alltid till klinikens legitimerade tandläkare, och du får deras svar skriftligt.",no:"Mateusz er ikke tannlege, og Nacre er ikke en klinikk. Medisinske spørsmål går alltid til klinikkens autoriserte tannleger, og du får svarene deres skriftlig.",da:"Mateusz er ikke tandlæge, og Nacre er ikke en klinik. Medicinske spørgsmål går altid til klinikkens autoriserede tandlæger, og du får deres svar skriftligt.",fi:"Mateusz ei ole hammaslääkäri, eikä Nacre ole klinikka. Lääketieteelliset kysymykset ohjataan aina klinikan hammaslääkäreille, ja saat heidän vastauksensa kirjallisena."},
+  "about.mail":{en:"You can also write to us directly:",sv:"Du kan också skriva direkt till oss:",no:"Du kan også skrive direkte til oss:",da:"Du kan også skrive direkte til os:",fi:"Voit myös kirjoittaa meille suoraan:"},
+  "f.privacy.link":{en:"How we handle your data",sv:"Så hanterar vi dina uppgifter",no:"Slik behandler vi opplysningene dine",da:"Sådan behandler vi dine oplysninger",fi:"Näin käsittelemme tietojasi"},
+  "foot.privacy":{en:"Privacy policy",sv:"Integritetspolicy",no:"Personvernerklæring",da:"Privatlivspolitik",fi:"Tietosuojaseloste"},
   "foot.tag":{en:"Private dental concierge. Not a medical provider.",sv:"Privat tandvårdsconcierge. Ingen vårdgivare.",no:"Privat concierge for tannbehandling. Ikke en helsetjenesteyter.",da:"Privat concierge for tandbehandling. Ikke en sundhedsudbyder.",fi:"Yksityinen hammashoidon concierge-palvelu. Emme ole terveydenhuollon palveluntarjoaja."},
   "foot.disc":{en:"Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.",sv:"Nacre är en tjänst för patientkoordination och utför ingen medicinsk behandling eller tandvård. All behandling planeras och utförs av oberoende legitimerade kliniker, som ansvarar för den kliniska vården.",no:"Nacre er en tjeneste for pasientkoordinering og tilbyr ikke medisinsk behandling eller tannbehandling. All behandling planlegges og utføres av uavhengige autoriserte klinikker, som har ansvaret for den kliniske behandlingen.",da:"Nacre er en tjeneste til patientkoordinering og udfører ikke medicinsk behandling eller tandbehandling. Al behandling planlægges og udføres af uafhængige autoriserede klinikker, som er ansvarlige for den kliniske behandling.",fi:"Nacre on potilaskoordinointipalvelu eikä tarjoa lääketieteellistä hoitoa tai hammashoitoa. Kaikki hoidot suunnittelevat ja toteuttavat itsenäiset klinikat, joilla on asianmukaiset luvat ja jotka vastaavat kliinisestä hoidosta."},
   "alt.hero":{en:"Historic facades of Gdańsk reflected in the Motława river at dusk",sv:"Historiska fasader i Gdańsk speglas i floden Motława i skymningen",no:"Historiske fasader i Gdańsk speiler seg i elven Motława i skumringen",da:"Historiske facader i Gdańsk spejler sig i floden Motława i skumringen",fi:"Gdańskin historialliset julkisivut heijastuvat Motława-jokeen iltahämärässä"},
