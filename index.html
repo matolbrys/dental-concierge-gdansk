@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="RY_GNRtR_L2xAiW0sqcSThm_7n8dFB7_6L83Ouc3DRM">
 <script>
 /* Root page only: send visitors to their language version (saved choice, ?lang= or browser language) */
 (function(){var d=document.documentElement;if(d.getAttribute("data-page")!=="en")return;var L={en:"",sv:"/sv/",no:"/no/",da:"/da/",fi:"/fi/"},p=new URLSearchParams(location.search).get("lang");if(!p){try{p=localStorage.getItem("nacre-lang")}catch(e){}}if(!p){var n=(navigator.languages||[navigator.language||""]).map(function(l){return String(l).toLowerCase()});for(var i=0;i<n.length&&!p;i++){var l=n[i];if(l.indexOf("en")===0)p="en";else if(l.indexOf("sv")===0)p="sv";else if(/^(nb|nn|no)/.test(l))p="no";else if(l.indexOf("da")===0)p="da";else if(l.indexOf("fi")===0)p="fi";}}if(p&&L[p])location.replace(L[p]+location.hash);})();
