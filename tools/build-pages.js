@@ -26,6 +26,9 @@ var SEO = {
     title: "Hammasimplantit ja hammashoito Puolassa | Nacre, concierge Gdańskissa",
     desc: "Harkitsetko hammasimplantteja Puolassa? Nacre on riippumaton concierge Gdańskissa: löydämme luvan saaneen klinikan ja koordinoimme matkasi. Emme ole klinikka." }
 };
+var BLOG_PATH = { en: "/blog/", sv: "/sv/artiklar/", no: "/no/artikler/", da: "/da/artikler/", fi: "/fi/artikkelit/" };
+var PRIVACY_PATH = { en: "/privacy.html", sv: "/sv/integritetspolicy.html", no: "/no/personvern.html", da: "/da/privatlivspolitik.html", fi: "/fi/tietosuoja.html" };
+var COMPANY = (typeof require === "function") ? (function () { try { return require("./site-config").company; } catch (e) { return null; } })() : null;
 var OG_IMAGE = "https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1200&h=630&fit=crop&q=75&auto=format";
 
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
@@ -82,6 +85,12 @@ function buildPage(src, lang) {
   var a = out.indexOf("<!-- seo -->"), b = out.indexOf("<!-- /seo -->");
   if (a < 0 || b < 0) throw new Error("SEO markers not found");
   out = out.slice(0, a) + seoBlock(T, lang) + out.slice(b + "<!-- /seo -->".length);
+  // Company details (template in tools/site-config.js; nothing is shown while the name is empty)
+  var ca = out.indexOf("<!-- company -->"), cb = out.indexOf("<!-- /company -->");
+  if (ca >= 0 && cb > ca) {
+    var line = COMPANY && COMPANY.name ? '<p class="company">' + [esc(COMPANY.name)].concat((COMPANY.lines || []).map(esc)).join(" &middot; ") + "</p>" : "";
+    out = out.slice(0, ca) + "<!-- company -->" + line + out.slice(cb);
+  }
   out = out.replace(/<html lang="[^"]*" data-page="[^"]*">/, '<html lang="' + HTML_LANG[lang] + '" data-page="' + lang + '">');
   if (lang === "en") return out;
   // Translate the page body (everything before the main script)
@@ -98,6 +107,8 @@ function buildPage(src, lang) {
   head = head.replace('<use href="#flag-en"/></svg><span id="langName">English</span>', '<use href="#flag-' + lang + '"/></svg><span id="langName">' + LANG_NAME[lang] + '</span>');
   head = head.replace('aria-label="Language: English"', 'aria-label="' + escAttr(tr("nav.lang") + ": " + LANG_NAME[lang]) + '"');
   head = head.replace(/(<li role="option" id="lang-(\w+)"[^>]*aria-selected=")(true|false)(")/g, function (m, p, l, v, q) { return p + (l === lang) + q; });
+  head = head.split('href="/blog/"').join('href="' + BLOG_PATH[lang] + '"');
+  head = head.split('href="/privacy.html"').join('href="' + PRIVACY_PATH[lang] + '"');
   head = head.replace('id="fLang" value="en"', 'id="fLang" value="' + lang + '"');
   return head + tail;
 }
