@@ -87,6 +87,10 @@ function foot(lang, alts) {
 }
 
 function postDate(a, lang) { return lang === "en" ? a.published : (a.published > TRANSLATED_ON ? a.published : TRANSLATED_ON); }
+function modDate(a, lang) { var d = postDate(a, lang); return a.updated && a.updated > d ? a.updated : d; }
+function byId(id) { for (var i = 0; i < ARTICLES.length; i++) if (ARTICLES[i].id === id) return ARTICLES[i]; throw new Error("Unknown article " + id); }
+// Internal links in article bodies: href="{{article-id}}" becomes the article's address in the same language
+function links(html, lang) { return html.replace(/\{\{([a-z0-9-]+)\}\}/g, function (m, id) { return postPath(byId(id), lang); }); }
 function postPath(a, lang) { return TXT.paths.blog[lang] + a[lang].slug + ".html"; }
 function postAlts(a) { var o = {}; LANGS.forEach(function (l) { o[l] = postPath(a, l); }); return o; }
 function imgSrc(a) { return a.img.src; }
@@ -102,27 +106,39 @@ var sorted = ARTICLES.slice().sort(function (x, y) { return x.published < y.publ
 LANGS.forEach(function (lang) {
   var u = TXT.ui[lang];
   sorted.forEach(function (a) {
-    var c = a[lang], p = postPath(a, lang), alts = postAlts(a), date = postDate(a, lang);
-    var ld = { "@context": "https://schema.org", "@type": "BlogPosting", "headline": c.title, "description": c.desc,
-      "image": ogImg(a), "datePublished": date, "dateModified": date, "inLanguage": TXT.htmlLang[lang],
+    var c = a[lang], p = postPath(a, lang), alts = postAlts(a), date = postDate(a, lang), mod = modDate(a, lang);
+    var post = { "@type": "BlogPosting", "@id": SITE + p + "#article", "headline": c.title, "description": c.desc,
+      "image": ogImg(a), "datePublished": date, "dateModified": mod, "inLanguage": TXT.htmlLang[lang],
       "mainEntityOfPage": SITE + p, "url": SITE + p,
       "author": { "@type": "Organization", "name": "Nacre", "url": SITE + "/" },
       "publisher": { "@type": "Organization", "@id": SITE + "/#org", "name": "Nacre", "url": SITE + "/" } };
+    var graph = [post];
+    if (c.faq && c.faq.length) graph.push({ "@type": "FAQPage", "@id": SITE + p + "#faq", "inLanguage": TXT.htmlLang[lang],
+      "mainEntity": c.faq.map(function (f) { return { "@type": "Question", "name": f[0], "acceptedAnswer": { "@type": "Answer", "text": f[1] } }; }) });
+    var ld = { "@context": "https://schema.org", "@graph": graph };
+    var faqHtml = c.faq && c.faq.length ? ['  <section class="post-faq">', "    <h2>" + esc(u.faqTitle) + "</h2>"].concat(c.faq.map(function (f) {
+      return '    <details><summary>' + esc(f[0]) + '<i class="ph-light ph-plus" aria-hidden="true"></i></summary><p>' + esc(f[1]) + "</p></details>";
+    })).concat(["  </section>"]).join("\n") : null;
+    var relHtml = a.related && a.related.length ? ['  <nav class="related" aria-label="' + attr(u.related) + '">', "    <h2>" + esc(u.related) + "</h2>", "    <ul>"].concat(a.related.map(function (id) {
+      var r = byId(id); return '      <li><a href="' + postPath(r, lang) + '">' + esc(r[lang].title) + "</a></li>";
+    })).concat(["    </ul>", "  </nav>"]).join("\n") : null;
     var html = head({ lang: lang, title: c.title + " | Nacre", ogTitle: c.title, desc: c.desc, path: p, alts: alts, type: "article", image: ogImg(a), ld: ld }) + "\n" + [
       "<main>", '<article class="post">',
       '  <a class="back" href="' + TXT.paths.blog[lang] + '"><i class="ph-light ph-arrow-left" aria-hidden="true"></i>' + esc(u.all) + "</a>",
-      '  <p class="meta"><time datetime="' + date + '">' + esc(fmtDate(date, lang)) + "</time> &middot; " + a.minutes + " " + esc(u.read) + "</p>",
+      '  <p class="meta"><time datetime="' + mod + '">' + esc(fmtDate(mod, lang)) + "</time> &middot; " + a.minutes + " " + esc(u.read) + "</p>",
       "  <h1>" + esc(c.title) + "</h1>",
       '  <p class="lede">' + esc(c.lede) + "</p>",
       '  <figure class="cover"><img src="' + attr(imgSrc(a)) + '" width="' + a.img.w + '" height="' + a.img.h + '" alt="' + attr(a.alt[lang]) + '"></figure>',
-      '  <div class="prose">' + c.body.replace(/\n/g, "\n    ") + "\n  </div>",
+      '  <div class="prose">' + links(c.body, lang).replace(/\n/g, "\n    ") + "\n  </div>",
+      faqHtml,
       '  <p class="disclaimer"><i class="ph-light ph-info" aria-hidden="true"></i><span>' + esc(u.disclaimer) + "</span></p>",
+      relHtml,
       '  <section class="post-cta">',
       "    <h2>" + esc(c.cta) + "</h2>",
       "    <p>" + esc(u.ctaP) + "</p>",
       '    <a class="btn" href="' + TXT.paths.home[lang] + '#request">' + esc(cta(lang)) + "</a>",
       "  </section>", "</article>", "</main>"
-    ].join("\n") + "\n" + foot(lang, alts);
+    ].filter(function (x) { return x !== null; }).join("\n") + "\n" + foot(lang, alts);
     write(p.slice(1), html);
   });
 
@@ -133,7 +149,7 @@ LANGS.forEach(function (lang) {
     "publisher": { "@type": "Organization", "@id": SITE + "/#org", "name": "Nacre", "url": SITE + "/" },
     "blogPost": sorted.map(function (a) { return { "@type": "BlogPosting", "headline": a[lang].title, "url": SITE + postPath(a, lang), "datePublished": postDate(a, lang) }; }) };
   var cards = sorted.map(function (a, i) {
-    var c = a[lang], date = postDate(a, lang);
+    var c = a[lang], date = modDate(a, lang);
     return '    <a href="' + a[lang].slug + '.html"' + (i === 0 ? ' class="first"' : "") + '><div class="thumb"><img loading="' + (i ? "lazy" : "eager") + '" width="1000" height="625" src="' + attr(thumbSrc(a)) + '" alt="' + attr(a.alt[lang]) + '"></div><div><p class="meta"><time datetime="' + date + '">' + esc(fmtDate(date, lang)) + "</time> &middot; " + a.minutes + " " + esc(u.read) + "</p><h2>" + esc(c.title) + '</h2><p class="ex">' + esc(c.lede) + "</p></div></a>";
   }).join("\n");
   var list = head({ lang: lang, title: u.listTitle, ogTitle: u.listTitle, desc: u.listDesc, path: lp, alts: lalts, image: ogImg(sorted[0]), ld: ld }) + "\n" + [
@@ -167,7 +183,7 @@ function group(paths, lastmod) {
   }).join("\n");
 }
 var urls = [group(TXT.paths.home, today), group(TXT.paths.blog, today)];
-sorted.forEach(function (a) { urls.push(group(postAlts(a), function (l) { return postDate(a, l); })); });
+sorted.forEach(function (a) { urls.push(group(postAlts(a), function (l) { return modDate(a, l); })); });
 urls.push(group(TXT.paths.privacy, TXT.privacy.updated));
 write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls.join("\n") + "\n</urlset>\n");
 
