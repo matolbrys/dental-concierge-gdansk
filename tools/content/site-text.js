@@ -24,7 +24,7 @@ module.exports = {
       disclaimer: "This article is general information and not medical advice. Your treating dentist will advise you on the treatment that is right for you.",
       ctaP: "Tell us what you are considering. We reply personally, with no obligation.",
       foot: "Nacre is a patient coordination service and does not provide medical or dental treatment. All treatment is planned and performed by independent licensed clinics, which are responsible for clinical care.",
-      privacy: "Privacy policy", updated: "Last updated" },
+      privacy: "Privacy policy", updated: "Last updated", faqTitle: "Common questions", related: "Read next" },
     sv: { articles: "Artiklar", listTitle: "Artiklar om tandvård i Polen | Nacre",
       listDesc: "Lättlästa guider om tandimplantat, skalfasader, kronor och hur en tandvårdsconcierge i Gdańsk arbetar.",
       listIntro: "Korta guider för dig som funderar på tandvård i Gdańsk, Polen.",
@@ -32,7 +32,7 @@ module.exports = {
       disclaimer: "Den här artikeln är allmän information och inte medicinsk rådgivning. Din behandlande tandläkare ger dig råd om den behandling som passar dig.",
       ctaP: "Berätta vad du funderar på. Vi svarar personligen, utan förpliktelser.",
       foot: "Nacre är en tjänst för patientkoordination och utför ingen medicinsk behandling eller tandvård. All behandling planeras och utförs av oberoende legitimerade kliniker, som ansvarar för den kliniska vården.",
-      privacy: "Integritetspolicy", updated: "Senast uppdaterad" },
+      privacy: "Integritetspolicy", updated: "Senast uppdaterad", faqTitle: "Vanliga frågor", related: "Läs vidare" },
     no: { articles: "Artikler", listTitle: "Artikler om tannbehandling i Polen | Nacre",
       listDesc: "Lettleste guider om tannimplantater, fasetter, kroner og hvordan en concierge for tannbehandling i Gdańsk jobber.",
       listIntro: "Korte guider for deg som vurderer tannbehandling i Gdańsk i Polen.",
@@ -40,7 +40,7 @@ module.exports = {
       disclaimer: "Denne artikkelen er generell informasjon og ikke medisinske råd. Tannlegen som behandler deg, gir deg råd om behandlingen som passer for deg.",
       ctaP: "Fortell oss hva du vurderer. Vi svarer personlig og uforpliktende.",
       foot: "Nacre er en tjeneste for pasientkoordinering og tilbyr ikke medisinsk behandling eller tannbehandling. All behandling planlegges og utføres av uavhengige autoriserte klinikker, som har ansvaret for den kliniske behandlingen.",
-      privacy: "Personvernerklæring", updated: "Sist oppdatert" },
+      privacy: "Personvernerklæring", updated: "Sist oppdatert", faqTitle: "Vanlige spørsmål", related: "Les videre" },
     da: { articles: "Artikler", listTitle: "Artikler om tandbehandling i Polen | Nacre",
       listDesc: "Letlæste guider om tandimplantater, facader, kroner og hvordan en concierge for tandbehandling i Gdańsk arbejder.",
       listIntro: "Korte guider til dig, der overvejer tandbehandling i Gdańsk i Polen.",
@@ -48,7 +48,7 @@ module.exports = {
       disclaimer: "Denne artikel er generel information og ikke medicinsk rådgivning. Din behandlende tandlæge rådgiver dig om den behandling, der passer til dig.",
       ctaP: "Fortæl os, hvad du overvejer. Vi svarer personligt og uforpligtende.",
       foot: "Nacre er en tjeneste for patientkoordinering og udfører ikke medicinsk behandling eller tandbehandling. Al behandling planlægges og udføres af uafhængige autoriserede klinikker, som har ansvaret for den kliniske behandling.",
-      privacy: "Privatlivspolitik", updated: "Senest opdateret" },
+      privacy: "Privatlivspolitik", updated: "Senest opdateret", faqTitle: "Ofte stillede spørgsmål", related: "Læs videre" },
     fi: { articles: "Artikkelit", listTitle: "Artikkeleita hammashoidosta Puolassa | Nacre",
       listDesc: "Selkeitä oppaita hammasimplanteista, laminaateista, kruunuista ja siitä, miten hammashoidon concierge Gdańskissa toimii.",
       listIntro: "Lyhyitä oppaita sinulle, joka harkitset hammashoitoa Gdańskissa, Puolassa.",
@@ -56,7 +56,7 @@ module.exports = {
       disclaimer: "Tämä artikkeli on yleistä tietoa eikä lääketieteellistä neuvontaa. Hoitava hammaslääkärisi neuvoo, mikä hoito sopii sinulle.",
       ctaP: "Kerro, mitä harkitset. Vastaamme henkilökohtaisesti, ilman sitoumuksia.",
       foot: "Nacre on potilaskoordinointipalvelu eikä tarjoa lääketieteellistä hoitoa tai hammashoitoa. Kaikki hoidot suunnittelevat ja toteuttavat itsenäiset, luvan saaneet klinikat, jotka vastaavat kliinisestä hoidosta.",
-      privacy: "Tietosuojaseloste", updated: "Päivitetty viimeksi" }
+      privacy: "Tietosuojaseloste", updated: "Päivitetty viimeksi", faqTitle: "Usein kysyttyä", related: "Lue seuraavaksi" }
   },
 
   privacy: {
