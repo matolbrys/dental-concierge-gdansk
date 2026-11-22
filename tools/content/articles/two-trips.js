@@ -2,9 +2,9 @@
 module.exports = {
   id: "two-trips",
   published: "2026-09-23",
-  updated: "2026-11-21",
+  updated: "2026-11-22",
   minutes: 7,
-  related: ["complications", "questions", "veneers"],
+  related: ["costs", "complications", "questions"],
   img: {"src":"https://images.unsplash.com/photo-1593022356769-11f762e25ed9?w=1400&h=788&fit=crop&q=75&auto=format","w":1400,"h":788,"thumb":"https://images.unsplash.com/photo-1593022356769-11f762e25ed9?w=1000&h=625&fit=crop&q=75&auto=format","og":"https://images.unsplash.com/photo-1593022356769-11f762e25ed9?w=1200&h=630&fit=crop&q=75&auto=format"},
   alt: {
     en: "A model of a dental implant placed between two natural teeth",
@@ -60,7 +60,7 @@ module.exports = {
 <h2>How long do dental implants last?</h2>
 <p>With good cleaning and regular check-ups, implants often last for many years, and for many people the rest of their life. The crown on top wears like a natural tooth and may need replacing after ten to fifteen years. Smoking and gum inflammation are among the most common reasons implants fail over time.</p>
 <h2>What affects the price?</h2>
-<p>The price depends on the number of implants, the implant system, whether you need a bone graft or sinus lift, and the material of the crown. A clear quote lists each of these separately. Our <a href="{{questions}}">8 questions to ask before dental implants abroad</a> help you compare offers.</p>
+<p>The price depends on the number of implants, the implant system, whether you need a bone graft or sinus lift, and the material of the crown. A clear quote lists each of these separately. Our <a href="{{questions}}">8 questions to ask before dental implants abroad</a> help you compare offers. See also <a href="{{costs}}">dental implant prices in Poland and the Nordic countries</a>.</p>
 <h2>After treatment</h2>
 <p>Clean your implants the way you clean your natural teeth, including between them, and go for regular check-ups. Your dentist at home can do these if you bring a record of the implant system that was used.</p>
 <p>We plan both trips with you and stay in touch with the clinic between your visits. Every medical decision stays with your dentist.</p>`
@@ -112,7 +112,7 @@ module.exports = {
 <h2>Hur länge håller tandimplantat?</h2>
 <p>Med god rengöring och regelbundna kontroller håller implantat ofta i många år, och för många människor resten av livet. Kronan ovanpå slits som en naturlig tand och kan behöva bytas efter tio till femton år. Rökning och inflammation i tandköttet hör till de vanligaste orsakerna till att implantat förloras med tiden.</p>
 <h2>Vad påverkar priset?</h2>
-<p>Priset beror på antalet implantat, implantatsystemet, om du behöver benuppbyggnad eller sinuslyft och vilket material kronan är gjord av. En tydlig offert redovisar allt detta var för sig. Våra <a href="{{questions}}">8 frågor att ställa före tandimplantat utomlands</a> hjälper dig att jämföra erbjudanden.</p>
+<p>Priset beror på antalet implantat, implantatsystemet, om du behöver benuppbyggnad eller sinuslyft och vilket material kronan är gjord av. En tydlig offert redovisar allt detta var för sig. Våra <a href="{{questions}}">8 frågor att ställa före tandimplantat utomlands</a> hjälper dig att jämföra erbjudanden. Se även <a href="{{costs}}">vad tandimplantat kostar i Polen och Sverige</a>.</p>
 <h2>Efter behandlingen</h2>
 <p>Rengör implantaten på samma sätt som dina egna tänder, även mellan dem, och gå på regelbundna kontroller. Din tandläkare hemma kan göra dem om du har med dig uppgifter om vilket implantatsystem som användes.</p>
 <p>Vi planerar båda resorna tillsammans med dig och håller kontakten med kliniken mellan besöken. Alla medicinska beslut ligger hos din tandläkare.</p>`
@@ -164,7 +164,7 @@ module.exports = {
 <h2>Hvor lenge varer tannimplantater?</h2>
 <p>Med god rengjøring og jevnlige kontroller varer implantater ofte i mange år, og for mange resten av livet. Kronen på toppen slites som en naturlig tann og kan måtte byttes etter ti til femten år. Røyking og betennelse i tannkjøttet er blant de vanligste årsakene til at implantater går tapt over tid.</p>
 <h2>Hva påvirker prisen?</h2>
-<p>Prisen avhenger av antall implantater, implantatsystemet, om du trenger beinoppbygging eller sinusløft, og hvilket materiale kronen er laget av. Et tydelig tilbud viser hver av disse delene for seg. Våre <a href="{{questions}}">8 spørsmål før tannimplantater i utlandet</a> hjelper deg å sammenligne tilbud.</p>
+<p>Prisen avhenger av antall implantater, implantatsystemet, om du trenger beinoppbygging eller sinusløft, og hvilket materiale kronen er laget av. Et tydelig tilbud viser hver av disse delene for seg. Våre <a href="{{questions}}">8 spørsmål før tannimplantater i utlandet</a> hjelper deg å sammenligne tilbud. Se også <a href="{{costs}}">hva tannimplantat koster i Polen og Norge</a>.</p>
 <h2>Etter behandlingen</h2>
 <p>Rengjør implantatene på samme måte som dine egne tenner, også mellom dem, og gå til jevnlige kontroller. Tannlegen din hjemme kan ta disse hvis du har med deg opplysninger om hvilket implantatsystem som ble brukt.</p>
 <p>Vi planlegger begge reisene sammen med deg og holder kontakten med klinikken mellom besøkene. Alle medisinske beslutninger ligger hos tannlegen din.</p>`
@@ -216,7 +216,7 @@ module.exports = {
 <h2>Hvor længe holder tandimplantater?</h2>
 <p>Med god rengøring og regelmæssige kontroller holder implantater ofte i mange år, og for mange resten af livet. Kronen ovenpå slides som en naturlig tand og kan skulle udskiftes efter ti til femten år. Rygning og betændelse i tandkødet er blandt de mest almindelige årsager til, at implantater går tabt med tiden.</p>
 <h2>Hvad påvirker prisen?</h2>
-<p>Prisen afhænger af antallet af implantater, implantatsystemet, om du har brug for knogleopbygning eller sinusløft, og hvilket materiale kronen er lavet af. Et klart tilbud viser hver af disse dele for sig. Vores <a href="{{questions}}">8 spørgsmål før tandimplantater i udlandet</a> hjælper dig med at sammenligne tilbud.</p>
+<p>Prisen afhænger af antallet af implantater, implantatsystemet, om du har brug for knogleopbygning eller sinusløft, og hvilket materiale kronen er lavet af. Et klart tilbud viser hver af disse dele for sig. Vores <a href="{{questions}}">8 spørgsmål før tandimplantater i udlandet</a> hjælper dig med at sammenligne tilbud. Se også <a href="{{costs}}">hvad tandimplantat koster i Polen og Danmark</a>.</p>
 <h2>Efter behandlingen</h2>
 <p>Rengør dine implantater på samme måde som dine egne tænder, også imellem dem, og gå til regelmæssige kontroller. Din tandlæge derhjemme kan stå for dem, hvis du har oplysninger med om, hvilket implantatsystem der blev brugt.</p>
 <p>Vi planlægger begge rejser sammen med dig og holder kontakten med klinikken mellem dine besøg. Alle medicinske beslutninger ligger hos din tandlæge.</p>`
@@ -268,7 +268,7 @@ module.exports = {
 <h2>Kuinka kauan hammasimplantti kestää?</h2>
 <p>Hyvällä puhdistuksella ja säännöllisillä tarkastuksilla implantit kestävät usein monia vuosia, monilla loppuelämän. Päällä oleva kruunu kuluu kuten luonnollinen hammas, ja se voidaan joutua uusimaan 10–15 vuoden kuluttua. Tupakointi ja ientulehdus ovat yleisimpiä syitä siihen, että implantti menetetään ajan myötä.</p>
 <h2>Mikä vaikuttaa implanttihoidon hintaan?</h2>
-<p>Hintaan vaikuttavat implanttien määrä, implanttijärjestelmä, tarvitaanko luunsiirtoa tai poskiontelon pohjan nostoa sekä kruunun materiaali. Selkeässä tarjouksessa jokainen näistä on eritelty. <a href="{{questions}}">8 kysymystä ennen hammasimplantteja ulkomailla</a> auttaa sinua vertailemaan tarjouksia.</p>
+<p>Hintaan vaikuttavat implanttien määrä, implanttijärjestelmä, tarvitaanko luunsiirtoa tai poskiontelon pohjan nostoa sekä kruunun materiaali. Selkeässä tarjouksessa jokainen näistä on eritelty. <a href="{{questions}}">8 kysymystä ennen hammasimplantteja ulkomailla</a> auttaa sinua vertailemaan tarjouksia. Katso myös <a href="{{costs}}">hammasimplantin hinta Puolassa ja Suomessa</a>.</p>
 <h2>Hoidon jälkeen</h2>
 <p>Puhdista implantit samalla tavalla kuin omat hampaasi, myös hammasvälit, ja käy säännöllisissä tarkastuksissa. Kotimaasi hammaslääkäri voi tehdä ne, kun sinulla on mukana tiedot käytetystä implanttijärjestelmästä.</p>
 <p>Suunnittelemme molemmat matkat kanssasi ja pidämme yhteyttä klinikkaan käyntien välillä. Kaikki lääketieteelliset päätökset tekee hammaslääkärisi.</p>`
