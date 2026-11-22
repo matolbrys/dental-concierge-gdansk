@@ -28,6 +28,7 @@ var SEO = {
 };
 var BLOG_PATH = { en: "/blog/", sv: "/sv/artiklar/", no: "/no/artikler/", da: "/da/artikler/", fi: "/fi/artikkelit/" };
 var PRIVACY_PATH = { en: "/privacy.html", sv: "/sv/integritetspolicy.html", no: "/no/personvern.html", da: "/da/privatlivspolitik.html", fi: "/fi/tietosuoja.html" };
+var COSTS_PATH = { en: "/blog/dental-implant-prices-poland-scandinavia.html", sv: "/sv/artiklar/tandimplantat-polen-pris.html", no: "/no/artikler/tannimplantat-pris-polen.html", da: "/da/artikler/tandimplantat-pris-polen.html", fi: "/fi/artikkelit/hammasimplantti-hinta-puola.html" };
 var COMPANY = (typeof require === "function") ? (function () { try { return require("./site-config").company; } catch (e) { return null; } })() : null;
 var OG_IMAGE = "https://images.unsplash.com/photo-1574060603747-421196bce3f4?w=1200&h=630&fit=crop&q=75&auto=format";
 
@@ -107,6 +108,7 @@ function buildPage(src, lang) {
   head = head.replace('<use href="#flag-en"/></svg><span id="langName">English</span>', '<use href="#flag-' + lang + '"/></svg><span id="langName">' + LANG_NAME[lang] + '</span>');
   head = head.replace('aria-label="Language: English"', 'aria-label="' + escAttr(tr("nav.lang") + ": " + LANG_NAME[lang]) + '"');
   head = head.replace(/(<li role="option" id="lang-(\w+)"[^>]*aria-selected=")(true|false)(")/g, function (m, p, l, v, q) { return p + (l === lang) + q; });
+  head = head.split('href="' + COSTS_PATH.en + '"').join('href="' + COSTS_PATH[lang] + '"');
   head = head.split('href="/blog/"').join('href="' + BLOG_PATH[lang] + '"');
   head = head.split('href="/privacy.html"').join('href="' + PRIVACY_PATH[lang] + '"');
   head = head.replace('id="fLang" value="en"', 'id="fLang" value="' + lang + '"');
