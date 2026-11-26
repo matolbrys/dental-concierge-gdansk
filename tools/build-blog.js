@@ -53,8 +53,8 @@ function head(o) {
   if (o.image) { h.push('<meta property="og:image" content="' + attr(o.image) + '">'); h.push('<meta name="twitter:card" content="summary_large_image">'); }
   h.push('<link rel="icon" href="/favicon.svg" type="image/svg+xml">');
   h.push('<link rel="preconnect" href="https://images.unsplash.com">');
-  h.push('<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">');
-  h.push('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">');
+  h.push('<link rel="stylesheet" media="print" onload="this.media=\'all\'" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"><noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"></noscript>');
+  h.push('<link rel="stylesheet" media="print" onload="this.media=\'all\'" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css"></noscript>');
   h.push('<link rel="stylesheet" href="/blog/blog.css">');
   if (o.ld) h.push('<script type="application/ld+json">' + JSON.stringify(o.ld).replace(/</g, "\\u003c") + "</script>");
   h.push("</head>", "<body>");
@@ -94,6 +94,12 @@ function links(html, lang) { return html.replace(/\{\{([a-z0-9-]+)\}\}/g, functi
 function postPath(a, lang) { return TXT.paths.blog[lang] + a[lang].slug + ".html"; }
 function postAlts(a) { var o = {}; LANGS.forEach(function (l) { o[l] = postPath(a, l); }); return o; }
 function imgSrc(a) { return a.img.src; }
+/* Responsive cover for Unsplash images (w=1400&h=788): smaller files on phones */
+function coverSrcset(a) {
+  var s = a.img.src; if (s.indexOf("images.unsplash.com") < 0 || s.indexOf("w=1400&h=788") < 0) return "";
+  var set = [[700, 394], [1000, 563], [1400, 788]].map(function (x) { return attr(s.replace("w=1400&h=788", "w=" + x[0] + "&h=" + x[1])) + " " + x[0] + "w"; }).join(", ");
+  return ' srcset="' + set + '" sizes="(min-width:860px) 920px, 100vw"';
+}
 function thumbSrc(a) { return a.img.thumb || a.img.src; }
 function ogImg(a) { return abs(a.img.og || a.img.src); }
 
@@ -128,7 +134,7 @@ LANGS.forEach(function (lang) {
       '  <p class="meta"><time datetime="' + mod + '">' + esc(fmtDate(mod, lang)) + "</time> &middot; " + a.minutes + " " + esc(u.read) + "</p>",
       "  <h1>" + esc(c.title) + "</h1>",
       '  <p class="lede">' + esc(c.lede) + "</p>",
-      '  <figure class="cover"><img src="' + attr(imgSrc(a)) + '" width="' + a.img.w + '" height="' + a.img.h + '" alt="' + attr(a.alt[lang]) + '"></figure>',
+      '  <figure class="cover"><img src="' + attr(imgSrc(a)) + '"' + coverSrcset(a) + ' width="' + a.img.w + '" height="' + a.img.h + '" fetchpriority="high" alt="' + attr(a.alt[lang]) + '"></figure>',
       '  <div class="prose">' + links(c.body, lang).replace(/\n/g, "\n    ") + "\n  </div>",
       faqHtml,
       '  <p class="disclaimer"><i class="ph-light ph-info" aria-hidden="true"></i><span>' + esc(u.disclaimer) + "</span></p>",
