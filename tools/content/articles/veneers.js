@@ -4,7 +4,7 @@ module.exports = {
   published: "2026-09-23",
   updated: "2026-11-21",
   minutes: 7,
-  related: ["questions", "two-trips", "concierge"],
+  related: ["veneercost", "questions", "concierge"],
   img: {"src":"https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?w=1400&h=788&fit=crop&q=75&auto=format","w":1400,"h":788,"thumb":"https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?w=1000&h=625&fit=crop&q=75&auto=format","og":"https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?w=1200&h=630&fit=crop&q=75&auto=format"},
   alt: {
     en: "A woman with dark curly hair smiling widely",

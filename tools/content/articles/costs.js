@@ -5,7 +5,7 @@ module.exports = {
   id: "costs",
   published: "2026-11-22",
   minutes: 6,
-  related: ["two-trips", "questions", "concierge"],
+  related: ["fullarch", "two-trips", "questions"],
   img: {"src":"/img/hotel-room.webp","w":1440,"h":960},
   alt: {
     en: "A calm hotel room with linen bedding and a window overlooking the old-town rooftops of Gdańsk",
