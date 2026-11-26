@@ -2,7 +2,7 @@
 module.exports = {
   id: "veneers",
   published: "2026-09-23",
-  updated: "2026-11-21",
+  updated: "2026-11-26",
   minutes: 7,
   related: ["veneercost", "questions", "concierge"],
   img: {"src":"https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?w=1400&h=788&fit=crop&q=75&auto=format","w":1400,"h":788,"thumb":"https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?w=1000&h=625&fit=crop&q=75&auto=format","og":"https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?w=1200&h=630&fit=crop&q=75&auto=format"},
@@ -88,10 +88,14 @@ module.exports = {
       ["Kan man ta bort skalfasader?",
        "Skalfasader i porslin som krävde att emalj slipades bort är permanenta: tanden kommer alltid att behöva ett skydd. Vissa skalfasader i komposit och fasader med minimal slipning är lättare att ändra. Fråga tandläkaren vad som gäller för dig."],
       ["Hur många skalfasader behöver jag?",
-       "Det beror på hur många tänder som syns när du ler. En del behöver en eller två, andra sex till tio i överkäken. Tandläkaren rekommenderar antalet efter undersökningen."]
+       "Det beror på hur många tänder som syns när du ler. En del behöver en eller två, andra sex till tio i överkäken. Tandläkaren rekommenderar antalet efter undersökningen."],
+      ["Vilka nackdelar har skalfasader?",
+       "Porslinsfasader kräver oftast att lite emalj slipas bort, vilket inte går att ångra. De kan spricka eller lossna och behöver bytas efter många år. Kompositfasader missfärgas och slits snabbare. Ingen fasad skyddar mot karies eller tandköttsproblem."],
+      ["Kan man få skalfasader utan slipning?",
+       "Ibland. Tunna fasader och kompositfasader kan i vissa fall fästas med mycket lite eller ingen slipning, men det passar inte alla tänder. Tandläkaren bedömer det vid undersökningen."]
     ],
     body: `
-<p>Många kontaktar oss för att de vill ha ett ljusare eller jämnare leende. Skalfasader är ett sätt att nå dit, men inte det enda. Vilken behandling som passar beror lika mycket på hur friska tänderna är som på hur de ser ut.</p>
+<p>Många kontaktar oss för att de vill ha ett ljusare eller jämnare leende. Skalfasader är ett sätt att nå dit, men inte det enda. Vilken behandling som passar beror lika mycket på hur friska tänderna är som på hur de ser ut. Priserna hittar du i <a href="{{veneercost}}">skalfasader pris: Polen och Sverige</a>.</p>
 <h2>Vad är skalfasader?</h2>
 <p>Skalfasader är tunna skal som fästs på framsidan av en tand. De ändrar tandens färg och form och kan stänga små mellanrum, så de används mest på de tänder som syns när du ler. Målet är oftast ett naturligt och harmoniskt resultat som passar ditt ansikte, inte likadana kritvita tänder.</p>
 <h2>Skalfasader i porslin eller komposit?</h2>
@@ -137,7 +141,7 @@ module.exports = {
   },
   no: {
     slug: "fasetter-kroner-eller-bleking",
-    title: "Tannfasetter: typer, behandling, holdbarhet og alternativer til fasetter",
+    title: "Fasetter på tenner: typer, behandling, holdbarhet og alternativer",
     desc: "Fasetter på tennene i porselen eller kompositt? Slik foregår behandlingen, hvor lenge tannfasetter varer, ulempene og når bleking eller kroner passer bedre.",
     lede: "Porselen eller kompositt, slik foregår behandlingen, hvor lenge fasetter varer og når bleking eller kroner passer bedre.",
     cta: "Tenker du på et nytt smil?",
@@ -149,12 +153,14 @@ module.exports = {
       ["Kan fasetter fjernes?",
        "Fasetter i porselen som krevde at emalje ble slipt bort, er permanente: tannen vil alltid trenge en dekning. Noen komposittfasetter og fasetter med minimal sliping er lettere å endre. Spør tannlegen hva som gjelder for deg."],
       ["Hvor mange fasetter trenger jeg?",
-       "Det avhenger av hvor mange tenner som synes når du smiler. Noen trenger én eller to, andre seks til ti i overkjeven. Tannlegen anbefaler antallet etter undersøkelsen."]
+       "Det avhenger av hvor mange tenner som synes når du smiler. Noen trenger én eller to, andre seks til ti i overkjeven. Tannlegen anbefaler antallet etter undersøkelsen."],
+      ["Kan man få fasetter uten sliping?",
+       "Noen ganger. Tynne skallfasetter og komposittfasetter kan i enkelte tilfeller festes med svært lite eller ingen sliping, men det passer ikke for alle tenner. Tannlegen vurderer dette etter undersøkelsen."]
     ],
     body: `
-<p>Mange tar kontakt med oss fordi de ønsker et lysere eller jevnere smil. Tannfasetter er én vei dit, men ikke den eneste. Hvilken behandling som passer, avhenger like mye av hvor friske tennene er som av hvordan de ser ut.</p>
-<h2>Hva er tannfasetter?</h2>
-<p>Fasetter er tynne skall som festes på forsiden av en tann. De endrer fargen og formen på tannen og kan lukke små mellomrom, så de brukes mest på tennene som synes når du smiler. Mange ønsker seg perfekte tenner, men målet er som regel et naturlig og harmonisk resultat som passer ansiktet ditt, ikke helt like, kritthvite tenner.</p>
+<p>Mange tar kontakt med oss fordi de ønsker et lysere eller jevnere smil. Fasetter på tennene er én vei dit, men ikke den eneste. Hvilken behandling som passer, avhenger like mye av hvor friske tennene er som av hvordan de ser ut. Prisene finner du i <a href="{{veneercost}}">fasetter pris: Polen og Norge</a>.</p>
+<h2>Hva er fasetter på tenner?</h2>
+<p>Fasetter, også kalt tannfasetter, er tynne skall som festes på forsiden av en tann. De endrer fargen og formen på tannen og kan lukke små mellomrom, så de brukes mest på tennene som synes når du smiler. Mange ønsker seg perfekte tenner, men målet er som regel et naturlig og harmonisk resultat som passer ansiktet ditt, ikke helt like, kritthvite tenner.</p>
 <h2>Fasetter i porselen eller kompositt?</h2>
 <p>Porselensfasetter lages av et tannteknisk laboratorium. De beholder fargen, misfarges ikke lett og ligner naturlig emalje. Komposittfasetter formes direkte på tannen av et tannfarget materiale, ofte i ett besøk. De koster mindre og krever som regel mindre sliping, men de misfarges og slites lettere.</p>
 <div class="table-wrap"><table>
@@ -198,7 +204,7 @@ module.exports = {
   },
   da: {
     slug: "facader-kroner-eller-blegning",
-    title: "Tandfacader: typer, behandling, holdbarhed og alternativer",
+    title: "Facader på tænder: typer, behandling, holdbarhed og alternativer",
     desc: "Facader i porcelæn eller komposit? Sådan foregår behandlingen, hvor længe tandfacader holder, ulemperne, og hvornår blegning eller kroner passer bedre.",
     lede: "Porcelæn eller komposit, sådan foregår behandlingen, hvor længe facader holder, og hvornår blegning eller kroner passer bedre.",
     cta: "Overvejer du et nyt smil?",
@@ -210,14 +216,16 @@ module.exports = {
       ["Kan facader fjernes?",
        "Facader i porcelæn, hvor der blev slebet emalje væk, er permanente: tanden vil altid have brug for en dækning. Nogle kompositfacader og facader med minimal slibning er lettere at ændre. Spørg tandlægen, hvad der gælder for dig."],
       ["Hvor mange facader har jeg brug for?",
-       "Det afhænger af, hvor mange tænder der ses, når du smiler. Nogle har brug for en eller to, andre seks til ti i overkæben. Tandlægen anbefaler antallet efter undersøgelsen."]
+       "Det afhænger af, hvor mange tænder der ses, når du smiler. Nogle har brug for en eller to, andre seks til ti i overkæben. Tandlægen anbefaler antallet efter undersøgelsen."],
+      ["Kan man få facader uden slibning?",
+       "Nogle gange. Tynde facader og kompositfacader kan i visse tilfælde sættes på med meget lidt eller ingen slibning, men det passer ikke til alle tænder. Tandlægen vurderer det ved undersøgelsen."]
     ],
     body: `
-<p>Mange kontakter os, fordi de ønsker et lysere eller mere ensartet smil. Tandfacader er én vej dertil, men ikke den eneste. Hvilken behandling der passer, afhænger lige så meget af, hvor sunde tænderne er, som af hvordan de ser ud.</p>
-<h2>Hvad er tandfacader?</h2>
-<p>Facader er tynde skaller, der limes på forsiden af en tand. De ændrer tandens farve og form og kan lukke små mellemrum, så de bruges mest på de tænder, der ses, når du smiler. Målet er som regel et naturligt og harmonisk resultat, der passer til dit ansigt, ikke helt ens, kridhvide tænder.</p>
+<p>Mange kontakter os, fordi de ønsker et lysere eller mere ensartet smil. Facader på tænderne er én vej dertil, men ikke den eneste. Hvilken behandling der passer, afhænger lige så meget af, hvor sunde tænderne er, som af hvordan de ser ud. Priserne finder du i <a href="{{veneercost}}">tandfacader pris: Polen og Danmark</a>.</p>
+<h2>Hvad er facader på tænder?</h2>
+<p>Tandfacader er tynde skaller, der limes på forsiden af en tand. De ændrer tandens farve og form og kan lukke små mellemrum, så de bruges mest på de tænder, der ses, når du smiler. Målet er som regel et naturligt og harmonisk resultat, der passer til dit ansigt, ikke helt ens, kridhvide tænder.</p>
 <h2>Facader i porcelæn eller komposit?</h2>
-<p>Porcelænsfacader fremstilles af et tandteknisk laboratorium. De holder farven, misfarves ikke let og ligner naturlig emalje. Kompositfacader formes direkte på tanden af et tandfarvet materiale, ofte ved ét besøg. De koster mindre og kræver som regel mindre slibning, men de misfarves og slides lettere.</p>
+<p>Porcelænsfacader fremstilles af et tandteknisk laboratorium. De holder farven, misfarves ikke let og ligner naturlig emalje. Kompositfacader, også kaldet plastfacader, formes direkte på tanden af et tandfarvet materiale, ofte ved ét besøg. De koster mindre og kræver som regel mindre slibning, men de misfarves og slides lettere.</p>
 <div class="table-wrap"><table>
 <thead><tr><th></th><th>Porcelænsfacader</th><th>Kompositfacader</th></tr></thead>
 <tbody>
@@ -259,7 +267,7 @@ module.exports = {
   },
   fi: {
     slug: "laminaatit-kruunut-vai-valkaisu",
-    title: "Hammaslaminaatit: tyypit, hoito, kestävyys ja vaihtoehdot",
+    title: "Hammaslaminaatit eli posliinikuoret hampaisiin: tyypit, hoito ja kestävyys",
     desc: "Posliini- vai yhdistelmämuovilaminaatit? Näin hoito etenee, kuinka kauan hammaslaminaatit kestävät, mitkä ovat haitat ja milloin valkaisu tai kruunut sopivat paremmin.",
     lede: "Posliini vai yhdistelmämuovi, näin hoito etenee, kuinka kauan laminaatit kestävät ja milloin valkaisu tai kruunut sopivat paremmin.",
     cta: "Mietitkö uutta hymyä?",
@@ -271,12 +279,14 @@ module.exports = {
       ["Voiko laminaatit poistaa?",
        "Posliinilaminaatit, joita varten kiillettä on hiottu pois, ovat pysyviä: hammas tarvitsee aina päällysteen. Jotkin yhdistelmämuovilaminaatit ja vähän hiontaa vaativat laminaatit ovat helpommin muutettavissa. Kysy hammaslääkäriltä, mikä koskee sinua."],
       ["Montako laminaattia tarvitsen?",
-       "Se riippuu siitä, montako hammasta näkyy hymyillessä. Osa tarvitsee yhden tai kaksi, osa kuudesta kymmeneen yläleukaan. Hammaslääkäri suosittelee määrää tutkimuksen jälkeen."]
+       "Se riippuu siitä, montako hammasta näkyy hymyillessä. Osa tarvitsee yhden tai kaksi, osa kuudesta kymmeneen yläleukaan. Hammaslääkäri suosittelee määrää tutkimuksen jälkeen."],
+      ["Mitä eroa on laminaateilla ja posliinikuorilla?",
+       "Ei mitään: posliinikuoret, keraamiset kuoret ja posliinilaminaatit tarkoittavat samaa hoitoa. Yhdistelmämuovista tehtyjä kuoria kutsutaan yhdistelmämuovilaminaateiksi."]
     ],
     body: `
-<p>Moni ottaa meihin yhteyttä, koska haluaa vaaleamman tai tasaisemman hymyn. Hammaslaminaatit ovat yksi keino, mutta eivät ainoa. Sopiva hoito riippuu yhtä paljon hampaiden terveydestä kuin niiden ulkonäöstä.</p>
+<p>Moni ottaa meihin yhteyttä, koska haluaa vaaleamman tai tasaisemman hymyn. Hammaslaminaatit eli posliinikuoret ovat yksi keino, mutta eivät ainoa. Sopiva hoito riippuu yhtä paljon hampaiden terveydestä kuin niiden ulkonäöstä. Hinnat löydät artikkelista <a href="{{veneercost}}">hammaslaminaattien hinta Puolassa ja Suomessa</a>.</p>
 <h2>Mitä hammaslaminaatit ovat?</h2>
-<p>Laminaatit ovat ohuita kuoria, jotka kiinnitetään hampaan etupintaan. Ne muuttavat hampaan väriä ja muotoa ja voivat sulkea pieniä rakoja, joten niitä käytetään yleensä hampaissa, jotka näkyvät hymyillessä. Tavoitteena on yleensä luonnollinen ja harmoninen lopputulos, joka sopii kasvoihisi, ei täysin samanlaiset lumivalkoiset hampaat.</p>
+<p>Laminaatit eli kuoret hampaisiin ovat ohuita kuoria, jotka kiinnitetään hampaan etupintaan. Ne muuttavat hampaan väriä ja muotoa ja voivat sulkea pieniä rakoja, joten niitä käytetään yleensä hampaissa, jotka näkyvät hymyillessä. Tavoitteena on yleensä luonnollinen ja harmoninen lopputulos, joka sopii kasvoihisi, ei täysin samanlaiset lumivalkoiset hampaat.</p>
 <h2>Posliini- vai yhdistelmämuovilaminaatit?</h2>
 <p>Posliinilaminaatit valmistetaan hammaslaboratoriossa. Ne säilyttävät värinsä, eivät värjäydy helposti ja muistuttavat luonnollista kiillettä. Yhdistelmämuovilaminaatit muotoillaan suoraan hampaan pintaan hampaanvärisestä materiaalista, usein yhdellä käynnillä. Ne ovat edullisempia ja vaativat yleensä vähemmän hiontaa, mutta ne värjäytyvät ja kuluvat helpommin.</p>
 <div class="table-wrap"><table>

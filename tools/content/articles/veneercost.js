@@ -84,7 +84,7 @@ module.exports = {
   },
   no: {
     slug: "fasetter-pris-polen",
-    title: "Fasetter pris: Polen sammenlignet med Norge (2026)",
+    title: "Fasetter på tenner pris: Polen sammenlignet med Norge (2026)",
     desc: "Hva fasetter i porselen og kompositt koster per tann i Polen sammenlignet med Norge i 2026, hva prisen bør inkludere og når det lønner seg å reise.",
     lede: "Hva fasetter koster per tann i Polen og i Norge, og hva du bør sjekke før du sammenligner.",
     cta: "Vil du ha et tilbud?",
@@ -117,7 +117,7 @@ module.exports = {
   },
   da: {
     slug: "tandfacader-pris-polen",
-    title: "Tandfacader pris: Polen sammenlignet med Danmark (2026)",
+    title: "Facader på tænder pris: Polen sammenlignet med Danmark (2026)",
     desc: "Hvad facader i porcelæn og komposit koster pr. tand i Polen sammenlignet med Danmark i 2026, hvad prisen bør omfatte, og hvornår det betaler sig at rejse.",
     lede: "Hvad facader koster pr. tand i Polen og i Danmark, og hvad du skal tjekke, før du sammenligner.",
     cta: "Vil du have et tilbud?",
@@ -150,7 +150,7 @@ module.exports = {
   },
   fi: {
     slug: "hammaslaminaatit-hinta-puola",
-    title: "Hammaslaminaattien hinta Puolassa ja Suomessa (2026)",
+    title: "Hammaslaminaattien ja posliinikuorien hinta Puolassa ja Suomessa (2026)",
     desc: "Mitä posliini- ja yhdistelmämuovilaminaatit maksavat hammasta kohden Puolassa verrattuna Suomeen vuonna 2026 ja milloin matka laminaattien takia kannattaa.",
     lede: "Mitä hammaslaminaatit maksavat hammasta kohden Puolassa ja Suomessa, ja mitä kannattaa tarkistaa ennen vertailua.",
     cta: "Haluatko tarjouksen?",
